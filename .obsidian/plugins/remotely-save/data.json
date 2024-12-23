@@ -5,7 +5,7 @@
   "autoPushInterval": 20,
   "autoPullInterval": 10,
   "autoPullOnBoot": true,
-  "disablePush": false,
+  "disablePush": true,
   "pullBeforePush": true,
   "disablePopups": false,
   "disablePopupsForNoChanges": false,

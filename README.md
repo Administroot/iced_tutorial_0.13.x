@@ -4,8 +4,14 @@
 This tutorial serves as a quick start for the library.
 We try to keep each part of the tutorial as simple as possible.
 
+```ad-caution
+title: Deprecated
+collapse: open
+
 This tutorial is being updated from Iced version `0.10.0` to `0.12.x`.
 For a complete tutorial for version `0.10.0`, please refer to [this branch](https://github.com/fogarecious/iced_tutorial/tree/0.10.x).
+```
+This tutorial is being updated from Iced version ``
 
 Contents:
 
