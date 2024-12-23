@@ -1,29 +1,20 @@
-use iced::{Application, Settings};
+use iced::{application, Settings, Element};
 
 fn main() -> iced::Result {
-    MyApp::Application::run("My App", update, )
+    application(title, update, view).run()
 }
 
-
-fn update(value: &mut u64, _message: Message) {
+enum Message {
+    
 }
 
-struct MyApp;
+fn title() -> String {
+    String::from("My App")
+}
 
-impl Sandbox for MyApp {
-    type Message = ();
+fn update(_value: &mut u64, _message: Message) {
+}
 
-    fn new() -> Self {
-        Self
-    }
-
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, _message: Self::Message) {}
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        "Hello World!".into()
-    }
+fn view(_value: &u64) -> Element<Message> {
+    "hello, world".into()
 }
