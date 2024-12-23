@@ -6,15 +6,14 @@ pub fn main() -> iced::Result {
 
 #[derive(Debug, Clone)]
 enum Message {
-    msg,
+    Msg,
 }
 
-fn update(value: &mut u64, message: Message) {
+fn update() {
 }
 
-fn view(value: &u64) -> Column<Message> {
+fn view(value: &u64) -> String {
     column![
-        text(value),
-        button("+").on_press(Message::Increment),
+        "hello, world"
     ]
 }
