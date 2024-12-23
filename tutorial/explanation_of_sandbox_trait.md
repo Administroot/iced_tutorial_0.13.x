@@ -1,4 +1,10 @@
 # Explanation of Sandbox Trait
+```ad-attention
+title: Attention
+collapse: open
+Deprecated in `0.13.x`
+
+```
 
 [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) works as follows.
 
