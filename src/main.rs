@@ -1,19 +1,20 @@
 use iced::widget::{button, column, text, Column};
 
 pub fn main() -> iced::Result {
-    iced::application("My app", update, view).run()
+    iced::application("A counter", update, view).run()
 }
 
 #[derive(Debug, Clone)]
 enum Message {
-    Msg,
+    Increment,
 }
 
-fn update() {
+fn update(_value: &mut u64, _message: Message) {
 }
 
-fn view(value: &u64) -> String {
-    column![
-        "hello, world"
-    ]
+fn view(value: &u64) -> Message {
+    // column![
+    //     text(value),
+    //     button("+").on_press(Message::Increment),
+    // ]
 }
