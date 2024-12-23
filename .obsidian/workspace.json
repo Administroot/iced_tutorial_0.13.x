@@ -178,26 +178,6 @@
             }
           },
           {
-            "id": "08d6265e44b669a4",
-            "type": "leaf",
-            "state": {
-              "type": "advanced-tables-toolbar",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "插件不再活动"
-            }
-          },
-          {
-            "id": "aeeade715b16024e",
-            "type": "leaf",
-            "state": {
-              "type": "reminder-list",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "插件不再活动"
-            }
-          },
-          {
             "id": "7086f78f67599a13",
             "type": "leaf",
             "state": {
@@ -230,17 +210,17 @@
   },
   "active": "2c87c5d2f2794c74",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-2xionblqewneg/s-h2zm7hkp3g-1kdzpnv-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-2xionblqewneg/s-h2zm7hkp3g-1kdzpnv-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-2xionblqewneg/s-h2zm7hkp3g-1kdzpnv-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-2xionblqewneg/s-h2zm7hkp3g-1kdzpnv-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-2xionblqewneg/s-h2zm7hkp3g-1kdzpnv-working",
-    "target/debug/incremental/iced_tutorial-2xionblqewneg/s-h2zm7hkp3g-1kdzpnv.lock",
-    "target/debug/incremental/iced_tutorial-2v41emf9z1rb9/s-h2zm7hkjxv-1mvmzxz-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-2v41emf9z1rb9/s-h2zm7hkjxv-1mvmzxz-working",
-    "target/debug/incremental/iced_tutorial-2v41emf9z1rb9/s-h2zm7hkjxv-1mvmzxz.lock",
-    "target/debug/incremental/iced_tutorial-2v41emf9z1rb9/s-h2zm7hh7je-1vuxrth-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-2v41emf9z1rb9/s-h2zm7hh7je-1vuxrth-working",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h2zmayyquk-15o6f6w-1k5kyi3yjewznzvzvq1uv26bx/work-products.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h2zmayyquk-15o6f6w-1k5kyi3yjewznzvzvq1uv26bx/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h2zmayyquk-15o6f6w-1k5kyi3yjewznzvzvq1uv26bx/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h2zmayyquk-15o6f6w-1k5kyi3yjewznzvzvq1uv26bx",
+    "target/debug/deps/libiced_tutorial-b06f10471ab17789.rmeta",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h2zmayxtjl-1usk8a8-1fxg9luvk06fp75dnha1sanz4/work-products.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h2zmayxtjl-1usk8a8-1fxg9luvk06fp75dnha1sanz4/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h2zmayxtjl-1usk8a8-1fxg9luvk06fp75dnha1sanz4/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h2zmayxtjl-1usk8a8-1fxg9luvk06fp75dnha1sanz4",
+    "target/debug/deps/libiced_tutorial-c62a4166ee9237c2.rmeta",
+    "target/debug/deps/iced_tutorial-b06f10471ab17789.d",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",
     "Clippings/标注 - Obsidian 中文帮助 - Obsidian Publish.md",
     "Programming/Rust/ICED.md",
