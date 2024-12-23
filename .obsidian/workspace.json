@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/first_app.md",
+                "file": "tutorial/explanation_of_sandbox_trait.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "first_app"
+              "title": "explanation_of_sandbox_trait"
             }
           }
         ]
@@ -171,10 +171,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/first_app.md"
+                "file": "tutorial/explanation_of_sandbox_trait.md"
               },
               "icon": "lucide-list",
-              "title": "first_app 的大纲"
+              "title": "explanation_of_sandbox_trait 的大纲"
             }
           },
           {
@@ -210,6 +210,7 @@
   },
   "active": "57adf1e5760b4e74",
   "lastOpenFiles": [
+    "tutorial/first_app.md",
     "target/debug/deps/iced_tutorial.02bq5iqu4hg027q4hmrbc5svc.rcgu.o",
     "target/debug/deps/iced_tutorial.0zodqw5lafp1psii1ob5fjlku.rcgu.o",
     "target/debug/deps/iced_tutorial.3oxhiu7jzlywxiblpick61gvo.rcgu.o",
@@ -220,7 +221,6 @@
     "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h2zqrf0w6s-1dxfstm-28gyh88s8p8pvs69afhdnxlkz/f3zdgk9omeivd3rzgnjzl7pn9.o",
     "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h2zqrf0w6s-1dxfstm-28gyh88s8p8pvs69afhdnxlkz/work-products.bin",
     "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h2zqrf0w6s-1dxfstm-28gyh88s8p8pvs69afhdnxlkz/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h2zqrf0w6s-1dxfstm-28gyh88s8p8pvs69afhdnxlkz/eyjvt06aydcqs621kvf8uu9n3.o",
     "tutorial/setting_up.md",
     "tutorial/adding_widgets.md",
     "README.md",
