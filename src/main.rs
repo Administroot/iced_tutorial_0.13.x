@@ -1,20 +1,20 @@
-use iced::{application, Settings, Element};
+use iced::widget::{button, column, text, Column};
 
-fn main() -> iced::Result {
-    application(title, update, view).run()
+pub fn main() -> iced::Result {
+    iced::application("My app", update, view).run()
 }
 
+#[derive(Debug, Clone)]
 enum Message {
-    
+    msg,
 }
 
-fn title() -> String {
-    String::from("My App")
+fn update(value: &mut u64, message: Message) {
 }
 
-fn update(_value: &mut u64, _message: Message) {
-}
-
-fn view(_value: &u64) -> Element<Message> {
-    "hello, world".into()
+fn view(value: &u64) -> Column<Message> {
+    column![
+        text(value),
+        button("+").on_press(Message::Increment),
+    ]
 }
