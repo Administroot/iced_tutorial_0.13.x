@@ -1,0 +1,272 @@
+{
+  "main": {
+    "id": "2cd89d3cc53fe7fc",
+    "type": "split",
+    "children": [
+      {
+        "id": "492b0dea92b568b0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2c87c5d2f2794c74",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "588e4a98ce0e4ca4",
+    "type": "split",
+    "children": [
+      {
+        "id": "962163949a05ce85",
+        "type": "tabs",
+        "dimension": 61.527777777777786,
+        "children": [
+          {
+            "id": "08162bcb59e5fac8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "9e029603ed1a31e6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "8e53428be5d7575b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      },
+      {
+        "id": "213d7b6e12d04429",
+        "type": "tabs",
+        "dimension": 38.47222222222222,
+        "children": [
+          {
+            "id": "a1ff15893da02f4a",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c2677f24ad493b8c",
+    "type": "split",
+    "children": [
+      {
+        "id": "66801e802b87a8da",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dc4861651946e286",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "考研/考研政治助记.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "考研政治助记 的反向链接列表"
+            }
+          },
+          {
+            "id": "22c01a54a5e8a801",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "考研/考研政治助记.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "考研政治助记 的出链列表"
+            }
+          },
+          {
+            "id": "7936dcec1dded43e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "a91b7739ec580bca",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "56ece3258bf973a1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "08d6265e44b669a4",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "插件不再活动"
+            }
+          },
+          {
+            "id": "aeeade715b16024e",
+            "type": "leaf",
+            "state": {
+              "type": "reminder-list",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "插件不再活动"
+            }
+          },
+          {
+            "id": "7086f78f67599a13",
+            "type": "leaf",
+            "state": {
+              "type": "reminder-list",
+              "state": {},
+              "icon": "clock",
+              "title": "Reminders"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "graph:查看关系图谱": false,
+      "workspaces:管理工作区布局": false,
+      "obsidian-git:Open Git source control": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "2c87c5d2f2794c74",
+  "lastOpenFiles": [
+    "Programming/Rust/assets/explanation_of_sandbox_trait.png",
+    "Programming/Rust/assets/explanation_of_sandbox_trait.png.crdownload",
+    "Programming/Rust/assets",
+    "Programming/Rust/新建文件夹",
+    "Clippings/标注 - Obsidian 中文帮助 - Obsidian Publish.md",
+    "Programming/Rust/ICED.md",
+    "Programming/Rust",
+    "Programming",
+    "考研/考研政治助记.md",
+    "考研/新思想第二套第二问.png",
+    "考研/新思想第二套第一问.png",
+    "考研/新思想第一套第二问.png",
+    "考研/新思想第一套第一问.png",
+    "考研/第二套第二问.png",
+    "考研/第二套第一问.png.~tmp",
+    "考研/第二套第一问.png",
+    "Journals/2024-12-20.md",
+    "考研/考研政治错题闪过.md",
+    "考研/第一套第二问.png",
+    "考研/第一套第一问.png",
+    "考研/马原关键词原理对应关系.png",
+    "出发前先看看/考研.md",
+    "README.md",
+    "Clippings/Types of Admonitions.md",
+    "考研/考研英语作文.md",
+    "vim键位参考.jpeg",
+    "出发前先看看",
+    "思知行/小玉老师发病录.md",
+    "Whiteboard.canvas",
+    "考研/考研.md",
+    "考研",
+    "未命名.md",
+    "Profiles/Earth.md",
+    "Profiles/Profiles.md",
+    "Profiles",
+    "Clippings/OpenGate - Embed any website into Obsidian.md",
+    "README.en.md",
+    "Tags",
+    "Journals/2024-12-03.md",
+    "Journals/2024-12-01.md",
+    "Journals/2024-11-30.md",
+    "未命名.canvas",
+    "Journals/2024-11-29.md",
+    "Clippings/Callouts - Obsidian Help.md"
+  ]
+}

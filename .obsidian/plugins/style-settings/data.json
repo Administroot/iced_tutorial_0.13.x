@@ -1,0 +1,16 @@
+{
+  "Appearance-light@@card-layout-open-light": true,
+  "Appearance-light@@theme-light-style-select": "theme-light-background-adapt",
+  "Editor@@line-hover-indicator": true,
+  "Editor@@editor-grid-background-pattren": false,
+  "Editor@@h1-divider-on": true,
+  "Editor@@img-center-align": true,
+  "Editor@@img-darken": true,
+  "Editor@@codeblock-style-select": "codeblock-style-dracula",
+  "Mobile@@card-layout-pad-open": true,
+  "Mobile@@drawer-phone-full-width": true,
+  "Plugin@@colorful-checkbox": true,
+  "Appearance-dark@@card-layout-open-dark": true,
+  "Appearance-dark@@card-highlight-dark": true,
+  "Appearance-dark@@workspace-divider-transparent-dark": true
+}
