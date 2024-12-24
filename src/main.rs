@@ -10,7 +10,9 @@ enum MyAppMessage {
     Update3(String),
     Update4(String),
     Update5(String),
+    Update6(String),
     Paste5(String),
+    Submit6,
 }
 
 #[derive(Default)]
@@ -18,7 +20,9 @@ struct State{
     text3: String,
     text4: String,
     text5: String,
+    text6: String,
     info5: String,
+    info6: String,
 }
 
 fn update(state: &mut State, message: MyAppMessage) {
@@ -33,6 +37,11 @@ fn update(state: &mut State, message: MyAppMessage) {
             state.text5  = s;
             state.info5 = "Pasted".into();
         }
+        MyAppMessage::Update6(s) => {
+            state.text6 = s;
+            state.info6 = "".into();
+        },
+        MyAppMessage::Submit6 => todo!(),
     }
 }
 
@@ -50,10 +59,10 @@ fn view(state: &State) -> Column<MyAppMessage> {
                 .on_paste(MyAppMessage::Paste5),
         text(state.info5.as_str()),
 
-        text_input("Press enter", self.text6.as_str())
+        text_input("Press enter", state.text6.as_str())
                 .on_input(MyAppMessage::Update6)
                 .on_submit(MyAppMessage::Submit6),
-        text(self.info6.as_str()),
+        text(state.info6.as_str()),
     ]
     .into()
 }
