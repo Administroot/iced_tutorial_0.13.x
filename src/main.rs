@@ -1,4 +1,4 @@
-use iced::widget::{Column, column};
+use iced::widget::{button, column, row, Column};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -14,6 +14,10 @@ fn update(_value: &mut u64, _message: Message) {
 
 fn view(_value: &u64) -> Column<Message> {
     column![
-        "hello, world"
+        text("Yes or No?"),
+        row!(
+            button("Yes"),
+            button("No")
+        )
     ]
 }
