@@ -11,6 +11,7 @@ enum MyAppMessage {
     Update4(String),
     Update5(String),
     Update6(String),
+    Update7(String),
     Paste5(String),
     Submit6,
 }
@@ -21,6 +22,7 @@ struct State{
     text4: String,
     text5: String,
     text6: String,
+    text7: String,
     info5: String,
     info6: String,
 }
@@ -44,6 +46,9 @@ fn update(state: &mut State, message: MyAppMessage) {
         MyAppMessage::Submit6 => {
             state.info6 = "Submitted".into();
         },
+        MyAppMessage::Update7(s) => {
+            state.text7 = s;
+        }
     }
 }
 
@@ -65,9 +70,12 @@ fn view(state: &State) -> Column<MyAppMessage> {
         text_input("Press enter", state.text6.as_str())
                 .on_input(MyAppMessage::Update6)
                 .on_submit(MyAppMessage::Submit6),
-        text(state.info6.as_str())
+        text(state.info6.as_str()),
 
-        // 
+        // Display input characters in ciphertext
+        text_input("Password", state.text7.as_str())
+            .secure(true)
+            .on_input(MyAppMessage::Update7),
     ]
     .into()
 }
