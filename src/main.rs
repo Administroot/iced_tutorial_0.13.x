@@ -1,4 +1,4 @@
-use iced::widget::{button, column, row, Column};
+use iced::widget::{button, column, row, Column, text};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -19,5 +19,5 @@ fn view(_value: &u64) -> Column<Message> {
             button("Yes"),
             button("No")
         )
-    ]
+    ].into()
 }

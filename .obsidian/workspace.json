@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/adding_widgets.md",
+                "file": "tutorial/changing_displaying_content.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "adding_widgets"
+              "title": "changing_displaying_content"
             }
           }
         ]
@@ -171,10 +171,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/adding_widgets.md"
+                "file": "tutorial/changing_displaying_content.md"
               },
               "icon": "lucide-list",
-              "title": "adding_widgets 的大纲"
+              "title": "changing_displaying_content 的大纲"
             }
           },
           {
@@ -210,21 +210,20 @@
   },
   "active": "57adf1e5760b4e74",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h30a9xhfj4-0besdlc-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h30a9xhfj4-0besdlc-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h30a9xhfj4-0besdlc-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h30a9xhfj4-0besdlc-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h30a9xhfj4-0besdlc-working",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h30a9xg9cx-1m5lh9q-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h30a9xg9cx-1m5lh9q-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h30a9xg9cx-1m5lh9q-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h30a9xg9cx-1m5lh9q-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h30a9xg9cx-1m5lh9q-working",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h30a9xg9cx-1m5lh9q.lock",
+    "tutorial/adding_widgets.md",
+    "target/debug/deps/iced_tutorial.pdb",
+    "target/debug/deps/iced_tutorial.exe",
+    "target/debug/deps/iced_tutorial.5qs55yk7xn29jmxpozcd012qe.rcgu.o",
+    "target/debug/deps/iced_tutorial.anvf2y0j8g2xn3eelf4quxskj.rcgu.o",
+    "target/debug/deps/iced_tutorial.emmja9zfcpdfo7q4k2gbiayfm.rcgu.o",
+    "target/debug/deps/iced_tutorial.03oaworkpxm8fky19edd0fyug.rcgu.o",
+    "target/debug/deps/iced_tutorial.bcu6kkhw1sjg3j9ir8i3e3k1d.rcgu.o",
+    "target/debug/deps/iced_tutorial.8rylr3azmsa9j0ml345khi7hi.rcgu.o",
+    "target/debug/deps/iced_tutorial.dkf4fm29ovt5njaycffepvzm8.rcgu.o",
+    "target/debug/deps/iced_tutorial.804bu66471zkhfd39ondb35lt.rcgu.o",
     "tutorial/explanation_of_sandbox_trait.md",
     "tutorial/first_app.md",
     "tutorial/setting_up.md",
-    "tutorial/adding_widgets.md",
     "README.md",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",
     "Clippings/标注 - Obsidian 中文帮助 - Obsidian Publish.md",

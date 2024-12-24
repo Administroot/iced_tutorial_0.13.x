@@ -3,39 +3,29 @@
 Use [column!](https://docs.rs/iced/0.12.1/iced/widget/macro.column.html) and [row!](https://docs.rs/iced/0.12.1/iced/widget/macro.row.html) to group multiple widgets such as [text](https://docs.rs/iced/0.12.1/iced/widget/fn.text.html) and [button](https://docs.rs/iced/0.12.1/iced/widget/fn.button.html).
 
 ```rust
-use iced::{
-    widget::{button, column, row, text},
-    Sandbox, Settings,
-};
+use iced::widget::{button, column, row, Column, text};
 
-fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+pub fn main() -> iced::Result {
+    iced::application("My app", update, view).run()
 }
 
-struct MyApp;
+#[derive(Debug, Clone)]
 
-impl Sandbox for MyApp {
-    type Message = ();
+enum Message {
+    _Increment,
+}
 
-    fn new() -> Self {
-        Self
-    }
+fn update(_value: &mut u64, _message: Message) {
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, _message: Self::Message) {}
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            text("Yes or no?"),
-            row![
-                button("Yes"),
-                button("No"),
-            ],
-        ].into()
-    }
+fn view(_value: &u64) -> Column<Message> {
+    column![
+        text("Yes or No?"),
+        row!(
+            button("Yes"),
+            button("No")
+        )
+    ].into()
 }
 ```
 
