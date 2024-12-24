@@ -1,6 +1,8 @@
 use iced::{
+    alignment::{Horizontal, Vertical},
+    font::Family,
     widget::{column, Column, text, text::Shaping, Text},
-    Font, Length, Horizontal, Vertical,
+    Font, Length
 };
 
 pub fn main() -> iced::Result {
