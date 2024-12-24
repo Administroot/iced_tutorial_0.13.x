@@ -28,12 +28,16 @@ fn view(_value: &u64) -> Column<Message> {
             }),
             text("Larger text").size(24),
             text("Special character 😊").shaping(Shaping::Advanced),
-            text("Center")
+        ]
+        let center_text = text("Center")
                 .width(Length::Fill)
-                .horizontal_alignment(Horizontal::Center),
-            text("Vertical center")
-                .height(Length::Fill)
-                .vertical_alignment(Vertical::Center),
+                .horizontal_alignment(Horizontal::Center);
+        let vertical_center_text = text("Vertical center")
+               .height(Length::Fill)
+               .vertical_alignment(Vertical::Center);
+        column![
+            center_text,
+            vertical_center_text,
         ]
         .into()
 }
