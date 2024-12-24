@@ -1,23 +1,23 @@
-use iced::widget::{button, column, row, Column, text};
+use iced::widget::{button, column, text, Column};
 
 pub fn main() -> iced::Result {
-    iced::application("My app", update, view).run()
+    iced::application("A counter", update, view).run()
 }
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Increment,
+    Increment,
 }
 
-fn update(_value: &mut u64, _message: Message) {
+fn update(value: &mut u64, message: Message) {
+    match message {
+        Message::Increment => *value += 1,
+    }
 }
 
-fn view(_value: &u64) -> Column<Message> {
+fn view(value: &u64) -> Column<Message> {
     column![
-        text("Yes or No?"),
-        row!(
-            button("Yes"),
-            button("No")
-        )
-    ].into()
+        text(value),
+        button("In").on_press(Message::Increment),
+    ]
 }
