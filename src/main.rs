@@ -19,22 +19,10 @@ fn update(_value: &mut u64, _message: Message) {}
 
 fn view(_value: &u64) -> Column<Message> {
 column![
-        "Construct from &str",
-        text("Construct from function"),
-        Text::new("Construct from struct"),
-        text("Different font").font(Font {
-            family: Family::Fantasy,
-            ..Font::DEFAULT
-        }),
-        text("Larger text").size(24),
-        text("Special character 😊").shaping(Shaping::Advanced),
-        text("Center")
-            .width(Length::Fill)
-            .align_x(Horizontal::Center)
-            .align_y(Vertical::Center),
-        text("Vertical center")
-            .height(Length::Fill)
-            .align_y(Vertical::Center),
+        Button::new("Disabled button"),
+        button("Construct from function"),
+        button("Enabled button").on_press(MyAppMessage::DoSomething),
+        button("With padding").padding(20),
     ]
     .into()
 }
