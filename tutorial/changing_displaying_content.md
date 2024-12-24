@@ -8,48 +8,29 @@ To change the content in [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.h
 * Update the fields when messages are received in [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update) (e.g., `self.counter += 1`).
 
 ```rust
-use iced::{
-    widget::{button, column, text},
-    Sandbox, Settings,
-};
+use iced::widget::{button, column, text, Column};
 
-fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+pub fn main() -> iced::Result {
+    iced::application("A counter", update, view).run()
 }
 
 #[derive(Debug, Clone)]
-enum MyAppMessage {
-    ButtonPressed,
+
+enum Message {
+    Increment,
 }
 
-struct MyApp {
-    counter: usize,
+fn update(value: &mut u64, message: Message) {
+    match message {
+        Message::Increment => *value += 1,
+    }
 }
 
-impl Sandbox for MyApp {
-    type Message = MyAppMessage;
-
-    fn new() -> Self {
-        Self { counter: 0 }
-    }
-
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, message: Self::Message) {
-        match message {
-            MyAppMessage::ButtonPressed => self.counter += 1,
-        }
-    }
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            text(self.counter),
-            button("Increase").on_press(MyAppMessage::ButtonPressed),
-        ]
-        .into()
-    }
+fn view(value: &u64) -> Column<Message> {
+    column![
+        text(value),
+        button("Increase").on_press(Message::Increment),
+    ]
 }
 ```
 
