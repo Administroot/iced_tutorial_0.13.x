@@ -29,7 +29,10 @@ fn update(state: &mut State, message: MyAppMessage) {
             state.text5 = s;
             state.info5 = "".into();
         }
-        MyAppMessage::Paste5()
+        MyAppMessage::Paste5(s) => {
+            state.text5  = s;
+            state.info5 = "Pasted".into();
+        }
     }
 }
 
