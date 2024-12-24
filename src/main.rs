@@ -41,7 +41,9 @@ fn update(state: &mut State, message: MyAppMessage) {
             state.text6 = s;
             state.info6 = "".into();
         },
-        MyAppMessage::Submit6 => todo!(),
+        MyAppMessage::Submit6 => {
+            state.info6 = "Submitted".into();
+        },
     }
 }
 
@@ -59,10 +61,13 @@ fn view(state: &State) -> Column<MyAppMessage> {
                 .on_paste(MyAppMessage::Paste5),
         text(state.info5.as_str()),
 
+        // "Submitted" will be displayed below the text input after pressing ENTER
         text_input("Press enter", state.text6.as_str())
                 .on_input(MyAppMessage::Update6)
                 .on_submit(MyAppMessage::Submit6),
-        text(state.info6.as_str()),
+        text(state.info6.as_str())
+
+        // 
     ]
     .into()
 }
