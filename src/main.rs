@@ -1,4 +1,4 @@
-use iced::widget::{column, Column, TextInput, text_input};
+use iced::widget::{text, column, text_input, Column, TextInput};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -43,9 +43,17 @@ fn view(state: &State) -> Column<MyAppMessage> {
         text_input("Enabled text input", state.text3.as_str())
             .on_input(|s| MyAppMessage::Update3(s)),
         text_input("Shorter on_input", state.text4.as_str()).on_input(MyAppMessage::Update4),
+
+        // A line of pasted text will be displayed below the text input
         text_input("Press Ctrl/Cmd + V", state.text5.as_str())
                 .on_input(MyAppMessage::Update5)
                 .on_paste(MyAppMessage::Paste5),
+        text(state.info5.as_str()),
+
+        text_input("Press enter", self.text6.as_str())
+                .on_input(MyAppMessage::Update6)
+                .on_submit(MyAppMessage::Submit6),
+        text(self.info6.as_str()),
     ]
     .into()
 }
