@@ -37,7 +37,8 @@ fn view(_value: &u64) -> Column<Message> {
 //     ]
 //     .into()
     column![
-        // text("Hello world!").horizontal_alignment(Horizontal::Center),
-        iced::Advanced::text("Advanced text")
-    ]
+        text("Hello world!")
+        .width(width)
+            .align_x(Horizontal::Center)
+    ].into()
 }
