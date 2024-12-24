@@ -1,5 +1,3 @@
-use std::default;
-
 use iced::widget::{column, Column, TextInput, text_input};
 
 pub fn main() -> iced::Result {
@@ -17,7 +15,11 @@ struct State{
     text3: String,
 }
 
-fn update(_state: &mut State, _message: MyAppMessage) {}
+fn update(state: &mut State, message: MyAppMessage) {
+    match message {
+        MyAppMessage::Update3(s) => {state.text3 = s;}
+    }
+}
 
 fn view(state: &State) -> Column<MyAppMessage> {
     column![
