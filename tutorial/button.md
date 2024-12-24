@@ -6,44 +6,28 @@ If the method [on_press](https://docs.rs/iced/0.12.1/iced/widget/button/struct.B
 We can also set padding around the text of the button.
 
 ```rust
-use iced::{
-    widget::{button, column, Button},
-    Sandbox, Settings,
-};
+use iced::widget::{button, column, Button, Column};
 
-fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+pub fn main() -> iced::Result {
+    iced::application("My app", update, view).run()
 }
 
 #[derive(Debug, Clone)]
-enum MyAppMessage {
-    DoSomething,
+
+enum Message {
+    DoSomething,
 }
 
-struct MyApp;
+fn update(_value: &mut u64, _message: Message) {}
 
-impl Sandbox for MyApp {
-    type Message = MyAppMessage;
-
-    fn new() -> Self {
-        Self
-    }
-
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, _message: Self::Message) {}
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            Button::new("Disabled button"),
-            button("Construct from function"),
-            button("Enabled button").on_press(MyAppMessage::DoSomething),
-            button("With padding").padding(20),
-        ]
-        .into()
-    }
+fn view(_value: &u64) -> Column<Message> {
+    column![
+        Button::new("Disabled button"),
+        button("Construct from function"),
+        button("Enabled button").on_press(Message::DoSomething),
+        button("With padding").padding(20),
+    ]
+    .into()
 }
 ```
 
