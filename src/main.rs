@@ -1,4 +1,4 @@
-use iced::widget::{button, column, Column, TextInput, text_input};
+use iced::widget::{column, Column, TextInput, text_input};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -7,17 +7,21 @@ pub fn main() -> iced::Result {
 #[derive(Debug, Clone)]
 
 enum Message {
-    DoSomething,
+    _DoSomething,
+}
+
+struct State{
+    text3: String,
 }
 
 fn update(_value: &mut u64, _message: Message) {}
 
-fn view(_value: &u64) -> Column<Message> {
+fn view(state: &State) -> Column<Message> {
     column![
         text_input("Construct from function", ""),
         TextInput::new("Construct from struct", ""),
-        // text_input("Enabled text input", self.text3.as_str())
-        //     .on_input(|s| MyAppMessage::Update3(s)),
+        text_input("Enabled text input", state.text3.as_str())
+            .on_input(|s| MyAppMessage::Update3(s)),
         // text_input("Shorter on_input", self.text4.as_str()).on_input(MyAppMessage::Update4),
         // text_input("Press Ctrl/Cmd + V", self.text5.as_str())
         //     .on_input(MyAppMessage::Update5)
