@@ -18,5 +18,5 @@ struct State {
 fn update(_state: &mut State, _message: MyAppMessage) {}
 
 fn view(_state: &State) -> Column<MyAppMessage> {
-    column!["hello, world"]
+    column!["hello, world"].into()
 }
