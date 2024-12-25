@@ -8,11 +8,13 @@ pub fn main() -> iced::Result {
 enum MyAppMessage {
     DoNothing,
     Update4(bool),
+    Update5(bool),
 }
 
 #[derive(Default)]
 struct State{
     checkbox4: bool,
+    checkbox5: bool,
 }
 
 fn update(state: &mut State, message: MyAppMessage) {
@@ -20,6 +22,9 @@ fn update(state: &mut State, message: MyAppMessage) {
         MyAppMessage::DoNothing => {},
         MyAppMessage::Update4(b) => {
             state.checkbox4 = b;
+        },
+        MyAppMessage::Update5(b) => {
+            state.che
         },
     }
 }
@@ -30,5 +35,6 @@ fn view(state: &State) -> Column<MyAppMessage> {
         checkbox("Construct from function", false),
         checkbox("Enabled checkbox", false).on_toggle(|_| MyAppMessage::DoNothing),
         checkbox("Functional checkbox", state.checkbox4).on_toggle(|b| MyAppMessage::Update4(b)),
+        checkbox("Shorter parameter", state.checkbox5).on_toggle(MyAppMessage::Update5),
     ]
 }
