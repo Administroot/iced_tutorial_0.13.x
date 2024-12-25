@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/toggler.md",
+                "file": "tutorial/radio.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "toggler"
+              "title": "radio"
             }
           },
           {
@@ -186,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/toggler.md"
+                "file": "tutorial/radio.md"
               },
               "icon": "lucide-list",
-              "title": "toggler 的大纲"
+              "title": "radio 的大纲"
             }
           },
           {
@@ -225,18 +225,20 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "tutorial/container.md",
-    "target/debug/deps/iced_tutorial.pdb",
-    "target/debug/deps/iced_tutorial.exe",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/work-products.bin",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/eyjvt06aydcqs621kvf8uu9n3.o",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/f3zdgk9omeivd3rzgnjzl7pn9.o",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/euabndoousomilv2u0divvw0l.o",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/erqce0n33zfnkoyglebefzlfs.o",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/er05aa5brqelt62ufjyrifhkv.o",
-    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h31k5rxwje-1o5t4jc-7pagcuk6t06hhdkpeptkj200p/eot9m7l9rbgnmtlgckn9hndhl.o",
     "tutorial/toggler.md",
+    "README.md",
+    "tutorial/radio.md",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31ka7dx1x-0h1wzdf-08p0h8pn3fpow8tagpt5qlmod/work-products.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31ka7dx1x-0h1wzdf-08p0h8pn3fpow8tagpt5qlmod/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31ka7dx1x-0h1wzdf-08p0h8pn3fpow8tagpt5qlmod/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31ka7dx1x-0h1wzdf-08p0h8pn3fpow8tagpt5qlmod",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31ka7crss-0kt4cok-epu6zd0mykr836eubxb3pnang/work-products.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31ka7crss-0kt4cok-epu6zd0mykr836eubxb3pnang/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31ka7crss-0kt4cok-epu6zd0mykr836eubxb3pnang/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31ka7crss-0kt4cok-epu6zd0mykr836eubxb3pnang",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31ka7dx1x-0h1wzdf-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31ka7dx1x-0h1wzdf-working/work-products.bin",
+    "tutorial/container.md",
     "tutorial/first_app.md",
     "tutorial/checkbox.md",
     "tutorial/text_input.md",
@@ -246,7 +248,6 @@
     "tutorial/adding_widgets.md",
     "tutorial/explanation_of_sandbox_trait.md",
     "tutorial/setting_up.md",
-    "README.md",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",
     "Clippings/标注 - Obsidian 中文帮助 - Obsidian Publish.md",
     "Programming/Rust/ICED.md",
@@ -271,7 +272,6 @@
     "未命名.md",
     "Profiles/Earth.md",
     "Profiles/Profiles.md",
-    "Clippings/OpenGate - Embed any website into Obsidian.md",
     "未命名.canvas"
   ]
 }
