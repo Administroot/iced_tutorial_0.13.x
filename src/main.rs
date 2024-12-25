@@ -76,6 +76,8 @@ fn view(state: &State) -> Column<MyAppMessage> {
         text_input("Password", state.text7.as_str())
             .secure(true)
             .on_input(MyAppMessage::Update7),
+
+        // 
     ]
     .into()
 }
