@@ -5,19 +5,22 @@ pub fn main() -> iced::Result {
 }
 
 #[derive(Debug, Clone)]
-
 enum MyAppMessage {
     DoNothing,
+    Update4(bool),
 }
 
-#[de]
+#[derive(Default)]
 struct State{
     checkbox4: bool,
 }
 
-fn update(_state: &mut State, message: MyAppMessage) {
+fn update(state: &mut State, message: MyAppMessage) {
     match message {
-        MyAppMessage::DoNothing => {}
+        MyAppMessage::DoNothing => {},
+        MyAppMessage::Update4(b) => {
+            state.checkbox4 = b;
+        },
     }
 }
 

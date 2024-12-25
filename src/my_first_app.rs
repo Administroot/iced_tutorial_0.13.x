@@ -10,6 +10,7 @@ enum MyAppMessage {
     _Increment,
 }
 
+#[derive(Default)]
 struct State{
     _checkbox4: bool,
 }
