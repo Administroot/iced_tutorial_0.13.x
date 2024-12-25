@@ -1,4 +1,8 @@
-use iced::{widget::{column, Column, pick_list, PickList, text::Shaping, pick_list::Handle}, font::Family, Font};
+use iced::{
+    font::Family,
+    widget::{column, pick_list, pick_list::Handle, text::Shaping, Column, PickList, row, text},
+    Font, Pixels
+};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -9,18 +13,23 @@ pub fn main() -> iced::Result {
 enum MyAppMessage {
     DoNothing,
     Update3(String),
+    Open10,
 }
 
 #[derive(Default)]
 struct State {
-    pick_list_3: Option<String>, 
+    pick_list_3: Option<String>,
+    info_10: String,
 }
 
 fn update(state: &mut State, message: MyAppMessage) {
     match message {
-        MyAppMessage::DoNothing => {},
+        MyAppMessage::DoNothing => {}
         MyAppMessage::Update3(s) => {
             state.pick_list_3 = Some(s);
+        },
+        MyAppMessage::Open10 => {
+            state.info_10 = "Open".into();
         }
     }
 }
@@ -44,7 +53,8 @@ fn view(state: &State) -> Column<MyAppMessage> {
                 .to_vec(),
             state.pick_list_3.clone(),
             |s| MyAppMessage::Update3(s)
-        ).placeholder("Functional pick list"),
+        )
+        .placeholder("Functional pick list"),
         pick_list(vec!["A", "B", "C"], None::<&str>, |_| {
             MyAppMessage::DoNothing
         })
@@ -71,11 +81,21 @@ fn view(state: &State) -> Column<MyAppMessage> {
             MyAppMessage::DoNothing
         })
         .padding(20),
+        // A handle is the little triangle on the right of pick lists
         pick_list(vec!["Different handle"], Some("Different handle"), |_| {
             MyAppMessage::DoNothing
         })
         .handle(Handle::Arrow {
             size: Some(Pixels(24.))
         }),
-    ].into()
+        // The first time clicking the pick list, it will say "On" to the right.
+        row![
+            pick_list(vec!["Respond to open"], Some("Respond to open"), |_| {
+                MyAppMessage::DoNothing
+            })
+            .on_open(MyAppMessage::Open10),
+            text(&state.info_10),
+        ],
+    ]
+    .into()
 }
