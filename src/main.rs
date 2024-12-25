@@ -15,10 +15,15 @@ struct State {
     _checkbox4: bool,
 }
 
-fn update(_value: &mut u64, _message: MyAppMessage) {}
+fn update(_state: &mut State, message: MyAppMessage) {
+    match message {
+        MyAppMessage::DoNothing => {},
+    }
+}
 
-fn view(state: &State) -> Column<MyAppMessage> {
+fn view(_state: &State) -> Column<MyAppMessage> {
     column![
-        Toggler::new(false).label("Construct from struct"),
+        Toggler::new(false).label("Construct from struct").on_toggle(|_| MyAppMessage::DoNothing),
+        toggler(false).label("Functional togg")
     ]
 }
