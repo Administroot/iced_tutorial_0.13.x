@@ -10,14 +10,22 @@ enum MyAppMessage {
     DoNothing,
 }
 
-fn update(_value: &mut u64, message: MyAppMessage) {
+#[de]
+struct State{
+    checkbox4: bool,
+}
+
+fn update(_state: &mut State, message: MyAppMessage) {
     match message {
-        
+        MyAppMessage::DoNothing => {}
     }
 }
 
-fn view(_value: &u64) -> Column<MyAppMessage> {
-    column![Checkbox::new("Construct from struct", false),
-            checkbox("Construct from function", false),
-            checkbox("Enabled checkbox", false).on_toggle(|_| MyAppMessage::DoNothing),]
+fn view(state: &State) -> Column<MyAppMessage> {
+    column![
+        Checkbox::new("Construct from struct", false),
+        checkbox("Construct from function", false),
+        checkbox("Enabled checkbox", false).on_toggle(|_| MyAppMessage::DoNothing),
+        checkbox("Functional checkbox", state.checkbox4).on_toggle(|b| MyAppMessage::Update4(b)),
+    ]
 }
