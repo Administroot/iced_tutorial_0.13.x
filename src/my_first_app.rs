@@ -11,7 +11,7 @@ enum MyAppMessage {
 }
 
 #[derive(Default)]
-struct State{
+struct State {
     _checkbox4: bool,
 }
 

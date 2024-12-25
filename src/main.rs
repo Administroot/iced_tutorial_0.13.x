@@ -1,4 +1,14 @@
-use iced::{widget::{column, Column, Checkbox, checkbox, text::{LineHeight, Shaping}}, Font, font::Family};
+use iced::{
+    font::Family,
+    widget::{
+        checkbox,
+        checkbox::Icon,
+        column,
+        text::{LineHeight, Shaping},
+        Checkbox, Column,
+    },
+    Font,
+};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -12,20 +22,20 @@ enum MyAppMessage {
 }
 
 #[derive(Default)]
-struct State{
+struct State {
     checkbox4: bool,
     checkbox5: bool,
 }
 
 fn update(state: &mut State, message: MyAppMessage) {
     match message {
-        MyAppMessage::DoNothing => {},
+        MyAppMessage::DoNothing => {}
         MyAppMessage::Update4(b) => {
             state.checkbox4 = b;
-        },
+        }
         MyAppMessage::Update5(b) => {
             state.checkbox5 = b;
-        },
+        }
     }
 }
 
@@ -40,6 +50,7 @@ fn view(state: &State) -> Column<MyAppMessage> {
         checkbox("Larger box", false)
             .on_toggle(|_| MyAppMessage::DoNothing)
             .size(30),
+        // A '*' in the checkbox
         checkbox("Different icon", true)
             .on_toggle(|_| MyAppMessage::DoNothing)
             .icon(Icon {
@@ -49,5 +60,20 @@ fn view(state: &State) -> Column<MyAppMessage> {
                 line_height: LineHeight::default(),
                 shaping: Shaping::default()
             }),
+        checkbox("Different font", false)
+            .on_toggle(|_| MyAppMessage::DoNothing)
+            .font(Font {
+                family: Family::Fantasy,
+                ..Font::DEFAULT
+            }),
+        checkbox("Larger text", false)
+            .on_toggle(|_| MyAppMessage::DoNothing)
+            .text_size(24),
+        checkbox("Special character 😊", false)
+            .on_toggle(|_| MyAppMessage::DoNothing)
+            .text_shaping(Shaping::Advanced),
+        checkbox("Space between box and text", false)
+            .on_toggle(|_| MyAppMessage::DoNothing)
+            .spacing(30),
     ]
 }
