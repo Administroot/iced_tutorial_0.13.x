@@ -1,4 +1,8 @@
-use iced::widget::{text, column, text_input, Column, TextInput};
+use iced::{
+    font::Family,
+    widget::{column, text, text_input, Column, TextInput},
+    Font,
+};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -17,7 +21,7 @@ enum MyAppMessage {
 }
 
 #[derive(Default)]
-struct State{
+struct State {
     text3: String,
     text4: String,
     text5: String,
@@ -29,23 +33,27 @@ struct State{
 
 fn update(state: &mut State, message: MyAppMessage) {
     match message {
-        MyAppMessage::Update3(s) => {state.text3 = s;}
-        MyAppMessage::Update4(s) => {state.text4 = s;}
+        MyAppMessage::Update3(s) => {
+            state.text3 = s;
+        }
+        MyAppMessage::Update4(s) => {
+            state.text4 = s;
+        }
         MyAppMessage::Update5(s) => {
             state.text5 = s;
             state.info5 = "".into();
         }
         MyAppMessage::Paste5(s) => {
-            state.text5  = s;
+            state.text5 = s;
             state.info5 = "Pasted".into();
         }
         MyAppMessage::Update6(s) => {
             state.text6 = s;
             state.info6 = "".into();
-        },
+        }
         MyAppMessage::Submit6 => {
             state.info6 = "Submitted".into();
-        },
+        }
         MyAppMessage::Update7(s) => {
             state.text7 = s;
         }
@@ -59,25 +67,28 @@ fn view(state: &State) -> Column<MyAppMessage> {
         text_input("Enabled text input", state.text3.as_str())
             .on_input(|s| MyAppMessage::Update3(s)),
         text_input("Shorter on_input", state.text4.as_str()).on_input(MyAppMessage::Update4),
-
         // A line of pasted text will be displayed below the text input
         text_input("Press Ctrl/Cmd + V", state.text5.as_str())
-                .on_input(MyAppMessage::Update5)
-                .on_paste(MyAppMessage::Paste5),
+            .on_input(MyAppMessage::Update5)
+            .on_paste(MyAppMessage::Paste5),
         text(state.info5.as_str()),
-
         // "Submitted" will be displayed below the text input after pressing ENTER
         text_input("Press enter", state.text6.as_str())
-                .on_input(MyAppMessage::Update6)
-                .on_submit(MyAppMessage::Submit6),
+            .on_input(MyAppMessage::Update6)
+            .on_submit(MyAppMessage::Submit6),
         text(state.info6.as_str()),
-
         // Display input characters in ciphertext
         text_input("Password", state.text7.as_str())
             .secure(true)
             .on_input(MyAppMessage::Update7),
-
-        // 
+        // Settings
+        text_input("Different font", "").font(Font {
+            family: Family::Fantasy,
+            ..Font::DEFAULT
+        }),
+        text_input("Larger text", "").size(24),
+        text_input("With padding", "").padding(20),
+        
     ]
     .into()
 }
