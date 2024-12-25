@@ -1,5 +1,5 @@
 use iced::{
-    alignment::Horizontal, font::Family, widget::{column, text::Shaping, toggler, Column, Toggler}, Font
+    alignment::Horizontal, font::Family, widget::{column, text::Shaping, toggler, Column, Toggler}, Font, Length
 };
 
 pub fn main() -> iced::Result {
@@ -66,6 +66,6 @@ fn view(state: &State) -> Column<MyAppMessage> {
             .on_toggle(|_| MyAppMessage::DoNothing)
             .text_shaping(Shaping::Advanced),
         toggler(false).label("Space between button and text").on_toggle(|_| MyAppMessage::DoNothing).spacing(30),
-        toggler(false).label("Centered text").on_toggle(|_| MyAppMessage::DoNothing).Center,
+        toggler(false).label("Centered text").on_toggle(|_| MyAppMessage::DoNothing).width(Length::Fill).text_alignment(Horizontal::Center),
     ]
 }
