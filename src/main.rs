@@ -1,4 +1,4 @@
-use iced::widget::{column, Column, Toggler, toggler};
+use iced::widget::{column, pane_grid::state, toggler, Column, Toggler};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -7,7 +7,7 @@ pub fn main() -> iced::Result {
 #[derive(Debug, Clone)]
 
 enum MyAppMessage {
-    _Increment,
+    DoNothing,
 }
 
 #[derive(Default)]
@@ -17,10 +17,8 @@ struct State {
 
 fn update(_value: &mut u64, _message: MyAppMessage) {}
 
-fn view(_value: &u64) -> Column<MyAppMessage> {
+fn view(state: &State) -> Column<MyAppMessage> {
     column![
-        Toggler::new(Some("Construct from struct".into()), false, |_| {
-            MyAppMessage::DoNothing
-        }),
+        Toggler::new(false).label("Construct from struct"),
     ]
 }

@@ -15,8 +15,8 @@ struct State {
     _checkbox4: bool,
 }
 
-fn update(_value: &mut u64, _message: MyAppMessage) {}
+fn update(_state: &mut State, _message: MyAppMessage) {}
 
-fn view(_value: &u64) -> Column<MyAppMessage> {
+fn view(_state: &State) -> Column<MyAppMessage> {
     column!["hello, world"]
 }
