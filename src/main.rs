@@ -1,4 +1,4 @@
-use iced::widget::{column, Column, Checkbox, checkbox};
+use iced::{widget::{column, Column, Checkbox, checkbox, text::{LineHeight, Shaping}}, Font, font::Family};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -34,7 +34,20 @@ fn view(state: &State) -> Column<MyAppMessage> {
         Checkbox::new("Construct from struct", false),
         checkbox("Construct from function", false),
         checkbox("Enabled checkbox", false).on_toggle(|_| MyAppMessage::DoNothing),
+        // Two ways of programming typical checkboxes
         checkbox("Functional checkbox", state.checkbox4).on_toggle(|b| MyAppMessage::Update4(b)),
         checkbox("Shorter parameter", state.checkbox5).on_toggle(MyAppMessage::Update5),
+        checkbox("Larger box", false)
+            .on_toggle(|_| MyAppMessage::DoNothing)
+            .size(30),
+        checkbox("Different icon", true)
+            .on_toggle(|_| MyAppMessage::DoNothing)
+            .icon(Icon {
+                font: Font::DEFAULT,
+                code_point: '*',
+                size: None,
+                line_height: LineHeight::default(),
+                shaping: Shaping::default()
+            }),
     ]
 }
