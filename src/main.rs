@@ -1,4 +1,4 @@
-use iced::widget::{column, toggler, Column, Toggler};
+use iced::{widget::{column, toggler, Column, Toggler}, Font};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -37,5 +37,11 @@ fn view(state: &State) -> Column<MyAppMessage> {
         toggler(state.toggler3).label("Functional toggler").on_toggle(|b| MyAppMessage::Update3(b)),
         toggler(state.toggler4).label("Shorter parameter").on_toggle(MyAppMessage::Update4),
         toggler(false).label("Larger button").on_toggle(|_| MyAppMessage::DoNothing).size(30),
+        toggler(false).label("Different font").on_toggle(|_| MyAppMessage::DoNothing).font(
+            Font{
+                family: Family::Fantasy,
+                ..Font::DEFAULT
+            }
+        ),
     ]
 }
