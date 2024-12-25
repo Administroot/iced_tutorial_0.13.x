@@ -13,6 +13,9 @@ pub fn main() -> iced::Result {
 enum MyAppMessage {
     DoNothing,
     Select4(String),
+    Select5(String),
+    Select6(String),
+    
 }
 
 #[derive(Default)]
@@ -21,7 +24,11 @@ struct MyApp {
     state2: State<u32>,
     state3: State<String>,
     state4: State<String>,
+    state5: State<String>,
+    state6: State<String>,
     select4: Option<String>,
+    select5: Option<String>,
+    select6: Option<String>
 }
 
 fn update(state: &mut MyApp, message: MyAppMessage) {
@@ -29,6 +36,9 @@ fn update(state: &mut MyApp, message: MyAppMessage) {
         MyAppMessage::DoNothing => {},
         MyAppMessage::Select4(s) => {
             state.select4 = Some(s);
+        },
+        MyAppMessage::Select5(s) => {
+            state.select5 = Some(s);
         }
     }
 }
@@ -50,6 +60,19 @@ fn view(myapp: &MyApp) -> Column<MyAppMessage> {
             myapp.select4.as_ref(),
             |s| MyAppMessage::Select4(s)
         ),
+        combo_box(
+            &myapp.state5,
+            "Shorter parameter (Press Enter or click an option)",
+            myapp.select5.as_ref(),
+            MyAppMessage::Select5
+        ),
+        combo_box(
+            &myapp.state6,
+            "Respond to input",
+            myapp.select6.as_ref(),
+            MyAppMessage::Select6
+        )
+        .on_input(MyAppMessage::Input6),
     ]
     .into()
 }
