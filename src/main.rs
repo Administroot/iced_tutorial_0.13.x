@@ -12,17 +12,24 @@ pub fn main() -> iced::Result {
 
 enum MyAppMessage {
     DoNothing,
+    Select4(String),
 }
 
 #[derive(Default)]
 struct MyApp {
     state1: State<u32>,
     state2: State<u32>,
+    state3: State<String>,
+    state4: State<String>,
+    select4: Option<String>,
 }
 
-fn update(_state: &mut MyApp, message: MyAppMessage) {
+fn update(state: &mut MyApp, message: MyAppMessage) {
     match message {
-        MyAppMessage::DoNothing => {}
+        MyAppMessage::DoNothing => {},
+        MyAppMessage::Select4(s) => {
+            state.select4 = Some(s);
+        }
     }
 }
 
@@ -34,6 +41,15 @@ fn view(myapp: &MyApp) -> Column<MyAppMessage> {
         combo_box(&myapp.state2, "Construct from function", None, |_| {
             MyAppMessage::DoNothing
         }),
+        combo_box(&myapp.state3, "With list of items", None, |_| {
+            MyAppMessage::DoNothing
+        }),
+        combo_box(
+            &myapp.state4,
+            "Functional combobox (Press Enter or click an option)",
+            myapp.select4.as_ref(),
+            |s| MyAppMessage::Select4(s)
+        ),
     ]
     .into()
 }
