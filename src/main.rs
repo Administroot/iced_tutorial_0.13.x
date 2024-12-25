@@ -1,7 +1,7 @@
 use iced::{
     font::Family,
-    widget::{column, text, text_input, Column, TextInput},
-    Font,
+    widget::{column, text, text_input, text_input::{Icon, Side}, Column, TextInput},
+    Font, 
 };
 
 pub fn main() -> iced::Result {
@@ -16,6 +16,7 @@ enum MyAppMessage {
     Update5(String),
     Update6(String),
     Update7(String),
+    Update11(String),
     Paste5(String),
     Submit6,
 }
@@ -27,6 +28,7 @@ struct State {
     text5: String,
     text6: String,
     text7: String,
+    text11: String,
     info5: String,
     info6: String,
 }
@@ -56,6 +58,9 @@ fn update(state: &mut State, message: MyAppMessage) {
         }
         MyAppMessage::Update7(s) => {
             state.text7 = s;
+        }
+        MyAppMessage::Update11(s) => {
+            state.text11 = s;
         }
     }
 }
@@ -88,7 +93,16 @@ fn view(state: &State) -> Column<MyAppMessage> {
         }),
         text_input("Larger text", "").size(24),
         text_input("With padding", "").padding(20),
-        
+        // ✅
+        text_input("Icon", state.text11.as_str())
+            .icon(Icon {
+                font: Font::DEFAULT,
+                code_point: '\u{2705}',
+                size: None,
+                spacing: 10.,
+                side: Side::Left,
+            })
+            .on_input(MyAppMessage::Update11),
     ]
     .into()
 }
