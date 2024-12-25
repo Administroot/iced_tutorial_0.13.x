@@ -1,4 +1,4 @@
-use iced::{widget::{column, toggler, Column, Toggler}, Font};
+use iced::{widget::{column, toggler, Column, Toggler, text::Shaping}, Font, font::Family};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -43,5 +43,7 @@ fn view(state: &State) -> Column<MyAppMessage> {
                 ..Font::DEFAULT
             }
         ),
+        toggler(false).label("Larger text").on_toggle(|_| MyAppMessage::DoNothing).text_size(24),
+        toggler(false).label("Special character 😊").on_toggle(|_| MyAppMessage::DoNothing).text_shaping(Shaping::Advanced),
     ]
 }
