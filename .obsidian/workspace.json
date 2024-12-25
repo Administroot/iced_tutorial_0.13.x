@@ -35,8 +35,7 @@
               "title": "first_app"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -186,10 +185,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/first_app.md"
+                "file": "tutorial/checkbox.md"
               },
               "icon": "lucide-list",
-              "title": "first_app 的大纲"
+              "title": "checkbox 的大纲"
             }
           },
           {
@@ -223,24 +222,24 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "6343a65a21221239",
+  "active": "57adf1e5760b4e74",
   "lastOpenFiles": [
-    "src/my_first_app.rs",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h0pv2s4-19edcyn-6o26r808i673ooyp579ddr0kn/work-products.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h0pv2s4-19edcyn-6o26r808i673ooyp579ddr0kn/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h0pv2s4-19edcyn-6o26r808i673ooyp579ddr0kn/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h0pv2s4-19edcyn-6o26r808i673ooyp579ddr0kn",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h0puy80-1abu9x9-7d0tj49f639948o1xyhm69w04/work-products.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h0puy80-1abu9x9-7d0tj49f639948o1xyhm69w04/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h0puy80-1abu9x9-7d0tj49f639948o1xyhm69w04/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h0puy80-1abu9x9-7d0tj49f639948o1xyhm69w04",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h0pv2s4-19edcyn-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h0pv2s4-19edcyn-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h604uw2-1xz84a4-6i2ya44t6brkc0ouqd1tftfbv/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h604uw2-1xz84a4-6i2ya44t6brkc0ouqd1tftfbv/work-products.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h604uw2-1xz84a4-6i2ya44t6brkc0ouqd1tftfbv/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h604uw2-1xz84a4-6i2ya44t6brkc0ouqd1tftfbv",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h603mxz-0atb6ji-6gyv3gocf0hvz5x150r89vpeo/work-products.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h603mxz-0atb6ji-6gyv3gocf0hvz5x150r89vpeo/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h603mxz-0atb6ji-6gyv3gocf0hvz5x150r89vpeo/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h31h603mxz-0atb6ji-6gyv3gocf0hvz5x150r89vpeo",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h604uw2-1xz84a4-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h604uw2-1xz84a4-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h31h604uw2-1xz84a4-working/query-cache.bin",
+    "tutorial/first_app.md",
     "tutorial/checkbox.md",
     "tutorial/text_input.md",
     "tutorial/button.md",
     "tutorial/text.md",
-    "tutorial/first_app.md",
     "tutorial/changing_displaying_content.md",
     "tutorial/adding_widgets.md",
     "tutorial/explanation_of_sandbox_trait.md",

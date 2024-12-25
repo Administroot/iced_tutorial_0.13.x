@@ -6,12 +6,12 @@ pub fn main() -> iced::Result {
 
 #[derive(Debug, Clone)]
 
-enum Message {
+enum MyAppMessage {
     _Increment,
 }
 
-fn update(_value: &mut u64, _message: Message) {}
+fn update(_value: &mut u64, _message: MyAppMessage) {}
 
-fn view(_value: &u64) -> Column<Message> {
+fn view(_value: &u64) -> Column<MyAppMessage> {
     column!["hello, world"]
 }
