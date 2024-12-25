@@ -24,7 +24,7 @@ fn update(state: &mut State, message: MyAppMessage) {
             state.checkbox4 = b;
         },
         MyAppMessage::Update5(b) => {
-            state.che
+            state.checkbox5 = b;
         },
     }
 }
