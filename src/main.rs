@@ -1,4 +1,4 @@
-use iced::widget::{column, Column};
+use iced::widget::{column, Column, Toggler, toggler};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -18,5 +18,9 @@ struct State {
 fn update(_value: &mut u64, _message: MyAppMessage) {}
 
 fn view(_value: &u64) -> Column<MyAppMessage> {
-    column!["hello, world"]
+    column![
+        Toggler::new(Some("Construct from struct".into()), false, |_| {
+            MyAppMessage::DoNothing
+        }),
+    ]
 }
