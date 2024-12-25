@@ -14,12 +14,16 @@ enum MyAppMessage {
     DoNothing,
     Update3(String),
     Open10,
+    Close11,
+    Detector,
 }
 
 #[derive(Default)]
 struct State {
     pick_list_3: Option<String>,
     info_10: String,
+    info_11: String,
+    info_12: String,
 }
 
 fn update(state: &mut State, message: MyAppMessage) {
@@ -31,6 +35,10 @@ fn update(state: &mut State, message: MyAppMessage) {
         MyAppMessage::Open10 => {
             state.info_10 = "Open".into();
         }
+        MyAppMessage::Close11 => {
+            state.info_11 = "Closed".into();
+        }
+        MyAppMessage::Detector => {}
     }
 }
 
@@ -88,7 +96,7 @@ fn view(state: &State) -> Column<MyAppMessage> {
         .handle(Handle::Arrow {
             size: Some(Pixels(24.))
         }),
-        // The first time clicking the pick list, it will say "On" to the right.
+        // When open the pick list, the word "Open" will occur on the right.
         row![
             pick_list(vec!["Respond to open"], Some("Respond to open"), |_| {
                 MyAppMessage::DoNothing
@@ -96,6 +104,19 @@ fn view(state: &State) -> Column<MyAppMessage> {
             .on_open(MyAppMessage::Open10),
             text(&state.info_10),
         ],
-    ]
-    .into()
-}
+        // When close the pick list, the word "Closed" will occur on the right.
+        row![
+            pick_list(vec!["Respond to close"], Some("Respond to close"), |_| {
+                MyAppMessage::DoNothing
+            })
+            .on_close(MyAppMessage::Close11),
+            text(&state.info_11),
+        ],
+        // Detect the state of the pick list
+        row![
+            pick_list(vec!["Auto Detector"], Some("Auto Dector"), |_| {
+                MyAppMessage::DoNothing
+            })
+            .on_close(MyAppMessage::Detector),
+            text(&state.info_12),
+        ]
