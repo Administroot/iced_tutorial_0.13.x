@@ -1,4 +1,8 @@
-use iced::widget::{column, Column, combo_box, ComboBox, ComboBox::State};
+/* A widget for searching and selecting a single value from a list of options.
+This widget is composed by a TextInput that can be filled with the text to search
+for corresponding values from the list of options that are displayed as a Menu. */
+
+use iced::widget::{column, combo_box, combo_box::State, Column, ComboBox};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -12,23 +16,24 @@ enum MyAppMessage {
 
 #[derive(Default)]
 struct MyApp {
-    state1: State(u32),
-    state2:State(u32),
+    state1: State<u32>,
+    state2: State<u32>,
 }
 
 fn update(_state: &mut MyApp, message: MyAppMessage) {
     match message {
-        MyAppMessage::DoNothing => {};
+        MyAppMessage::DoNothing => {}
     }
 }
 
-fn view(_state: &MyApp) -> Column<MyAppMessage> {
+fn view(myapp: &MyApp) -> Column<MyAppMessage> {
     column![
-        ComboBox::new(&self.state1, "Construct from struct", None, |_| {
+        ComboBox::new(&myapp.state1, "Construct from struct", None, |_| {
             MyAppMessage::DoNothing
         }),
-        combo_box(&self.state2, "Construct from function", None, |_| {
+        combo_box(&myapp.state2, "Construct from function", None, |_| {
             MyAppMessage::DoNothing
         }),
-    ].into()
+    ]
+    .into()
 }
