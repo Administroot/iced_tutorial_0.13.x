@@ -18,10 +18,6 @@ enum MyAppMessage {
     Input6(String),
 }
 
-// TODO: Construct MyAppMessage!
-impl MyAppMessage {
-}
-
 #[derive(Default)]
 struct MyApp {
     state1: State<u32>,
@@ -36,18 +32,16 @@ struct MyApp {
     input6: String,
 }
 
-// fn new() -> Self {
-//     Self {
-//         state1: State::new(vec![]),
-//         state2: State::new(vec![]),
-//         state3: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-//         state4: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-//         select4: None,
-//         state5: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-//         select5: None,
-//         state6: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-//         select6: None,
-//         input6: "".into()}}
+
+impl A for MyApp {
+    type Message = MyAppMessage;
+
+    fn new() -> Self {
+        Self {
+            state4: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
+        }
+    }
+}
 
 fn update(state: &mut MyApp, message: MyAppMessage) {
     match message {
