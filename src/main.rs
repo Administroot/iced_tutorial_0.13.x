@@ -1,82 +1,100 @@
-use iced::{
-    widget::{column, combo_box, combo_box::State, Column, ComboBox},
-    executor,
-    theme,
-    window,
-    Application,
-    Command,
-    Element,
-    Settings,
-    Theme,
-};
+/* A widget for searching and selecting a single value from a list of options.
+This widget is composed by a TextInput that can be filled with the text to search
+for corresponding values from the list of options that are displayed as a Menu. */
 
-#[derive(Debug, Clone)]
-enum Message {
-    Selected(Option<String>),
-}
-
-struct MyApp {
-    state: State<String>,
-    selected: Option<String>,
-}
-
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = Message;
-    type Flags = ();
-
-    fn new(_flags: ()) -> (Self, Command<Self::Message>) {
-        let options = vec![
-            "Option 1".to_string(),
-            "Option 2".to_string(),
-            "Option 3".to_string(),
-        ];
-
-        let initial_selection = Some("Option 2".to_string());
-
-        let state = State::with_selection(options, initial_selection.clone());
-
-        (
-            Self {
-                state,
-                selected: initial_selection,
-            },
-            Command::none(),
-        )
-    }
-
-    fn title(&self) -> String {
-        String::from("ComboBox Example")
-    }
-
-    fn update(&mut self, message: Self::Message) -> Command<Self::Message> {
-        match message {
-            Message::Selected(selected) => {
-                self.selected = selected;
-            }
-        }
-        Command::none()
-    }
-
-    fn view(&self) -> Element<Self::Message> {
-        let combo_box = ComboBox::new(
-            &self.state,
-            "Select an option",
-            self.selected.clone(),
-            Message::Selected,
-        );
-
-        column![combo_box].into()
-    }
-}
+use iced::widget::{column, combo_box::{self, State}, pane_grid::state, Column, ComboBox};
 
 pub fn main() -> iced::Result {
-    MyApp::run(Settings {
-        window: window::Settings {
-            size: (300, 100),
-            ..window::Settings::default()
+    iced::application("My app", update, view).run()
+    // MyApp::run(Settings::default())
+}
+
+#[derive(Debug, Clone)]
+
+enum MyAppMessage {
+    DoNothing,
+    Select4(String),
+    Select5(String),
+    Select6(String),
+    Input6(String),
+}
+
+// const SELECTIONS: iced::widget::combo_box::State<String> = State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec());
+
+// fn new() -> Self {
+//     Self {
+//         state1: State::new(vec![]),
+//         state2: State::new(vec![]),
+//         state3: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
+//         state4: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
+//         select4: None,
+//         state5: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
+//         select5: None,
+//         state6: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec())
+//     }
+
+#[derive(Default)]
+struct MyApp {
+    state1: State<u32>,
+    state2: State<u32>,
+    state3: State<String>,
+    state4: State<String>,
+    state5: State<String>,
+    state6: State<String>,
+    select4: Option<String>,
+    select5: Option<String>,
+    select6: Option<String>,
+    input6: String,
+}
+
+fn update(state: &mut MyApp, message: MyAppMessage) {
+    match message {
+        MyAppMessage::DoNothing => {},
+        MyAppMessage::Select4(s) => {
+            state.select4 = Some(s);
         },
-        antialiasing: true,
-        ..Settings::default()
-    })
+        MyAppMessage::Select5(s) => {
+            state.select5 = Some(s);
+        },
+        MyAppMessage::Select6(s) => {
+            state.select6 = Some(s);
+        }
+        MyAppMessage::Input6(s) => {
+            state.input6 = s;
+        }
+    }
+}
+
+fn view(myapp: &MyApp) -> Column<MyAppMessage> {
+    column![
+        ComboBox::new(&myapp.state1, "Construct from struct", None, |_| {
+            MyAppMessage::DoNothing
+        }),
+        combo_box(&myapp.state2, "Construct from function", None, |_| {
+            MyAppMessage::DoNothing
+        }),
+        combo_box(&myapp.state3, "With list of items", None, |_| {
+            MyAppMessage::DoNothing
+        }),
+        combo_box(
+            &myapp.state4,
+            "Functional combobox (Press Enter or click an option)",
+            myapp.select4.as_ref(),
+            |s| MyAppMessage::Select4(s)
+        ),
+        combo_box(
+            &myapp.state5,
+            "Shorter parameter (Press Enter or click an option)",
+            myapp.select5.as_ref(),
+            MyAppMessage::Select5
+        ),
+        combo_box(
+            &myapp.state6,
+            "Respond to input",
+            myapp.select6.as_ref(),
+            MyAppMessage::Select6
+        )
+        .on_input(MyAppMessage::Input6),
+    ]
+    .into()
 }
