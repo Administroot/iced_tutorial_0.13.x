@@ -2,11 +2,11 @@
 This widget is composed by a TextInput that can be filled with the text to search
 for corresponding values from the list of options that are displayed as a Menu. */
 
-use iced::{widget::{column, combo_box::{self, State}, Column, ComboBox}, Application, Settings};
+use iced::widget::{column, combo_box::State, combo_box, Column, ComboBox};
 
 pub fn main() -> iced::Result {
-    // iced::application("My app", update, view).run()
-    MyApp::run(Settings::default())
+    iced::application("My app", update, view).run()
+    // MyApp::run(Settings::default())
 }
 
 #[derive(Debug, Clone)]
@@ -19,6 +19,17 @@ enum MyAppMessage {
     Input6(String),
 }
 
+// fn new() -> Self {
+//     Self {
+//         state1: State::new(vec![]),
+//         state2: State::new(vec![]),
+//         state3: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
+//         state4: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
+//         select4: None,
+//         state5: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
+//         select5: None,
+//         state6: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec())
+//     }
 #[derive(Default)]
 struct MyApp {
     state1: State<u32>,
@@ -31,17 +42,6 @@ struct MyApp {
     select5: Option<String>,
     select6: Option<String>,
     input6: String,
-}
-
-
-impl Application for MyApp {
-    type Message = MyAppMessage;
-
-    fn new() -> Self {
-        Self {
-            state4: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-        }
-    }
 }
 
 fn update(state: &mut MyApp, message: MyAppMessage) {
