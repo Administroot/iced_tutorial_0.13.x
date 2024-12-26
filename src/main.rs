@@ -2,7 +2,7 @@
 This widget is composed by a TextInput that can be filled with the text to search
 for corresponding values from the list of options that are displayed as a Menu. */
 
-use iced::widget::{column, combo_box::State, combo_box, Column, ComboBox};
+use iced::widget::{column, combo_box::State, combo_box, Column, ComboBox, Text};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -87,8 +87,8 @@ fn view(myapp: &MyApp) -> Column<MyAppMessage> {
             "Functional combobox (Press Enter or click an option)",
             myapp.select4.as_ref(),
             // |s| MyAppMessage::Select4(s)
-            |items, _|
-        ),
+            |items|  Text::new(items))
+                .on_change(|s| MyAppMessage::Select4(s)),
         combo_box(
             &myapp.state5,
             "Shorter parameter (Press Enter or click an option)",
