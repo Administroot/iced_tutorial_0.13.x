@@ -2,10 +2,11 @@
 This widget is composed by a TextInput that can be filled with the text to search
 for corresponding values from the list of options that are displayed as a Menu. */
 
-use iced::widget::{column, combo_box, combo_box::State, Column, ComboBox};
+use iced::{widget::{column, combo_box::{self, State}, Column, ComboBox}, Application, Settings};
 
 pub fn main() -> iced::Result {
-    iced::application("My app", update, view).run()
+    // iced::application("My app", update, view).run()
+    MyApp::run(Settings::default())
 }
 
 #[derive(Debug, Clone)]
@@ -33,7 +34,7 @@ struct MyApp {
 }
 
 
-impl A for MyApp {
+impl Application for MyApp {
     type Message = MyAppMessage;
 
     fn new() -> Self {
