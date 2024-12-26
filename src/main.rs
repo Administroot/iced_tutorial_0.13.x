@@ -2,7 +2,7 @@
 This widget is composed by a TextInput that can be filled with the text to search
 for corresponding values from the list of options that are displayed as a Menu. */
 
-use iced::widget::{column, combo_box::{self, State}, pane_grid::state, Column, ComboBox};
+use iced::widget::{column, combo_box::State, combo_box, Column, ComboBox};
 
 pub fn main() -> iced::Result {
     iced::application("My app", update, view).run()
@@ -66,6 +66,11 @@ fn update(state: &mut MyApp, message: MyAppMessage) {
 }
 
 fn view(myapp: &MyApp) -> Column<MyAppMessage> {
+    let items = vec![
+        "Aa", "Ab", "Ba", "Bb"
+    ];
+    let state = combo_box::State::new(items);
+
     column![
         ComboBox::new(&myapp.state1, "Construct from struct", None, |_| {
             MyAppMessage::DoNothing
@@ -76,11 +81,13 @@ fn view(myapp: &MyApp) -> Column<MyAppMessage> {
         combo_box(&myapp.state3, "With list of items", None, |_| {
             MyAppMessage::DoNothing
         }),
+        // A typical combo box
         combo_box(
             &myapp.state4,
             "Functional combobox (Press Enter or click an option)",
             myapp.select4.as_ref(),
-            |s| MyAppMessage::Select4(s)
+            // |s| MyAppMessage::Select4(s)
+            |items, _|
         ),
         combo_box(
             &myapp.state5,
