@@ -1,78 +1,50 @@
-/* A widget for searching and selecting a single value from a list of options.
-This widget is composed by a TextInput that can be filled with the text to search
-for corresponding values from the list of options that are displayed as a Menu. */
+use iced::{widget::combo_box, Element};
 
-use iced::widget::{column, combo_box, combo_box::State, Column, ComboBox};
+// TODO: impl iced::application
 
-pub fn main() -> iced::Result {
-    iced::application("My app", update, view).run()
+struct State {
+   fruits: combo_box::State<Fruit>,
+   favorite: Option<Fruit>,
 }
 
 #[derive(Debug, Clone)]
-
-enum MyAppMessage {
-    DoNothing,
-    Select4(String),
-    Select5(String),
-    Select6(String),
-    
+enum Fruit {
+    Apple,
+    Orange,
+    Strawberry,
+    Tomato,
 }
 
-#[derive(Default)]
-struct MyApp {
-    state1: State<u32>,
-    state2: State<u32>,
-    state3: State<String>,
-    state4: State<String>,
-    state5: State<String>,
-    state6: State<String>,
-    select4: Option<String>,
-    select5: Option<String>,
-    select6: Option<String>
+#[derive(Debug, Clone)]
+enum Message {
+    FruitSelected(Fruit),
 }
 
-fn update(state: &mut MyApp, message: MyAppMessage) {
+fn view(state: &State) -> Element<'_, Message> {
+    combo_box(
+        &state.fruits,
+        "Select your favorite fruit...",
+        state.favorite.as_ref(),
+        Message::FruitSelected
+    )
+    .into()
+}
+
+fn update(state: &mut State, message: Message) {
     match message {
-        MyAppMessage::DoNothing => {},
-        MyAppMessage::Select4(s) => {
-            state.select4 = Some(s);
-        },
-        MyAppMessage::Select5(s) => {
-            state.select5 = Some(s);
+        Message::FruitSelected(fruit) => {
+            state.favorite = Some(fruit);
         }
     }
 }
 
-fn view(myapp: &MyApp) -> Column<MyAppMessage> {
-    column![
-        ComboBox::new(&myapp.state1, "Construct from struct", None, |_| {
-            MyAppMessage::DoNothing
-        }),
-        combo_box(&myapp.state2, "Construct from function", None, |_| {
-            MyAppMessage::DoNothing
-        }),
-        combo_box(&myapp.state3, "With list of items", None, |_| {
-            MyAppMessage::DoNothing
-        }),
-        combo_box(
-            &myapp.state4,
-            "Functional combobox (Press Enter or click an option)",
-            myapp.select4.as_ref(),
-            |s| MyAppMessage::Select4(s)
-        ),
-        combo_box(
-            &myapp.state5,
-            "Shorter parameter (Press Enter or click an option)",
-            myapp.select5.as_ref(),
-            MyAppMessage::Select5
-        ),
-        combo_box(
-            &myapp.state6,
-            "Respond to input",
-            myapp.select6.as_ref(),
-            MyAppMessage::Select6
-        )
-        .on_input(MyAppMessage::Input6),
-    ]
-    .into()
+impl std::fmt::Display for Fruit {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(match self {
+            Self::Apple => "Apple",
+            Self::Orange => "Orange",
+            Self::Strawberry => "Strawberry",
+            Self::Tomato => "Tomato",
+        })
+    }
 }
