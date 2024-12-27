@@ -28,7 +28,7 @@ impl Default for MyApp {
     }
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 enum Message {
     Selected(Words),
     DoNothing,
@@ -71,9 +71,11 @@ impl MyApp {
             state2: State::new(vec![]),
             state3: State::new(Words::ALL.to_vec()),
             state5: State::new(Words::ALL.to_vec()),
-            input6: "".into(),
+            state6: State::new(Words::ALL.to_vec()),
+            input6: String::new(),
             selected_word: None,
             selected5: None,
+            selected6: None,
         }
     }
 
@@ -88,10 +90,11 @@ impl MyApp {
             },
             Message::Select6(w) => {
                 self.selected6 = Some(w);
+                self.input6 = w.to_string();
             },
             Message::Input6(s) => {
-                self.input6 = Some(s);
-            }
+                self.input6 = s;
+            },
         }
     }
 
