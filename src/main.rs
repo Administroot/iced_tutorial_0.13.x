@@ -67,14 +67,17 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        let combo_box = combo_box(
+        let combo_box_1 = combo_box(
+            S
+        )
+        let combo_box_2 = combo_box(
             &self.my_words, 
             "Functional combobox (Press Enter or click an option)", 
             self.selected_word.as_ref(), 
             Message::Selected,
         );
         let content = column![
-            combo_box,
+            combo_box_2,
         ];
         scrollable(content).into()
     }
