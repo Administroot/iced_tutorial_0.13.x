@@ -1,107 +1,137 @@
-/* A widget for searching and selecting a single value from a list of options.
-This widget is composed by a TextInput that can be filled with the text to search
-for corresponding values from the list of options that are displayed as a Menu. */
-
-use iced::widget::{column, combo_box::State, combo_box, Column, ComboBox, Text};
+use iced::widget::{
+    center, column, combo_box, scrollable, text, vertical_space,
+};
+use iced::{Center, Element, Fill};
 
 pub fn main() -> iced::Result {
-    iced::application("My app", update, view).run()
-    // MyApp::run(Settings::default())
+    iced::run("Combo Box - Iced", Example::update, Example::view)
 }
 
-#[derive(Debug, Clone)]
-
-enum MyAppMessage {
-    DoNothing,
-    Select4(String),
-    Select5(String),
-    Select6(String),
-    Input6(String),
+struct Example {
+    languages: combo_box::State<Language>,
+    selected_language: Option<Language>,
+    text: String,
 }
 
-// const SELECTIONS: iced::widget::combo_box::State<String> = State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec());
-
-// fn new() -> Self {
-//     Self {
-//         state1: State::new(vec![]),
-//         state2: State::new(vec![]),
-//         state3: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-//         state4: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-//         select4: None,
-//         state5: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec()),
-//         select5: None,
-//         state6: State::new(["Aa", "Ab", "Ba", "Bb"].map(|s| s.to_string()).to_vec())
-//     }
-
-#[derive(Default)]
-struct MyApp {
-    state1: State<u32>,
-    state2: State<u32>,
-    state3: State<String>,
-    state4: State<String>,
-    state5: State<String>,
-    state6: State<String>,
-    select4: Option<String>,
-    select5: Option<String>,
-    select6: Option<String>,
-    input6: String,
+#[derive(Debug, Clone, Copy)]
+enum Message {
+    Selected(Language),
+    OptionHovered(Language),
+    Closed,
 }
 
-fn update(state: &mut MyApp, message: MyAppMessage) {
-    match message {
-        MyAppMessage::DoNothing => {},
-        MyAppMessage::Select4(s) => {
-            state.select4 = Some(s);
-        },
-        MyAppMessage::Select5(s) => {
-            state.select5 = Some(s);
-        },
-        MyAppMessage::Select6(s) => {
-            state.select6 = Some(s);
+impl Example {
+    fn new() -> Self {
+        Self {
+            languages: combo_box::State::new(Language::ALL.to_vec()),
+            selected_language: None,
+            text: String::new(),
         }
-        MyAppMessage::Input6(s) => {
-            state.input6 = s;
+    }
+
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::Selected(language) => {
+                self.selected_language = Some(language);
+                self.text = language.hello().to_string();
+            }
+            Message::OptionHovered(language) => {
+                self.text = language.hello().to_string();
+            }
+            Message::Closed => {
+                self.text = self
+                    .selected_language
+                    .map(|language| language.hello().to_string())
+                    .unwrap_or_default();
+            }
+        }
+    }
+
+    fn view(&self) -> Element<Message> {
+        let combo_box = combo_box(
+            &self.languages,
+            "Type a language...",
+            self.selected_language.as_ref(),
+            Message::Selected,
+        )
+        .on_option_hovered(Message::OptionHovered)
+        .on_close(Message::Closed)
+        .width(250);
+
+        let content = column![
+            text(&self.text),
+            "What is your language?",
+            combo_box,
+            vertical_space().height(150),
+        ]
+        .width(Fill)
+        .align_x(Center)
+        .spacing(10);
+
+        center(scrollable(content)).into()
+    }
+}
+
+impl Default for Example {
+    fn default() -> Self {
+        Example::new()
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum Language {
+    Danish,
+    #[default]
+    English,
+    French,
+    German,
+    Italian,
+    Portuguese,
+    Spanish,
+    Other,
+}
+
+impl Language {
+    const ALL: [Language; 8] = [
+        Language::Danish,
+        Language::English,
+        Language::French,
+        Language::German,
+        Language::Italian,
+        Language::Portuguese,
+        Language::Spanish,
+        Language::Other,
+    ];
+
+    fn hello(&self) -> &str {
+        match self {
+            Language::Danish => "Halloy!",
+            Language::English => "Hello!",
+            Language::French => "Salut!",
+            Language::German => "Hallo!",
+            Language::Italian => "Ciao!",
+            Language::Portuguese => "Olá!",
+            Language::Spanish => "¡Hola!",
+            Language::Other => "... hello?",
         }
     }
 }
 
-fn view(myapp: &MyApp) -> Column<MyAppMessage> {
-    let items = vec![
-        "Aa", "Ab", "Ba", "Bb"
-    ];
-    let state = combo_box::State::new(items);
-
-    column![
-        ComboBox::new(&myapp.state1, "Construct from struct", None, |_| {
-            MyAppMessage::DoNothing
-        }),
-        combo_box(&myapp.state2, "Construct from function", None, |_| {
-            MyAppMessage::DoNothing
-        }),
-        combo_box(&myapp.state3, "With list of items", None, |_| {
-            MyAppMessage::DoNothing
-        }),
-        // A typical combo box
-        combo_box(
-            &myapp.state4,
-            "Functional combobox (Press Enter or click an option)",
-            myapp.select4.as_ref(),
-            // |s| MyAppMessage::Select4(s)
-            |items|  Text::new(items))
-                .on_change(|s| MyAppMessage::Select4(s)),
-        combo_box(
-            &myapp.state5,
-            "Shorter parameter (Press Enter or click an option)",
-            myapp.select5.as_ref(),
-            MyAppMessage::Select5
-        ),
-        combo_box(
-            &myapp.state6,
-            "Respond to input",
-            myapp.select6.as_ref(),
-            MyAppMessage::Select6
+impl std::fmt::Display for Language {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                Language::Danish => "Danish",
+                Language::English => "English",
+                Language::French => "French",
+                Language::German => "German",
+                Language::Italian => "Italian",
+                Language::Portuguese => "Portuguese",
+                Language::Spanish => "Spanish",
+                Language::Other => "Some other language",
+            }
         )
-        .on_input(MyAppMessage::Input6),
-    ]
-    .into()
+    }
 }
