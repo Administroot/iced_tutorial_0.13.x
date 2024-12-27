@@ -4,7 +4,7 @@ for corresponding values from the list of options that are displayed as a Menu. 
 
 use std::default;
 
-use iced::{widget::{column, combo_box::{self, State}, Column, ComboBox, Text}, Element};
+use iced::{widget::{column, combo_box, scrollable, Column, ComboBox, Text}, Element};
 
 fn main() {
     iced::run("ComboBox", MyApp::update, MyApp::view);
@@ -13,20 +13,17 @@ fn main() {
 struct MyApp {
     my_words: combo_box::State<Words>,
     selected_word: Option<Words>, 
-    text: String,
 }
 
 impl Default for MyApp {
     fn default() -> Self {
-        MyApp::new();
+        MyApp::new()
     }
 }
 
 #[derive(Debug, Clone, Copy)]
 enum Message {
-    Selected(Language),
-    OptionHovered(Language),
-    Closed,
+    Selected(Words),
 }
 
 #[derive(Debug, Clone, Copy, Default)]
@@ -60,18 +57,27 @@ impl MyApp {
         Self {
             my_words: combo_box::State::new(Words::ALL.to_vec()),
             selected_word: None,
-            text: String::new(),
         }
     }
 
-    fn update(&mut self, message: Message) {}
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::Selected(w) => {
+                self.selected_word = Some(w);
+            }
+        }
+    }
 
     fn view(&self) -> Element<Message> {
         let combo_box = combo_box(
             &self.my_words, 
             "Functional combobox (Press Enter or click an option)", 
             self.selected_word.as_ref(), 
-            Message.Selected
-        )
+            Message::Selected,
+        );
+        let content = column![
+            combo_box,
+        ];
+        scrollable(content).into()
     }
 }
