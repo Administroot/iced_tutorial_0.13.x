@@ -11,7 +11,8 @@ fn main() -> iced::Result {
 struct MyApp {
     state1: State<u32>,
     state2: State<u32>,
-    my_words: combo_box::State<Words>,
+    state3: State<Words>,
+    my_words: State<Words>,
     selected_word: Option<Words>, 
 }
 
@@ -58,6 +59,7 @@ impl MyApp {
         Self {
             my_words: combo_box::State::new(Words::ALL.to_vec()),
             state1: State::new(vec![]),
+            state2: State::new(vec![]),
             selected_word: None,
         }
     }
@@ -72,14 +74,24 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        let combo_box_1: iced::widget::ComboBox<'_, u32, Message, _, _> = ComboBox::new(
+        let combo_box_1: ComboBox<'_, u32, Message, _, _> = ComboBox::new(
             &self.state1,
             "Construct from struct",
             None,
             |_| {Message::DoNothing},
         );
         let combo_box_2 = combo_box(
-            , placeholder, selection, on_selected)
+            &self.state2, 
+            "Construct from function", 
+            None,
+            |_| {Message::DoNothing},
+        );
+        let combo_box_3 = combo_box(
+            &self.state3,
+            "With list of items",
+            None,
+            |_|
+        );
         let combo_box_4 = combo_box(
             &self.my_words, 
             "Functional combobox (Press Enter or click an option)", 
@@ -88,6 +100,7 @@ impl MyApp {
         );
         let content = column![
             combo_box_1,
+            combo_box_2,
             combo_box_4,
         ];
         scrollable(content).into()
