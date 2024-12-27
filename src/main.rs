@@ -14,7 +14,9 @@ struct MyApp {
     state3: State<Words>,
     my_words: State<Words>,
     state5: State<Words>,
+    
     selected_word: Option<Words>, 
+    selected5: Option<Words>,
 }
 
 impl Default for MyApp {
@@ -27,6 +29,7 @@ impl Default for MyApp {
 enum Message {
     Selected(Words),
     DoNothing,
+    Selected5(Words),
 }
 
 #[derive(Debug, Clone, Copy, Default)]
@@ -64,6 +67,7 @@ impl MyApp {
             state3: State::new(Words::ALL.to_vec()),
             state5: State::new(Words::ALL.to_vec()),
             selected_word: None,
+            selected5: None,
         }
     }
 
@@ -73,6 +77,9 @@ impl MyApp {
                 self.selected_word = Some(w);
             },
             Message::DoNothing => {},
+            Message::Selected5(w) => {
+                self.selected5 = Some(w);
+            }
         }
     }
 
@@ -104,8 +111,8 @@ impl MyApp {
         let combo_box_5 = combo_box(
             &self.state5,
             "Shorter parameter (Press Enter or click an option)",
-            self.selected_word.as_ref(),
-            Message::Selected,
+            self.selected5.as_ref(),
+            Message::Selected5,
         );
         let content = column![
             combo_box_1,
