@@ -13,6 +13,7 @@ struct MyApp {
     state2: State<u32>,
     state3: State<Words>,
     my_words: State<Words>,
+    state5: State<Words>,
     selected_word: Option<Words>, 
 }
 
@@ -57,9 +58,11 @@ impl std::fmt::Display for Words {
 impl MyApp {
     fn new() -> Self {
         Self {
-            my_words: combo_box::State::new(Words::ALL.to_vec()),
+            my_words: State::new(Words::ALL.to_vec()),
             state1: State::new(vec![]),
             state2: State::new(vec![]),
+            state3: State::new(Words::ALL.to_vec()),
+            state5: State::new(Words::ALL.to_vec()),
             selected_word: None,
         }
     }
@@ -90,18 +93,26 @@ impl MyApp {
             &self.state3,
             "With list of items",
             None,
-            |_|
+            |_| {Message::DoNothing},
         );
         let combo_box_4 = combo_box(
             &self.my_words, 
             "Functional combobox (Press Enter or click an option)", 
             self.selected_word.as_ref(), 
+            |s| Message::Selected(s),
+        );
+        let combo_box_5 = combo_box(
+            &self.state5,
+            "Shorter parameter (Press Enter or click an option)",
+            self.selected_word.as_ref(),
             Message::Selected,
         );
         let content = column![
             combo_box_1,
             combo_box_2,
+            combo_box_3,
             combo_box_4,
+            combo_box_5,
         ];
         scrollable(content).into()
     }
