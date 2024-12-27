@@ -4,7 +4,7 @@ for corresponding values from the list of options that are displayed as a Menu. 
 
 use std::default;
 
-use iced::widget::{column, combo_box::State, combo_box, Column, ComboBox, Text};
+use iced::{widget::{column, combo_box::{self, State}, Column, ComboBox, Text}, Element};
 
 fn main() {
     iced::run("ComboBox", MyApp::update, MyApp::view);
@@ -22,6 +22,13 @@ impl Default for MyApp {
     }
 }
 
+#[derive(Debug, Clone, Copy)]
+enum Message {
+    Selected(Language),
+    OptionHovered(Language),
+    Closed,
+}
+
 #[derive(Debug, Clone, Copy, Default)]
 pub enum Words {
     #[default]
@@ -31,7 +38,7 @@ pub enum Words {
 }
 
 impl Words {
-    con
+    const ALL: [Words; 3] = [Words::Aa, Words::Bb, Words::Cc];
 }
 
 impl std::fmt::Display for Words {
@@ -50,6 +57,21 @@ impl std::fmt::Display for Words {
 
 impl MyApp {
     fn new() -> Self {
+        Self {
+            my_words: combo_box::State::new(Words::ALL.to_vec()),
+            selected_word: None,
+            text: String::new(),
+        }
+    }
 
+    fn update(&mut self, message: Message) {}
+
+    fn view(&self) -> Element<Message> {
+        let combo_box = combo_box(
+            &self.my_words, 
+            "Functional combobox (Press Enter or click an option)", 
+            self.selected_word.as_ref(), 
+            Message.Selected
+        )
     }
 }
