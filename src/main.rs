@@ -2,12 +2,10 @@
 This widget is composed by a TextInput that can be filled with the text to search
 for corresponding values from the list of options that are displayed as a Menu. */
 
-use std::default;
+use iced::{widget::{column, combo_box, scrollable}, Element};
 
-use iced::{widget::{column, combo_box, scrollable, Column, ComboBox, Text}, Element};
-
-fn main() {
-    iced::run("ComboBox", MyApp::update, MyApp::view);
+fn main() -> iced::Result {
+    iced::run("ComboBox", MyApp::update, MyApp::view)
 }
 
 struct MyApp {
