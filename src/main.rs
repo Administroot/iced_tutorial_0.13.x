@@ -15,11 +15,13 @@ struct MyApp {
     my_words: State<Words>,
     state5: State<Words>,
     state6: State<Words>,
+    state7: State<Words>,
     input6: String,
     
     selected_word: Option<Words>, 
     selected5: Option<Words>,
     selected6: Option<Words>,
+    selected7: Option<Words>,
 }
 
 impl Default for MyApp {
@@ -34,6 +36,8 @@ enum Message {
     DoNothing,
     Selected5(Words),
     Select6(Words),
+    Select7(Words),
+    Hover7(String),
     // Input6(String),
 }
 
@@ -72,10 +76,12 @@ impl MyApp {
             state3: State::new(Words::ALL.to_vec()),
             state5: State::new(Words::ALL.to_vec()),
             state6: State::new(Words::ALL.to_vec()),
+            state7: State::new(Words::ALL.to_vec()),
             input6: String::new(),
             selected_word: None,
             selected5: None,
             selected6: None,
+            selected7: None
         }
     }
 
@@ -95,6 +101,12 @@ impl MyApp {
             // Message::Input6(s) => {
             //     self.input6 = s;
             // },
+            Message::Select7(w) => {
+                self.selected7 = Some(w);
+            },
+            Message::Hover7(w) => {
+                self.selected7 = Some(w);
+            }
         }
     }
 
@@ -136,6 +148,13 @@ impl MyApp {
             Message::Select6
         );
         // .on_input(Message::Input6);
+        let combo_box_7 = combo_box(
+            &self.state7, 
+            "Respond to option hover",
+            self.selected7.as_ref(), 
+            Message::Select7
+        )
+        .on_option_hovered(Message::Hover7);
         let content = column![
             combo_box_1,
             combo_box_2,
