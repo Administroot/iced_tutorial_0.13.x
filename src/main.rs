@@ -2,7 +2,13 @@
 This widget is composed by a TextInput that can be filled with the text to search
 for corresponding values from the list of options that are displayed as a Menu. */
 
-use iced::{widget::{column, combo_box::State, combo_box, scrollable, text, ComboBox}, Element};
+use std::vec;
+
+use iced::{
+    font::Family,
+    widget::{column, combo_box, combo_box::State, scrollable, text, ComboBox},
+    Element, Font,
+};
 
 fn main() -> iced::Result {
     iced::run("ComboBox", MyApp::update, MyApp::view)
@@ -17,9 +23,10 @@ struct MyApp {
     state6: State<Words>,
     state7: State<Words>,
     state8: State<Words>,
+    state9: State<u32>,
     input6: String,
-    
-    selected_word: Option<Words>, 
+
+    selected_word: Option<Words>,
     selected5: Option<Words>,
     selected6: Option<Words>,
     selected7: Option<Words>,
@@ -85,6 +92,7 @@ impl MyApp {
             state6: State::new(Words::ALL.to_vec()),
             state7: State::new(Words::ALL.to_vec()),
             state8: State::new(Words::ALL.to_vec()),
+            state9: State::new(vec![]),
 
             input6: String::new(),
             selected_word: None,
@@ -100,59 +108,51 @@ impl MyApp {
         match message {
             Message::Selected(w) => {
                 self.selected_word = Some(w);
-            },
-            Message::DoNothing => {},
+            }
+            Message::DoNothing => {}
             Message::Selected5(w) => {
                 self.selected5 = Some(w);
-            },
+            }
             Message::Select6(w) => {
                 self.selected6 = Some(w);
                 self.input6 = w.to_string();
-            },
+            }
             // Message::Input6(s) => {
             //     self.input6 = s;
             // },
             Message::Select7(w) => {
                 self.selected7 = Some(w);
-            },
+            }
             Message::Select8(w) => {
                 self.selected8 = Some(w);
-            },
+            }
             Message::Hover7(w) => {
                 self.selected7 = Some(w);
-            },
+            }
             Message::Hover8(w) => {
                 self.selected8 = Some(w);
             }
             Message::Close8 => {
-                self.info8 = String::from("Done");
+                self.info8 = String::from("Done").into();
             }
         }
     }
 
     fn view(&self) -> Element<Message> {
-        let combo_box_1: ComboBox<'_, u32, Message, _, _> = ComboBox::new(
-            &self.state1,
-            "Construct from struct",
-            None,
-            |_| {Message::DoNothing},
-        );
-        let combo_box_2 = combo_box(
-            &self.state2, 
-            "Construct from function", 
-            None,
-            |_| {Message::DoNothing},
-        );
-        let combo_box_3 = combo_box(
-            &self.state3,
-            "With list of items",
-            None,
-            |_| {Message::DoNothing},
-        );
+        let combo_box_1: ComboBox<'_, u32, Message, _, _> =
+            ComboBox::new(&self.state1, "Construct from struct", None, |_| {
+                Message::DoNothing
+            });
+        let combo_box_2 = combo_box(&self.state2, "Construct from function", None, |_| {
+            Message::DoNothing
+        });
+        let combo_box_3 = combo_box(&self.state3, "With list of items", None, |_| {
+            Message::DoNothing
+        });
         let combo_box_4 = combo_box(
-            &self.my_words, 
-            "Functional combobox (Press Enter or click an option)", 
-            self.selected_word.as_ref(), 
+            &self.my_words,
+            "Functional combobox (Press Enter or click an option)",
+            self.selected_word.as_ref(),
             |s| Message::Selected(s),
         );
         let combo_box_5 = combo_box(
@@ -165,24 +165,31 @@ impl MyApp {
             &self.state6,
             "Respond to input",
             self.selected6.as_ref(),
-            Message::Select6
+            Message::Select6,
         );
         // .on_input(Message::Input6);
         let combo_box_7 = combo_box(
-            &self.state7, 
+            &self.state7,
             "Respond to option hover",
-            self.selected7.as_ref(), 
-            Message::Select7
+            self.selected7.as_ref(),
+            Message::Select7,
         )
         .on_option_hovered(Message::Hover7);
         let combo_box_8 = combo_box(
-            &self.state8, 
-            "Respond to closing menu", 
-            self.selected8.as_ref(), 
-            Message::Select8
+            &self.state8,
+            "Respond to closing menu",
+            self.selected8.as_ref(),
+            Message::Select8,
         )
         .on_option_hovered(Message::Hover8)
         .on_close(Message::Close8);
+        // Personalization
+        let combo_box_9 = combo_box(&self.state9, "Different font", None, |_| Message::DoNothing)
+            .font(Font {
+                family: Family::Fantasy,
+                ..Font::DEFAULT
+            });
+
         let content = column![
             combo_box_1,
             combo_box_2,
@@ -194,6 +201,7 @@ impl MyApp {
             combo_box_7,
             text(&self.info8),
             combo_box_8,
+            combo_box_9,
         ];
         scrollable(content).into()
     }
