@@ -34,7 +34,7 @@ enum Message {
     DoNothing,
     Selected5(Words),
     Select6(Words),
-    Input6(String),
+    // Input6(String),
 }
 
 #[derive(Debug, Clone, Copy, Default)]
@@ -92,9 +92,9 @@ impl MyApp {
                 self.selected6 = Some(w);
                 self.input6 = w.to_string();
             },
-            Message::Input6(s) => {
-                self.input6 = s;
-            },
+            // Message::Input6(s) => {
+            //     self.input6 = s;
+            // },
         }
     }
 
@@ -134,8 +134,8 @@ impl MyApp {
             "Respond to input",
             self.selected6.as_ref(),
             Message::Select6
-        )
-        .on_input(Message::Input6);
+        );
+        // .on_input(Message::Input6);
         let content = column![
             combo_box_1,
             combo_box_2,
