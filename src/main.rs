@@ -43,6 +43,8 @@ enum Message {
     Select8(Words),
 
     Hover7(Words),
+    Hover8(Words),
+    Close8,
     // Input6(String),
 }
 
@@ -82,11 +84,15 @@ impl MyApp {
             state5: State::new(Words::ALL.to_vec()),
             state6: State::new(Words::ALL.to_vec()),
             state7: State::new(Words::ALL.to_vec()),
+            state8: State::new(Words::ALL.to_vec()),
+
             input6: String::new(),
             selected_word: None,
             selected5: None,
             selected6: None,
-            selected7: None
+            selected7: None,
+            selected8: None,
+            info8: String::new(),
         }
     }
 
@@ -109,8 +115,17 @@ impl MyApp {
             Message::Select7(w) => {
                 self.selected7 = Some(w);
             },
+            Message::Select8(w) => {
+                self.selected8 = Some(w);
+            },
             Message::Hover7(w) => {
                 self.selected7 = Some(w);
+            },
+            Message::Hover8(w) => {
+                self.selected8 = Some(w);
+            }
+            Message::Close8 => {
+                self.info8 = String::from("Done");
             }
         }
     }
@@ -160,13 +175,14 @@ impl MyApp {
             Message::Select7
         )
         .on_option_hovered(Message::Hover7);
-        text(&self.info8);
         let combo_box_8 = combo_box(
             &self.state8, 
             "Respond to closing menu", 
             self.selected8.as_ref(), 
             Message::Select8
         )
+        .on_option_hovered(Message::Hover8)
+        .on_close(Message::Close8);
         let content = column![
             combo_box_1,
             combo_box_2,
@@ -176,6 +192,8 @@ impl MyApp {
             text(&self.input6),
             combo_box_6,
             combo_box_7,
+            text(&self.info8),
+            combo_box_8,
         ];
         scrollable(content).into()
     }
