@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/combobox.md",
+                "file": "tutorial/slider.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "combobox"
+              "title": "slider"
             }
           },
           {
@@ -186,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/combobox.md"
+                "file": "tutorial/slider.md"
               },
               "icon": "lucide-list",
-              "title": "combobox 的大纲"
+              "title": "slider 的大纲"
             }
           },
           {
@@ -225,17 +225,17 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-d9x87sddekvadsyu2esk3df3s/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-d9x87sddekvadsyu2esk3df3s/work-products.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-d9x87sddekvadsyu2esk3df3s/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-d9x87sddekvadsyu2esk3df3s",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0-working",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34ve3jv8o-0ioj6l0.lock",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h34ve3ju2p-155hpe0-working/work-products.bin",
+    "tutorial/combobox.md",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34vtdcawk-08avvp4-19wqjwu09x3n2rs1dptzvr70x/work-products.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34vtdcawk-08avvp4-19wqjwu09x3n2rs1dptzvr70x/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34vtdcawk-08avvp4-19wqjwu09x3n2rs1dptzvr70x/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34vtdcawk-08avvp4-19wqjwu09x3n2rs1dptzvr70x",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h34vtdce8j-1le691d-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h34vtdce8j-1le691d-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h34vtdce8j-1le691d-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h34vtdce8j-1le691d-working/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h34vtdce8j-1le691d-working",
+    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h34vtdce8j-1le691d.lock",
     "tutorial/picklist.md",
     "README.md",
     "tutorial/radio.md",

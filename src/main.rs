@@ -6,7 +6,13 @@ use std::vec;
 
 use iced::{
     font::Family,
-    widget::{column, combo_box, combo_box::State, scrollable, text, ComboBox},
+    widget::{
+        column, combo_box,
+        combo_box::State,
+        scrollable, text,
+        text_input::{Icon, Side},
+        ComboBox,
+    },
     Element, Font,
 };
 
@@ -24,6 +30,9 @@ struct MyApp {
     state7: State<Words>,
     state8: State<Words>,
     state9: State<u32>,
+    state10: State<u32>,
+    state11: State<u32>,
+    state12: State<u32>,
     input6: String,
 
     selected_word: Option<Words>,
@@ -93,6 +102,9 @@ impl MyApp {
             state7: State::new(Words::ALL.to_vec()),
             state8: State::new(Words::ALL.to_vec()),
             state9: State::new(vec![]),
+            state10: State::new(vec![]),
+            state11: State::new(vec![]),
+            state12: State::new(vec![]),
 
             input6: String::new(),
             selected_word: None,
@@ -189,7 +201,18 @@ impl MyApp {
                 family: Family::Fantasy,
                 ..Font::DEFAULT
             });
-
+        let combo_box_10 =
+            combo_box(&self.state10, "Larger text", None, |_| Message::DoNothing).size(24.);
+        let combo_box_11 =
+            combo_box(&self.state11, "With padding", None, |_| Message::DoNothing).padding(20);
+        let combo_box_12 =
+            combo_box(&self.state12, "Icon", None, |_| Message::DoNothing).icon(Icon {
+                font: Font::DEFAULT,
+                code_point: '\u{2705}',
+                size: None,
+                spacing: 10.,
+                side: Side::Left,
+            });
         let content = column![
             combo_box_1,
             combo_box_2,
@@ -202,6 +225,9 @@ impl MyApp {
             text(&self.info8),
             combo_box_8,
             combo_box_9,
+            combo_box_10,
+            combo_box_11,
+            combo_box_12,
         ];
         scrollable(content).into()
     }
