@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/container.md",
+                "file": "tutorial/first_app.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "container"
+              "title": "first_app"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -186,10 +187,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/slider.md"
+                "file": "tutorial/first_app.md"
               },
               "icon": "lucide-list",
-              "title": "slider 的大纲"
+              "title": "first_app 的大纲"
             }
           },
           {
@@ -223,8 +224,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "6343a65a21221239",
+  "active": "4a123ae45ed337e6",
   "lastOpenFiles": [
+    "tutorial/container.md",
+    "tutorial/slider.md",
     "tutorial/combobox.md",
     "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34vtdcawk-08avvp4-19wqjwu09x3n2rs1dptzvr70x/work-products.bin",
     "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h34vtdcawk-08avvp4-19wqjwu09x3n2rs1dptzvr70x/query-cache.bin",
@@ -240,7 +243,6 @@
     "README.md",
     "tutorial/radio.md",
     "tutorial/toggler.md",
-    "tutorial/container.md",
     "tutorial/first_app.md",
     "tutorial/checkbox.md",
     "tutorial/text_input.md",
@@ -271,7 +273,6 @@
     "思知行/小玉老师发病录.md",
     "Whiteboard.canvas",
     "考研/考研.md",
-    "未命名.md",
     "未命名.canvas"
   ]
 }
