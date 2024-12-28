@@ -2,7 +2,7 @@
 This widget is composed by a TextInput that can be filled with the text to search
 for corresponding values from the list of options that are displayed as a Menu. */
 
-use iced::{widget::{column, combo_box, combo_box::State, ComboBox, scrollable, text}, Element};
+use iced::{widget::{column, combo_box::State, combo_box, scrollable, text, ComboBox}, Element};
 
 fn main() -> iced::Result {
     iced::run("ComboBox", MyApp::update, MyApp::view)
@@ -16,12 +16,15 @@ struct MyApp {
     state5: State<Words>,
     state6: State<Words>,
     state7: State<Words>,
+    state8: State<Words>,
     input6: String,
     
     selected_word: Option<Words>, 
     selected5: Option<Words>,
     selected6: Option<Words>,
     selected7: Option<Words>,
+    selected8: Option<Words>,
+    info8: String,
 }
 
 impl Default for MyApp {
@@ -37,7 +40,9 @@ enum Message {
     Selected5(Words),
     Select6(Words),
     Select7(Words),
-    Hover7(String),
+    Select8(Words),
+
+    Hover7(Words),
     // Input6(String),
 }
 
@@ -155,6 +160,13 @@ impl MyApp {
             Message::Select7
         )
         .on_option_hovered(Message::Hover7);
+        text(&self.info8);
+        let combo_box_8 = combo_box(
+            &self.state8, 
+            "Respond to closing menu", 
+            self.selected8.as_ref(), 
+            Message::Select8
+        )
         let content = column![
             combo_box_1,
             combo_box_2,
@@ -163,6 +175,7 @@ impl MyApp {
             combo_box_5,
             text(&self.input6),
             combo_box_6,
+            combo_box_7,
         ];
         scrollable(content).into()
     }
