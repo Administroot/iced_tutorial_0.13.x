@@ -4,26 +4,48 @@ We need a struct to implement [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.S
 All widgets should be placed inside the [view](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.view) method.
 
 ```rust
-use iced::widget::{Column, column};
+use iced::{
+    widget::{
+        column, text
+    },
+    Element
+};
 
-pub fn main() -> iced::Result {
-    iced::application("My app", update, view).run()
+fn main() -> iced::Result {
+    iced::run("My First App", MyApp::update, MyApp::view)
 }
 
+struct MyApp {
+    _state: String,
+}
+
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
+  
 #[derive(Debug, Clone)]
-
 enum Message {
-    _Increment,
+    _Message1,
 }
-
-fn update(_value: &mut u64, _message: Message) {
-
-}
-
-fn view(_value: &u64) -> Column<Message> {
-    column![
-        "hello, world"
-    ]
+  
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
+  
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
+    
+    fn view(&self) -> Element<Message> {
+        column!(
+            text("Hello World!".to_string()),
+        ).into()
+    }
 }
 ```
 

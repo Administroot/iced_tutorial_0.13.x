@@ -37,7 +37,7 @@ impl MyApp {
 
     fn view(&self) -> Element<Message> {
         column!(
-            text("My first app".to_string()),
+            text("Hello World!".to_string()),
         ).into()
     }
 }
