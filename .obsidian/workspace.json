@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/progressbar.md",
+                "file": "tutorial/tooltip.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "progressbar"
+              "title": "tooltip"
             }
           },
           {
@@ -186,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/progressbar.md"
+                "file": "tutorial/tooltip.md"
               },
               "icon": "lucide-list",
-              "title": "progressbar 的大纲"
+              "title": "tooltip 的大纲"
             }
           },
           {
@@ -225,6 +225,9 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "README.md",
+    "tutorial/tooltip.md",
+    "tutorial/progressbar.md",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h36997ynjg-10bpunz-2pxw1ne2i8wzjsv55wi3rjvas/query-cache.bin",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h36997ynjg-10bpunz-2pxw1ne2i8wzjsv55wi3rjvas/work-products.bin",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h36997ynjg-10bpunz-2pxw1ne2i8wzjsv55wi3rjvas/dep-graph.bin",
@@ -235,13 +238,11 @@
     "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h36997xmnt-0x1pha8-0ptx41gsv9fadcameebm0l476",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h36997ynjg-10bpunz-working/work-products.bin",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h36997ynjg-10bpunz-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h36997ynjg-10bpunz-working/dep-graph.part.bin",
     "tutorial/slider.md",
     "tutorial/first_app.md",
     "tutorial/container.md",
     "tutorial/combobox.md",
     "tutorial/picklist.md",
-    "README.md",
     "tutorial/radio.md",
     "tutorial/toggler.md",
     "tutorial/checkbox.md",
@@ -270,7 +271,6 @@
     "出发前先看看/考研.md",
     "Clippings/Types of Admonitions.md",
     "考研/考研英语作文.md",
-    "思知行/小玉老师发病录.md",
     "Whiteboard.canvas",
     "未命名.canvas"
   ]
