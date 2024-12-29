@@ -35,8 +35,7 @@
               "title": "first_app"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -187,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/first_app.md"
+                "file": "tutorial/slider.md"
               },
               "icon": "lucide-list",
-              "title": "first_app 的大纲"
+              "title": "slider 的大纲"
             }
           },
           {
@@ -224,19 +223,20 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "4a123ae45ed337e6",
+  "active": "6343a65a21221239",
   "lastOpenFiles": [
     "target/debug/deps/iced_tutorial.pdb",
     "target/debug/deps/iced_tutorial.exe",
-    "target/debug/deps/iced_tutorial.3oq54jsjkeqc8ssdbvang3nm2.rcgu.o",
-    "target/debug/deps/iced_tutorial.1440ldfm5ezfb5ns1u8bdwcqy.rcgu.o",
-    "target/debug/deps/iced_tutorial.13no50t5217alffvfmbs7mwd7.rcgu.o",
-    "target/debug/deps/iced_tutorial.1gccn58y8fs0uur02wrmx5m9w.rcgu.o",
-    "target/debug/deps/iced_tutorial.an76tasdfnkxqn6o6bxsctezf.rcgu.o",
-    "target/debug/deps/iced_tutorial.a8ukmlacktok5a09xuk35n0sv.rcgu.o",
-    "target/debug/deps/iced_tutorial.eg446pel6jh60eiqx3xqk92iu.rcgu.o",
-    "target/debug/deps/iced_tutorial.6dr7sp1ic08fvqjhqmy91ygmm.rcgu.o",
-    "target/debug/deps/iced_tutorial.1e2d195yrysablxnrduzhonms.rcgu.o",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/work-products.bin",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/f3zdgk9omeivd3rzgnjzl7pn9.o",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/esm01gfbzh4xrosnn73kyl08g.o",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/eyjvt06aydcqs621kvf8uu9n3.o",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/erqce0n33zfnkoyglebefzlfs.o",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/er05aa5brqelt62ufjyrifhkv.o",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/eot9m7l9rbgnmtlgckn9hndhl.o",
+    "target/debug/incremental/iced_tutorial-0vketomw6v0fe/s-h35zzjr0kt-0l3if9t-5vqcuhwau1zcnznosxjcduvfj/emmja9zfcpdfo7q4k2gbiayfm.o",
+    "tutorial/first_app.md",
     "tutorial/container.md",
     "tutorial/slider.md",
     "tutorial/combobox.md",
@@ -244,7 +244,6 @@
     "README.md",
     "tutorial/radio.md",
     "tutorial/toggler.md",
-    "tutorial/first_app.md",
     "tutorial/checkbox.md",
     "tutorial/text_input.md",
     "tutorial/button.md",

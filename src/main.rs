@@ -1,6 +1,6 @@
 use iced::{
     widget::{
-        column, text
+        column, text, Slider, slider
     },
     Element
 };
@@ -20,8 +20,8 @@ impl Default for MyApp {
 }
 
 #[derive(Debug, Clone)]
-enum Message {
-    _Message1,
+enum MyAppMessage {
+    DoNothing,
 }
 
 impl MyApp {
@@ -31,13 +31,16 @@ impl MyApp {
         }
     }
 
-    fn update(&mut self, _message: Message) {
-        todo!()
+    fn update(&mut self, message: MyAppMessage) {
+        match message {
+            MyAppMessage::DoNothing => {},
+        }
     }
 
-    fn view(&self) -> Element<Message> {
+    fn view(&self) -> Element<MyAppMessage> {
         column!(
-            text("Hello World!".to_string()),
+            text("Construct from struct"),
+            Slider::new(0..=100, 50, |_| MyAppMessage::DoNothing),
         ).into()
     }
 }
