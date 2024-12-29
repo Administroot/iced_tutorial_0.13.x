@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/slider.md",
+                "file": "tutorial/progressbar.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "slider"
+              "title": "progressbar"
             }
           },
           {
@@ -186,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/slider.md"
+                "file": "tutorial/progressbar.md"
               },
               "icon": "lucide-list",
-              "title": "slider 的大纲"
+              "title": "progressbar 的大纲"
             }
           },
           {
@@ -225,6 +225,7 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "tutorial/slider.md",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h360oy5vn3-0xsz01l-2pxw1ne2i8wzjsv55wi3rjvas/work-products.bin",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h360oy5vn3-0xsz01l-2pxw1ne2i8wzjsv55wi3rjvas/query-cache.bin",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h360oy5vn3-0xsz01l-2pxw1ne2i8wzjsv55wi3rjvas/dep-graph.bin",
@@ -235,10 +236,8 @@
     "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h360oy5q7h-1a4a9n3-0ptx41gsv9fadcameebm0l476",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h360oy5vn3-0xsz01l-working/work-products.bin",
     "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h360oy5vn3-0xsz01l-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h360oy5vn3-0xsz01l-working/dep-graph.part.bin",
     "tutorial/first_app.md",
     "tutorial/container.md",
-    "tutorial/slider.md",
     "tutorial/combobox.md",
     "tutorial/picklist.md",
     "README.md",
