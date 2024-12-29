@@ -1,22 +1,43 @@
-use iced::widget::{column, Column};
+use iced::{
+    widget::{
+        column, text
+    },
+    Element
+};
 
-pub fn main() -> iced::Result {
-    iced::application("My app", update, view).run()
+fn main() -> iced::Result {
+    iced::run("My First App", MyApp::update, MyApp::view)
+}
+
+struct MyApp {
+    _state: String,
+}
+
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
 }
 
 #[derive(Debug, Clone)]
-
-enum MyAppMessage {
-    _Increment,
+enum Message {
+    _Message1,
 }
 
-#[derive(Default)]
-struct State {
-    _checkbox4: bool,
-}
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
 
-fn update(_state: &mut State, _message: MyAppMessage) {}
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
 
-fn view(_state: &State) -> Column<MyAppMessage> {
-    column!["hello, world"].into()
+    fn view(&self) -> Element<Message> {
+        column!(
+            text("My first app".to_string()),
+        ).into()
+    }
 }
