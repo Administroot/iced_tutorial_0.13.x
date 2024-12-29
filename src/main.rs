@@ -1,6 +1,6 @@
 use iced::{
-    widget::{button, column, progress_bar, text, ProgressBar},
-    Element, Length,
+    widget::{column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
@@ -8,8 +8,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    value: f32,
-    status: String,
+    _state: String,
 }
 
 impl Default for MyApp {
@@ -20,52 +19,21 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    PressButton,
+    _Message1,
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            value: 0.,
-            status: String::new(),
+            _state: String::new(),
         }
     }
 
-    fn update(&mut self, message: Message) {
-        match message {
-            Message::PressButton => {
-                // FIXME: ICED might not compatiable with time crate
-
-                // self.value = 0.0;
-                // loop {
-                //     self.value += 5.0;
-                //     sleep(Duration::from_secs(5u64));
-                //     self.status = self.value.to_string();
-                //     if self.value > 100.0 {
-                //         self.status = String::from("Done");
-                //         break
-                //     }
-                //     println!("{}", self.value);
-                // }
-                self.value += 5.0;
-                if self.value > 100.0 {
-                    self.status = String::from("Done");
-                }
-            }
-        }
+    fn update(&mut self, _message: Message) {
+        todo!()
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            text("Construct from struct"),
-            ProgressBar::new(0.00..=100.0, 50.),
-            text("Construct from function"),
-            progress_bar(0.00..=100.0, 50.),
-            text("Functional progressbar"),
-            progress_bar(0.00..=100.0, self.value),
-            button("Start!").on_press(Message::PressButton),
-            text(&self.status).width(Length::Fill).center(),
-        )
-        .into()
+        column!(text("Hello World!".to_string()),).into()
     }
 }
