@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{button::text, column, progress_bar, text, ProgressBar},
     Element,
 };
 
@@ -34,6 +34,13 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            text("Construct from struct"),
+            ProgressBar::new(0.00..=100.0, 50.),
+            text("Construct from function"),
+            progress_bar(0.00..=100.0, 50.),
+            text("Functional progressbar"),
+            
+        ).into()
     }
 }
