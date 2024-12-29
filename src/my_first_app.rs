@@ -1,8 +1,6 @@
 use iced::{
-    widget::{
-        column, text
-    },
-    Element
+    widget::{column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
@@ -36,8 +34,6 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            text("Hello World!".to_string()),
-        ).into()
+        column!(text("Hello World!".to_string()),).into()
     }
 }
