@@ -1,8 +1,6 @@
-use std::{thread::sleep, time::Duration};
-
 use iced::{
     widget::{button, column, progress_bar, text, ProgressBar},
-    Element,
+    Element, Length,
 };
 
 fn main() -> iced::Result {
@@ -36,16 +34,22 @@ impl MyApp {
     fn update(&mut self, message: Message) {
         match message {
             Message::PressButton => {
-                self.value = 0.0;
-                loop {
-                    self.value += 1.0;
-                    sleep(Duration::from_secs(1u64));
-                    self.status = self.value.to_string();
-                    if self.value > 100.0 {
-                        self.status = String::from("Done");
-                        break
-                    }
-                    println!("{}", self.value);
+                // FIXME: ICED might not compatiable with time crate
+
+                // self.value = 0.0;
+                // loop {
+                //     self.value += 5.0;
+                //     sleep(Duration::from_secs(5u64));
+                //     self.status = self.value.to_string();
+                //     if self.value > 100.0 {
+                //         self.status = String::from("Done");
+                //         break
+                //     }
+                //     println!("{}", self.value);
+                // }
+                self.value += 5.0;
+                if self.value > 100.0 {
+                    self.status = String::from("Done");
                 }
             }
         }
@@ -60,7 +64,8 @@ impl MyApp {
             text("Functional progressbar"),
             progress_bar(0.00..=100.0, self.value),
             button("Start!").on_press(Message::PressButton),
-            text(&self.status).center(),
-        ).into()
+            text(&self.status).width(Length::Fill).center(),
+        )
+        .into()
     }
 }
