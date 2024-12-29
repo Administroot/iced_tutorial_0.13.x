@@ -23,30 +23,30 @@ impl Default for MyApp {
 #[derive(Debug, Clone)]
 enum Message {
     PressButton,
-    Notice,
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
             value: 0.,
+            status: String::new(),
         }
     }
 
     fn update(&mut self, message: Message) {
         match message {
             Message::PressButton => {
+                self.value = 0.0;
                 loop {
                     self.value += 1.0;
-                    sleep(Duration::from_millis(100));
-                    if self.value == 100.0 {
-                        Message::Notice;
+                    sleep(Duration::from_secs(1u64));
+                    self.status = self.value.to_string();
+                    if self.value > 100.0 {
+                        self.status = String::from("Done");
                         break
                     }
+                    println!("{}", self.value);
                 }
-            },
-            Message::Notice => {
-
             }
         }
     }
@@ -60,7 +60,7 @@ impl MyApp {
             text("Functional progressbar"),
             progress_bar(0.00..=100.0, self.value),
             button("Start!").on_press(Message::PressButton),
-            text(self.),
+            text(&self.status).center(),
         ).into()
     }
 }
