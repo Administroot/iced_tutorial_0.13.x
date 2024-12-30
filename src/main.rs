@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{button, column, tooltip, Tooltip},
     Element,
 };
 
@@ -34,6 +34,10 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            Tooltip::new(
+                button("Mouse over to see the tool")
+            )
+        ).into()
     }
 }
