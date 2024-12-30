@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, image, text, Image},
+    widget::{column, svg, svg::Handle, text, Svg},
     ContentFit, Element,
 };
 
@@ -36,11 +36,11 @@ impl MyApp {
     fn view(&self) -> Element<Message> {
         column!(
             text("Construct from struct"),
-            Image::new("ferris.png"),
+            Svg::from_path("pic.svg"),
             text("Construct from function"),
-            image("ferris.png"),
+            svg(Handle::from_path("pic.svg")),
             text("Different content fit"),
-            image("ferris.png").content_fit(ContentFit::Cover)
+            svg(Handle::from_path("pic.svg")).content_fit(ContentFit::None),
         )
         .into()
     }

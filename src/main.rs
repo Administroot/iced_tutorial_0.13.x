@@ -1,7 +1,6 @@
 use iced::{
-    widget::{column, image, text, Image},
+    widget::{column, text},
     Element,
-    ContentFit,
 };
 
 fn main() -> iced::Result {
@@ -35,13 +34,6 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            text("Construct from struct"),
-            Image::new("ferris.png"),
-            text("Construct from function"),
-            image("ferris.png"),
-            text("Different content fit"),
-            image("ferris.png").content_fit(ContentFit::Cover)
-        ).into()
+        column!(text("Hello World!".to_string()),).into()
     }
 }
