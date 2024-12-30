@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/rule.md",
+                "file": "tutorial/image.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "rule"
+              "title": "image"
             }
           },
           {
@@ -186,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/rule.md"
+                "file": "tutorial/image.md"
               },
               "icon": "lucide-list",
-              "title": "rule 的大纲"
+              "title": "image 的大纲"
             }
           },
           {
@@ -225,17 +225,18 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h372engzxy-0s8s3ec-2pxw1ne2i8wzjsv55wi3rjvas/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h372engzxy-0s8s3ec-2pxw1ne2i8wzjsv55wi3rjvas/work-products.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h372engzxy-0s8s3ec-2pxw1ne2i8wzjsv55wi3rjvas/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-024t31ue6t3ri/s-h372engzxy-0s8s3ec-2pxw1ne2i8wzjsv55wi3rjvas",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h372eni0t2-16vehm3-0ptx41gsv9fadcameebm0l476/work-products.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h372eni0t2-16vehm3-0ptx41gsv9fadcameebm0l476/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h372eni0t2-16vehm3-0ptx41gsv9fadcameebm0l476/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h372eni0t2-16vehm3-0ptx41gsv9fadcameebm0l476",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h372eni0t2-16vehm3-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h372eni0t2-16vehm3-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-08xqdnootdxb5/s-h372eni0t2-16vehm3-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-14xak0h0g8ani/s-h372ilg4q7-0u192sk-c79h5grx65yyeerjcwgvjaafm/work-products.bin",
+    "target/debug/incremental/iced_tutorial-14xak0h0g8ani/s-h372ilg4q7-0u192sk-c79h5grx65yyeerjcwgvjaafm/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-14xak0h0g8ani/s-h372ilg4q7-0u192sk-c79h5grx65yyeerjcwgvjaafm/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-14xak0h0g8ani/s-h372ilg4q7-0u192sk-c79h5grx65yyeerjcwgvjaafm",
+    "target/debug/incremental/iced_tutorial-3pc307it5fiep/s-h372ilf1ve-19m07rt-1fyoey2x5fg0xbga72ybyigjk/work-products.bin",
+    "target/debug/incremental/iced_tutorial-3pc307it5fiep/s-h372ilf1ve-19m07rt-1fyoey2x5fg0xbga72ybyigjk/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-3pc307it5fiep/s-h372ilf1ve-19m07rt-1fyoey2x5fg0xbga72ybyigjk/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-3pc307it5fiep/s-h372ilf1ve-19m07rt-1fyoey2x5fg0xbga72ybyigjk",
+    "target/debug/deps/libiced_tutorial-e8e27cad4cb073a0.rmeta",
+    "target/debug/deps/libiced_tutorial-303d2948865681ac.rmeta",
+    "target/debug/deps/iced_tutorial-e8e27cad4cb073a0.d",
+    "tutorial/rule.md",
     "tutorial/tooltip.md",
     "README.md",
     "tutorial/progressbar.md",
@@ -270,7 +271,6 @@
     "考研/第一套第一问.png",
     "考研/马原关键词原理对应关系.png",
     "出发前先看看/考研.md",
-    "Clippings/Types of Admonitions.md",
     "Whiteboard.canvas",
     "未命名.canvas"
   ]
