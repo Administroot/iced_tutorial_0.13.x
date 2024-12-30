@@ -1,6 +1,6 @@
 use iced::{
-    widget::{column, text},
-    Element,
+    widget::{button, column, row},
+    Element, Length,
 };
 
 fn main() -> iced::Result {
@@ -34,6 +34,19 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            button("Shrink").width(Length::Shrink),
+            button("Fill").width(Length::Fill),
+            row![
+                // (ROW - 10%) * 2 / 3
+                button("FillPortion2").width(Length::FillPortion(2)),
+                // (ROW - 10%) * 1 / 3
+                button("FillPortion1").width(Length::FillPortion(1)),
+            ].spacing(10),
+            button("Fixed").width(Length::Fixed(100.)),
+            button("Fill(height)").height(Length::Fill),
+        )
+        .spacing(10)
+        .into()
     }
 }
