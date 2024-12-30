@@ -11,44 +11,57 @@ There are four types of [Length](https://docs.rs/iced/0.12.1/iced/latest/iced/en
 
 ```rust
 use iced::{
-    widget::{button, column, row},
-    Length, Sandbox, Settings,
+    widget::{button, column, row},
+    Element, Length,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::run("My First App", MyApp::update, MyApp::view)
 }
 
-struct MyApp;
+struct MyApp {
+    _state: String,
+}
 
-impl Sandbox for MyApp {
-    type Message = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
 
-    fn new() -> Self {
-        Self
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    _Message1,
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, _message: Self::Message) {}
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            button("Shrink").width(Length::Shrink),
-            button("Fill").width(Length::Fill),
-            row![
-                button("FillPortion 2").width(Length::FillPortion(2)),
-                button("FillPortion 1").width(Length::FillPortion(1)),
-            ]
-            .spacing(10),
-            button("Fixed").width(Length::Fixed(100.)),
-            button("Fill (height)").height(Length::Fill),
-        ]
-        .spacing(10)
-        .into()
-    }
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
+  
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
+  
+    fn view(&self) -> Element<Message> {
+        column!(
+            button("Shrink").width(Length::Shrink),
+            button("Fill").width(Length::Fill),
+            row![
+                // (ROW - 10%) * 2 / 3
+             button("FillPortion2").width(Length::FillPortion(2)),
+                // (ROW - 10%) * 1 / 3
+             button("FillPortion1").width(Length::FillPortion(1)),
+            ]
+            .spacing(10),
+            button("Fixed").width(Length::Fixed(100.)),
+            button("Fill(height)").height(Length::Fill),
+        )
+        .spacing(10)
+        .into()
+    }
 }
 ```
 
