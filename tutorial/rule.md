@@ -7,42 +7,53 @@ The widget can be set to be either horizontal or vertical.
 
 ```rust
 use iced::{
-    widget::{column, horizontal_rule, text, vertical_rule, Rule},
-    Sandbox, Settings,
+    widget::{column, horizontal_rule, text, vertical_rule, Rule},
+    Element,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::run("My First App", MyApp::update, MyApp::view)
 }
 
-struct MyApp;
+struct MyApp {
+    _state: String,
+}
 
-impl Sandbox for MyApp {
-    type Message = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
+  
+#[derive(Debug, Clone)]
+enum Message {
+    _Message1,
+}
+  
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
 
-    fn new() -> Self {
-        Self
-    }
-
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, _message: Self::Message) {}
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            text("Construct from struct"),
-            Rule::horizontal(0),
-            text("Construct from function"),
-            horizontal_rule(0),
-            text("Different space"),
-            horizontal_rule(50),
-            text("Vertical rule"),
-            vertical_rule(100),
-        ]
-        .into()
-    }
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
+  
+    fn view(&self) -> Element<Message> {
+        column!(
+            text("Construct from struct"),
+            Rule::horizontal(0),
+            text("Construct from function"),
+            horizontal_rule(0),
+            text("Different space"),
+            horizontal_rule(50),
+            text("Vertical rule"),
+            vertical_rule(100),
+        )
+        .into()
+    }
 }
 ```
 

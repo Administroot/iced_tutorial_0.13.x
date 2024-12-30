@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{column, horizontal_rule, text, vertical_rule, Rule},
     Element,
 };
 
@@ -34,6 +34,16 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            text("Construct from struct"),
+            Rule::horizontal(0),
+            text("Construct from function"),
+            horizontal_rule(0),
+            text("Different space"),
+            horizontal_rule(50),
+            text("Vertical rule"),
+            vertical_rule(100),
+        )
+        .into()
     }
 }
