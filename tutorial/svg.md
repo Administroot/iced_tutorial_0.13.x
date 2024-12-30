@@ -9,7 +9,7 @@ The `Cargo.toml` dependencies should look like this:
 
 ```toml
 [dependencies]
-iced = { version = "0.12.1", features = ["svg"] }
+iced = { version = "0.13.1", features = ["svg"] }
 ```
 
 Let's add an [SVG](https://en.wikipedia.org/wiki/SVG) image named `pic.svg` into the project root directory, i.e., the image has the path `my_project/pic.svg` where `my_project` is the name of our project.

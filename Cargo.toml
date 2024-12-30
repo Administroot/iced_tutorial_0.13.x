@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 
-iced = {version = "0.13.1", features = ["image"] }
+iced = {version = "0.13.1", features = ["image", "svg"] }
