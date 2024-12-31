@@ -6,58 +6,73 @@ It has several constructions to help us allocating spaces horizontally, vertical
 
 ```rust
 use iced::{
-    widget::{button, column, horizontal_space, row, vertical_space, Space},
-    Alignment, Length, Sandbox, Settings,
+    widget::{button, column, horizontal_space, row, vertical_space, Space},
+    Alignment, Element, Length,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::run("Space", MyApp::update, MyApp::view)
 }
 
-struct MyApp;
+struct MyApp {
+    _state: String,
+}
 
-impl Sandbox for MyApp {
-    type Message = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
 
-    fn new() -> Self {
-        Self
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    _Message1,
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
 
-    fn update(&mut self, _message: Self::Message) {}
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            row![
-                button("Horizontal space 1A"),
-                Space::with_width(50),
-                button("Horizontal space 1B"),
-            ],
-            row![
-                button("Horizontal space 2A"),
-                Space::with_width(Length::Fill),
-                button("Horizontal space 2B"),
-            ],
-            row![
-                button("Horizontal space 3A"),
-                horizontal_space(),
-                button("Horizontal space 3B"),
-            ],
-            button("Vertical space 1A"),
-            Space::with_height(50),
-            button("Vertical space 1B"),
-            Space::with_height(Length::Fill),
-            button("Vertical space 2A"),
-            vertical_space(),
-            button("Vertical space 2B"),
-            button("Diagonal space A"),
-            row![Space::new(50, 50), button("Diagonal space B"),].align_items(Alignment::End)
-        ]
-        .into()
-    }
+
+    fn view(&self) -> Element<Message> {
+        column!(
+            row![
+                button("Horizontal space 1A"),
+                Space::with_width(50),
+                button("Horizontal space 1B"),
+            ],
+            row![
+                // Button 2A on the far left
+                button("Horizontal space 2A"),
+                Space::with_width(Length::Fill),
+                // Button 2B on the far right
+                button("Horizontal space 2B"),
+            ],
+            // The same effect with Space 2*
+            row![
+                button("Horizontal space 3A"),
+                horizontal_space(),
+                button("Horizontal space 3B"),
+            ],
+            button("Vertical space 1A"),
+            Space::with_height(50),
+            button("Vertical space 1B"),
+            Space::with_height(Length::Fill),
+            button("Vertical space 2A"),
+            vertical_space(),
+            button("Vertical space 2B"),
+            button("Diagonal space A"),
+            row![Space::new(50, 50), button("Diagonal space B"),].align_y(Alignment::End),
+        )
+        .into()
+    }
 }
 ```
 

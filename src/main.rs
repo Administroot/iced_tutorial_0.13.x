@@ -1,10 +1,10 @@
 use iced::{
-    widget::{button, column, row, Space, horizontal_space},
-    Element, Length,
+    widget::{column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
-    iced::run("Space", MyApp::update, MyApp::view)
+    iced::run("My First App", MyApp::update, MyApp::view)
 }
 
 struct MyApp {
@@ -34,25 +34,6 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            row![
-                button("Horizontal space 1A"),
-                Space::with_width(50),
-                button("Horizontal space 1B"),
-            ],
-            row![
-                // Button 2A on the far left
-                button("Horizontal space 2A"),
-                Space::with_width(Length::Fill),
-                // Button 2B on the far right
-                button("Horizontal space 2B"),
-            ],
-            // The same 
-            row![
-                button("Horizontal space 3A"),
-                horizontal_space(),
-                button("Horizontal space 3B"),
-            ]
-        ).into()
+        column!(text("Hello World!".to_string()),).into()
     }
 }
