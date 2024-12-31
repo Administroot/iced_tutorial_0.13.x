@@ -57,13 +57,9 @@ impl MyApp {
                 .width(Length::Fill)
                 .align_x(Alignment::Center),
             column!["Space between elements", "Space between elements"].spacing(20),
-
         ]
-
         .into()
-
     }
-
 }
 ```
 
