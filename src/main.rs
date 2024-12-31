@@ -4,7 +4,7 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::run("My First App", MyApp::update, MyApp::view)
+    iced::run("Row", MyApp::update, MyApp::view)
 }
 
 struct MyApp {
@@ -34,6 +34,10 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            Row::with_children(vec!["Construct from the with_children function".into()], "another element".into()),
+            Row::new()
+                .push("Construct from the new function and")
+        ).into()
     }
 }
