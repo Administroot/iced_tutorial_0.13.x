@@ -7,48 +7,97 @@ The inner widgets can be aligned top, middle or bottom.
 
 ```rust
 use iced::{
-    widget::{column, row, Row},
-    Alignment, Length, Sandbox, Settings,
+    widget::{column, row, Row},
+    Alignment, Element, Length,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::run("Row", MyApp::update, MyApp::view)
 }
 
-struct MyApp;
+struct MyApp {
+    _state: String,
+}
 
-impl Sandbox for MyApp {
-    type Message = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
 
-    fn new() -> Self {
-        Self
-    }
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+  
 
-    fn update(&mut self, _message: Self::Message) {}
+#[derive(Debug, Clone)]
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            Row::with_children(vec![
-                "Construct from the with_children function.".into(),
-                "another element".into(),
-            ]),
-            Row::new()
-                .push("Construct from the new function and the push method.")
-                .push("another element again"),
-            row(vec!["Construct from function".into()]),
-            row!["Construct from macro"],
-            row!["With padding"].padding(20),
-            row!["Space between elements", "Space between elements",].spacing(20),
-            row!["Different alignment"]
-                .height(Length::Fill)
-                .align_items(Alignment::Center),
-        ]
-        .into()
-    }
+enum Message {
+
+    _Message1,
+
+}
+
+  
+
+impl MyApp {
+
+    fn new() -> Self {
+
+        Self {
+
+            _state: String::new(),
+
+        }
+
+    }
+
+  
+
+    fn update(&mut self, _message: Message) {
+
+        todo!()
+
+    }
+
+  
+
+    fn view(&self) -> Element<Message> {
+
+        column!(
+
+            Row::with_children(vec![
+
+                "Construct from the with_children function".into(),
+
+                "another element".into()
+
+            ]),
+
+            Row::new()
+
+                .push("Construct from the new function and the push method")
+
+                .push("another element again"),
+
+            row(vec!["Constuct from function".into()]),
+
+            row!["Construct from macro"],
+
+            row!["With padding"].padding(20),
+
+            row!["space with elements", "space with elements"].spacing(20),
+
+            row!["Different alignment"]
+
+                .height(Length::Fill)
+
+                .align_y(Alignment::Center),
+
+        )
+
+        .into()
+
+    }
+
 }
 ```
 
