@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{column, Column, text},
     Element,
 };
 
@@ -34,6 +34,8 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column![
+            Column::with_children(vec!["Construct from the with_children function".into(), "another element".into()]),
+        ].into()
     }
 }
