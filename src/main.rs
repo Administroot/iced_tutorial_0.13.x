@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{column, text, row, Row},
     Element,
 };
 
@@ -37,7 +37,10 @@ impl MyApp {
         column!(
             Row::with_children(vec!["Construct from the with_children function".into()], "another element".into()),
             Row::new()
-                .push("Construct from the new function and")
+                .push("Construct from the new function and the push method")
+                .push("another element again"),
+            row(vec!["Constuct from function".into()]),
+            row!["Construct from macro"],
         ).into()
     }
 }
