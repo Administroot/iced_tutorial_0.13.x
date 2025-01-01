@@ -1,4 +1,5 @@
 use iced::{
+    theme,
     widget::{column, text},
     Element,
 };
@@ -35,5 +36,11 @@ impl MyApp {
 
     fn view(&self) -> Element<Message> {
         column!(text("Hello World!".to_string()),).into()
+    }
+
+    fn theme(&self) -> iced::Theme {
+        iced::Theme::Dark
+        // or
+        // iced::Theme::Light
     }
 }
