@@ -71,51 +71,28 @@ impl MyApp {
                 .width(500)
                 .height(30)
               .direction(Direction::Horizontal(Scrollbar::new())),
-
             Scrollable::new(long_both_texts)
-
                 .width(230)
-
                 .height(105)
-
                 .direction(Direction::Both {
-
                     vertical: Scrollbar::new(),
-
                     horizontal: Scrollbar::new()
-
                 }),
-
             column![
-
                 Scrollable::new(long_both_texts_2)
-
                     .width(230)
-
                     .height(105)
-
                     .direction(Direction::Both {
-
                         vertical: Scrollbar::new(),
-
                         horizontal: Scrollbar::new()
-
                     })
-
                     .on_scroll(Message::Scrolled4),
-
                 text(&self.offset4),
-
             ],
-
         )
-
         .spacing(50)
-
         .into()
-
     }
-
 }
 ```
 
