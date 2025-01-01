@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/scrollable.md",
+                "file": "tutorial/changing_themes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "scrollable"
+              "title": "changing_themes"
             }
           },
           {
@@ -186,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/scrollable.md"
+                "file": "tutorial/changing_themes.md"
               },
               "icon": "lucide-list",
-              "title": "scrollable 的大纲"
+              "title": "changing_themes 的大纲"
             }
           },
           {
@@ -225,6 +225,7 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "tutorial/scrollable.md",
     "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h39cdashid-1sy4pw8-8zkjw0nn0we1g57osvr4woij4/work-products.bin",
     "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h39cdashid-1sy4pw8-8zkjw0nn0we1g57osvr4woij4/query-cache.bin",
     "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h39cdashid-1sy4pw8-8zkjw0nn0we1g57osvr4woij4/dep-graph.bin",
@@ -235,7 +236,6 @@
     "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h39cdas9ya-0o21ypv-386rbbx6amuuvlhmet7bn1fgn",
     "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h39cdashid-1sy4pw8-working/query-cache.bin",
     "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h39cdashid-1sy4pw8-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h39cdashid-1sy4pw8-working/dep-graph.part.bin",
     "tutorial/container.md",
     "tutorial/space.md",
     "tutorial/row.md",
