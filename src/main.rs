@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{column, scrollable::{Direction, Scrollbar}, text, Scrollable},
     Element,
 };
 
@@ -34,6 +34,13 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        let long_vertical_texts =
+            column((0..10).map(|i| text(format!("{} vertical scrollable", i + 1)).into()));
+        column!(
+            Scrollable::new(long_vertical_texts)
+                .width(230)
+                .height(105)
+                .direction(Direction::Vertical(Scrollbar::new())),
+        ).into()
     }
 }
