@@ -5,44 +5,55 @@
 
 ```rust
 use iced::{
-    alignment::{Horizontal, Vertical},
-    widget::{column, container, Container},
-    Length, Sandbox, Settings,
+    widget::{column, container, Container},
+    Alignment, Element, Length,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::run("My First App", MyApp::update, MyApp::view)
 }
 
-struct MyApp;
+struct MyApp {
+    _state: String,
+}
 
-impl Sandbox for MyApp {
-    type Message = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
 
-    fn new() -> Self {
-        Self
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    _Message1,
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
 
-    fn update(&mut self, _message: Self::Message) {}
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            Container::new("Construct from struct"),
-            container("Construct from function"),
-            container("With padding").padding(20),
-            container("Different alignment")
-                .width(Length::Fill)
-                .align_x(Horizontal::Center),
-            container("Different alignment for vertical axis")
-                .height(Length::Fill)
-                .align_y(Vertical::Center),
-        ]
-        .into()
-    }
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
+  
+    fn view(&self) -> Element<Message> {
+        column!(
+            Container::new("Construct from struct"),
+            container("Constuct from function"),
+            container("With padding").padding(20),
+            container("Different alignment")
+                .width(Length::Fill)
+                .align_x(Alignment::Center),
+            container("Different alignment for vertical axis")
+                .height(Length::Fill)
+                .align_y(Alignment::Center),
+        )
+        .into()
+    }
 }
 ```
 
