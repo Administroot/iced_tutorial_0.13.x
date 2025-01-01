@@ -4,7 +4,8 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view)
+    iced::application("changing_theme", MyApp::update, MyApp::view)
+        .theme(MyApp::theme)
         .run()
 }
 
@@ -36,5 +37,11 @@ impl MyApp {
 
     fn view(&self) -> Element<Message> {
         column!(text("Hello World!".to_string()),).into()
+    }
+
+    fn theme(&self) -> iced::Theme {
+        iced::Theme::Dark
+        // or
+        // iced::Theme::Light
     }
 }

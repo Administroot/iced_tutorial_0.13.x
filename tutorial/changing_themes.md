@@ -3,36 +3,54 @@
 We can implement [theme](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#method.theme) method in [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) to return the desired theme.
 
 ```rust
-use iced::{Sandbox, Settings};
+use iced::{
+    widget::{column, text},
+    Element,
+};
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::application("changing_theme", MyApp::update, MyApp::view)
+        .theme(MyApp::theme)
+        .run()
 }
 
-struct MyApp;
+struct MyApp {
+    _state: String,
+}
 
-impl Sandbox for MyApp {
-    type Message = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
 
-    fn new() -> Self {
-        Self
-    }
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    _Message1,
+}
 
-    fn update(&mut self, _message: Self::Message) {}
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        "Hello".into()
-    }
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
+  
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
 
-    fn theme(&self) -> iced::Theme {
-        iced::Theme::Dark
-        // or
-        // iced::Theme::Light
-    }
+    fn view(&self) -> Element<Message> {
+        column!(text("Hello World!".to_string()),).into()
+    }
+
+    fn theme(&self) -> iced::Theme {
+        iced::Theme::Dark
+        // or
+        // iced::Theme::Light
+    }
 }
 ```
 

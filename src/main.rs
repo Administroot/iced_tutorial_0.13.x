@@ -1,11 +1,11 @@
 use iced::{
-    settings, theme, widget::{column, text}, Element, Settings
+    widget::{column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
-    // iced::run("My First App", MyApp::update, MyApp::view)
-    // iced::daemon("changing_themes", MyApp)
-    iced::a
+    iced::application("My First App", MyApp::update, MyApp::view)
+        .run()
 }
 
 struct MyApp {
@@ -37,8 +37,4 @@ impl MyApp {
     fn view(&self) -> Element<Message> {
         column!(text("Hello World!".to_string()),).into()
     }
-
-    fn theme(&self) -> iced::Theme {
-        iced::Theme::Dark
-        // or
-        // iced::Theme::Li
+}

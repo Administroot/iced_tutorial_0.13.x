@@ -12,7 +12,8 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::run("My First App", MyApp::update, MyApp::view)
+    iced::application("My First App", MyApp::update, MyApp::view)
+        .run()
 }
 
 struct MyApp {
