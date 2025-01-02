@@ -35,7 +35,9 @@ impl MyApp {
 
     fn view(&self) -> Element<Message> {
         column!(
-            text("Ready?").style(Color::from_rgb(1., 0.6, 0.2)),
+            text("Ready?").style(text::Style(
+                Color::from_rgb(1., 0.6, 0.2)
+            )),
         ).into()
     }
 }
