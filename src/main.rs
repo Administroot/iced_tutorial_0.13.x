@@ -1,6 +1,5 @@
 use iced::{
-    widget::{column, text, radio},
-    Element,
+    theme, widget::{column, radio}, Element
 };
 
 fn main() -> iced::Result {
@@ -8,7 +7,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    state: String,
+    _state: String,
 }
 
 impl Default for MyApp {
@@ -19,29 +18,25 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    Choose(&str)
+    Choose(String)
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            state: String::new(),
+            _state: String::new(),
         }
     }
 
-    fn update(&mut self, message: Message) {
-        match message {
-            Message::Choose(s) => {
-                self.state = s.to_string();
-            }
-        }
+    fn update(&mut self, _message: Message) {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            radio("Choice A", &"A".to_string(), self.state.as_ref(), |s| {
-                Message::
-            })
-        ).into()
+        column![
+            radio("Choice A", "A", Some("A"), |s| Message::Choose(
+                s.to_string()
+            ))
+            .style()
+        ].into()
     }
 }
