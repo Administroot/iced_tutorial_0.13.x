@@ -1,9 +1,10 @@
 use iced::{
-    widget::{column, text}, Color, Element
+    theme, widget::{column, row, text, button}, Color, Element
 };
 
 fn main() -> iced::Result {
     iced::application("My First App", MyApp::update, MyApp::view)
+        .theme(MyApp::theme)
         .run()
 }
 
@@ -33,11 +34,17 @@ impl MyApp {
         todo!()
     }
 
+    fn theme(&self) -> iced::Theme {
+        iced::Theme::Dark
+    }
+
     fn view(&self) -> Element<Message> {
         column!(
-            text("Ready?").style(text::Style(
-                Color::from_rgb(1., 0.6, 0.2)
-            )),
+            text("Ready?").color(Color::from_rgb(1., 0.6, 0.2)),
+            row![
+                button("Cancel")
+                    
+            ]
         ).into()
     }
 }
