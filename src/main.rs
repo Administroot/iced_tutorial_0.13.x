@@ -20,7 +20,7 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    DummyMessage,
 }
 
 impl MyApp {
@@ -43,7 +43,8 @@ impl MyApp {
             text("Ready?").color(Color::from_rgb(1., 0.6, 0.2)),
             row![
                 button("Cancel")
-                    
+                    .style()
+                    .on_press(Message::DummyMessage)
             ]
         ).into()
     }
