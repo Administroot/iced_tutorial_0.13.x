@@ -1,5 +1,5 @@
 use iced::{
-    theme, widget::{column, row, text, button}, Color, Element
+    widget::{column, row, text, button}, Color, Element
 };
 
 fn main() -> iced::Result {
@@ -43,7 +43,10 @@ impl MyApp {
             text("Ready?").color(Color::from_rgb(1., 0.6, 0.2)),
             row![
                 button("Cancel")
-                    .style(|theme status| {theme})
+                    .style(button::secondary)
+                    .on_press(Message::DummyMessage),
+                button("Go!~~")
+                    .style(button::primary)
                     .on_press(Message::DummyMessage)
             ]
         ).into()
