@@ -43,7 +43,7 @@ impl MyApp {
             text("Ready?").color(Color::from_rgb(1., 0.6, 0.2)),
             row![
                 button("Cancel")
-                    .style()
+                    .style(|theme status| {theme})
                     .on_press(Message::DummyMessage)
             ]
         ).into()
