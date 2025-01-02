@@ -4,8 +4,7 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view)
-        .run()
+    iced::application("My First App", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {

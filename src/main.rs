@@ -1,11 +1,10 @@
 use iced::{
-    widget::{column, row, text, button}, Color, Element
+    widget::{column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view)
-        .theme(MyApp::theme)
-        .run()
+    iced::application("My First App", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
@@ -20,7 +19,7 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    DummyMessage,
+    _Message1,
 }
 
 impl MyApp {
@@ -34,21 +33,7 @@ impl MyApp {
         todo!()
     }
 
-    fn theme(&self) -> iced::Theme {
-        iced::Theme::Dark
-    }
-
     fn view(&self) -> Element<Message> {
-        column!(
-            text("Ready?").color(Color::from_rgb(1., 0.6, 0.2)),
-            row![
-                button("Cancel")
-                    .style(button::secondary)
-                    .on_press(Message::DummyMessage),
-                button("Go!~~")
-                    .style(button::primary)
-                    .on_press(Message::DummyMessage)
-            ]
-        ).into()
+        column!(text("Hello World!".to_string()),).into()
     }
 }

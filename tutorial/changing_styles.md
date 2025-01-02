@@ -8,49 +8,62 @@ Since [theme::Text](https://docs.rs/iced/0.12.1/iced/theme/enum.Text.html) imple
 
 ```rust
 use iced::{
-    theme,
-    widget::{button, column, row, text},
-    Color, Sandbox, Settings,
+    widget::{button, column, row, text},
+    Color, Element,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::application("changing_styles", MyApp::update, MyApp::view)
+        .theme(MyApp::theme)
+        .run()
+}
+
+struct MyApp {
+    _state: String,
+}
+
+
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
 }
 
 #[derive(Debug, Clone)]
-enum MyAppMessage {
-    DummyMessage,
+
+enum Message {
+    DummyMessage,
 }
 
-struct MyApp;
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
+    }
+  
+    fn update(&mut self, _message: Message) {
+        todo!()
+    }
+  
+    fn theme(&self) -> iced::Theme {
+        iced::Theme::Dark
+    }
 
-impl Sandbox for MyApp {
-    type Message = MyAppMessage;
-
-    fn new() -> Self {
-        Self
-    }
-
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, _message: Self::Message) {}
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            text("Ready?").style(Color::from_rgb(1., 0.6, 0.2)),
-            row![
-                button("Cancel")
-                    .style(theme::Button::Secondary)
-                    .on_press(MyAppMessage::DummyMessage),
-                button("Go!~~")
-                    .style(theme::Button::Primary)
-                    .on_press(MyAppMessage::DummyMessage),
-            ],
-        ]
-        .into()
-    }
+    fn view(&self) -> Element<Message> {
+        column!(
+            text("Ready?").color(Color::from_rgb(1., 0.6, 0.2)),
+            row![
+                button("Cancel")
+                    .style(button::secondary)
+                    .on_press(Message::DummyMessage),
+                button("Go!~~")
+                    .style(button::primary)
+                    .on_press(Message::DummyMessage)
+            ]
+        )
+        .into()
+    }
 }
 ```
 
