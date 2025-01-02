@@ -1,5 +1,5 @@
 use iced::{
-    theme, widget::{column, radio}, Element
+    theme, widget::{column, radio}, Element, Theme, Color
 };
 
 fn main() -> iced::Result {
@@ -36,7 +36,28 @@ impl MyApp {
             radio("Choice A", "A", Some("A"), |s| Message::Choose(
                 s.to_string()
             ))
-            .style()
+            .style(Theme::Custom(Box::new(RadioStyle)))
         ].into()
+    }
+}
+
+struct RadioStyle;
+
+impl radio::StyleSheet for RadioStyle {
+    type Style = iced::Theme;
+
+    fn active(&self, style: &Self::Style, is_selected: bool) -> radio::Appearance {
+        radio::Style {
+            text_color: Some(if is_selected {
+                Color::from_rgb(0., 0., 1.)
+            } else {
+                Color::from_rgb(0.5, 0.5, 0.5)
+            }),
+            ..style.active(&Theme::Default, is_selected)
+        }
+    }
+
+    fn hovered(&self, style: &Self::Style, is_selected: bool) -> radio::Appearance {
+        style.hovered(&Theme::Default, is_selected)
     }
 }
