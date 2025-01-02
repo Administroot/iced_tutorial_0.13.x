@@ -1,6 +1,5 @@
 use iced::{
-    widget::{column, text},
-    Element,
+    widget::{column, text}, Color, Element
 };
 
 fn main() -> iced::Result {
@@ -35,6 +34,8 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            text("Ready?").style(Color::from_rgb(1., 0.6, 0.2)),
+        ).into()
     }
 }
