@@ -1,5 +1,5 @@
 use iced::{
-    theme, widget::{column, radio, Radio}, Element, Theme, Color
+    widget::{column, radio}, Element
 };
 
 fn main() -> iced::Result {
@@ -18,7 +18,7 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Choose(String)
+    Choose(String)
 }
 
 impl MyApp {
@@ -33,7 +33,7 @@ impl MyApp {
 
     fn view(&self) -> Element<Message> {
         column![
-            radio("Choice A", "A", Some("A"), |s| Message::Choose(
+            radio("Choice A", &"A".to_string(), Some("A"), |s| Message::Choose(
                 s.to_string()
             ))
             .style(if self.select {
@@ -47,7 +47,7 @@ impl MyApp {
 }
 
 mod style {
-    use iced::{widget::{radio, Radio}, Color, Theme, Background};
+    use iced::{widget::radio, Color, Theme, Background};
 
     pub fn radio_selected(_theme: &Theme, _status: radio::Status) -> radio::Style {
         radio::Style {
