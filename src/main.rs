@@ -47,12 +47,15 @@ impl MyApp {
 }
 
 mod style {
-    use iced::{widget::{radio, Radio}, Color, Theme};
+    use iced::{widget::{radio::{self, default}, Radio}, Color, Theme};
 
     pub fn radio_selected(theme: &Theme) -> radio::Style {
         radio::Style {
             text_color: Some(Color::from_rgb(0., 0., 1.)),
-            ..radio.default()
+            background: Radio::DE,
+            dot_color: todo!(),
+            border_width: todo!(),
+            border_color: todo!(),
         }
     }
 }
