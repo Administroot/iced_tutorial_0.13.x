@@ -32,18 +32,17 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
+        let is_selected: bool = self.select;
         column![
             radio("Choice A", "A", Some("A"), |s| Message::Choose(
                 s.to_string()
             ))
-            .style(MyRadio),
+            .style(if is_selected {
+                Color::from_rgb(0., 0., 1.)
+            } else {
+                Color::from_rgb(0.5, 0.5, 0.5)
+            }
+            ),
         ].into()
-    }
-}
-
-struct MyRadio;
-impl theme::Custom for MyRadio {
-    fn active(&self) -> Color {
-        Color::from_rgb8(0, 0, 0)
     }
 }
