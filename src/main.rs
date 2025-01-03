@@ -7,7 +7,14 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    select: bool,
+    selection: Option<Choice>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum Choice {
+    A,
+    B, 
+    C,
 }
 
 impl Default for MyApp {
@@ -18,25 +25,28 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    Choose(String)
+    RadioSelected(Choice),
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            select: false,
+            selection: None,
         }
     }
 
-    fn update(&mut self, _message: Message) {
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::RadioSelected(c) => {
+                self.selection = Some(c);
+            }
+        }
     }
 
     fn view(&self) -> Element<Message> {
         column![
-            radio("Choice A", &"A".to_string(), Some("A"), |s| Message::Choose(
-                s.to_string()
-            ))
-            .style(if self.select {
+            radio("Choice A", Choice::A, self.selection, Message::RadioSelected)
+            .style(if self.selection == Some(Choice::A)  {
                     style::radio_selected
                 } else {
                     style::radio_unselected
