@@ -1,5 +1,5 @@
 use iced::{
-    theme, widget::{column, radio}, Element, Theme, Color
+    theme, widget::{column, radio, Radio}, Element, Theme, Color
 };
 
 fn main() -> iced::Result {
@@ -36,7 +36,14 @@ impl MyApp {
             radio("Choice A", "A", Some("A"), |s| Message::Choose(
                 s.to_string()
             ))
-            .style(style::Radio::new(Color::BLACK))
+            .style(MyRadio),
         ].into()
+    }
+}
+
+struct MyRadio;
+impl theme::Custom for MyRadio {
+    fn active(&self) -> Color {
+        Color::from_rgb8(0, 0, 0)
     }
 }
