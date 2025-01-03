@@ -7,7 +7,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: String,
+    select: bool,
 }
 
 impl Default for MyApp {
@@ -24,7 +24,7 @@ enum Message {
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            select: false,
         }
     }
 
@@ -32,17 +32,27 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        let is_selected: bool = self.select;
         column![
             radio("Choice A", "A", Some("A"), |s| Message::Choose(
                 s.to_string()
             ))
-            .style(if is_selected {
-                Color::from_rgb(0., 0., 1.)
-            } else {
-                Color::from_rgb(0.5, 0.5, 0.5)
-            }
+            .style(if self.select {
+                    style::radio_selected
+                } else {
+                    style::radio_unselected
+                }
             ),
         ].into()
+    }
+}
+
+mod style {
+    use iced::{widget::radio, Color, Theme};
+
+    pub fn radio_selected(theme: &Theme) -> radio::Style {
+        radio::Style {
+            text_color: Color::from_rgb(0., 0., 1.),
+            ..Default::default()
+        }
     }
 }
