@@ -18,7 +18,7 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    Choose(String)
+    _Choose(String)
 }
 
 impl MyApp {
@@ -49,7 +49,7 @@ impl MyApp {
 mod style {
     use iced::{widget::{radio, Radio}, Color, Theme, Background};
 
-    pub fn radio_selected(_theme: &Theme) -> radio::Style {
+    pub fn radio_selected(_theme: &Theme, _status: radio::Status) -> radio::Style {
         radio::Style {
             text_color: Some(Color::from_rgb(0., 0., 1.)),
             background: Background::Color(Color::from_rgb(1., 1., 1.)),
@@ -59,7 +59,7 @@ mod style {
         }
     }
 
-    pub fn radio_unselected(_theme: &Theme) -> radio::Style {
+    pub fn radio_unselected(_theme: &Theme, _status: radio::Status) -> radio::Style {
         radio::Style {
             text_color: Some(Color::from_rgb(0.5, 0.5, 0.5)),
             background: Background::Color(Color::from_rgb(1., 1., 1.)),
