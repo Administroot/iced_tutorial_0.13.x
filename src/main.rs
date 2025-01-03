@@ -7,6 +7,7 @@ fn main() -> iced::Result {
     iced::application("My First App", MyApp::update, MyApp::view).run()
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Page {
     A, 
     B
@@ -23,22 +24,24 @@ impl Default for MyApp {
 }
 
 #[derive(Debug, Clone)]
-enum Message {
-    GoToBButtonPressed(Page),
-    GoToAButtonPressed(Page)
+enum MyAppMessage {
+    GoToBButtonPressed,
+    GoToAButtonPressed
 }
 
 impl MyApp {
+    type Message = MyAppMessage;
+
     fn new() -> Self {
         Self {
             page: Page::A,
         }
     }
 
-    fn update(&mut self, message: Message) {
-        match message {
-            Message::GoToAButtonPressed => Page::A,
-            Message::GoToBButtonPressed => Page::B,
+    fn update(&mut self, message: Self.Message) {
+        self.page = match message {
+            Message::GoToAButtonPressed => {Page::A},
+            Message::GoToBButtonPressed => {Page::B},
         }
     }
 
@@ -50,7 +53,12 @@ impl MyApp {
                     button("Go to B").on_press(Message::GoToBButtonPressed),
                 ]
             },
-            Page::B => {}
-        }
+            Page::B => {
+                column![
+                    text("Page B"),
+                    button("Go to A").on_press(Message::GoToAButtonPressed),
+                ]
+            }
+        }.into()
     }
 }
