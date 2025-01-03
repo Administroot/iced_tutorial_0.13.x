@@ -5,60 +5,65 @@ The field `page` is an [enum](https://doc.rust-lang.org/std/keyword.enum.html) d
 
 ```rust
 use iced::{
-    widget::{button, column, text},
-    Sandbox, Settings,
+    widget::{button, column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::application("more than one page", MyApp::update, MyApp::view).run()
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Page {
-    A,
-    B,
-}
-
-#[derive(Debug, Clone)]
-enum MyAppMessage {
-    GoToBButtonPressed,
-    GoToAButtonPressed,
+    A,
+    B,
 }
 
 struct MyApp {
-    page: Page,
+    page: Page,
 }
 
-impl Sandbox for MyApp {
-    type Message = MyAppMessage;
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
 
-    fn new() -> Self {
-        Self { page: Page::A }
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    GoToBButtonPressed,
+    GoToAButtonPressed,
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+impl MyApp {
+    fn new() -> Self {
+        Self { page: Page::A }
+    }
 
-    fn update(&mut self, message: Self::Message) {
-        self.page = match message {
-            MyAppMessage::GoToBButtonPressed => Page::B,
-            MyAppMessage::GoToAButtonPressed => Page::A,
-        }
-    }
+    fn update(&mut self, message: Message) {
+        self.page = match message {
+            Message::GoToAButtonPressed => Page::A,
+            Message::GoToBButtonPressed => Page::B,
+        }
+    }
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        match self.page {
-            Page::A => column![
-                text("Page A"),
-                button("Go to B").on_press(MyAppMessage::GoToBButtonPressed),
-            ],
-            Page::B => column![
-                text("Page B"),
-                button("Go to A").on_press(MyAppMessage::GoToAButtonPressed),
-            ],
-        }
-        .into()
-    }
+    fn view(&self) -> Element<Message> {
+        match self.page {
+            Page::A => {
+                column![
+                    text("Page A"),
+                    button("Go to B").on_press(Message::GoToBButtonPressed),
+                ]
+            }
+            Page::B => {
+                column![
+                    text("Page B"),
+                    button("Go to A").on_press(Message::GoToAButtonPressed),
+                ]
+            }
+        }
+        .into()
+    }
 }
 ```
 
