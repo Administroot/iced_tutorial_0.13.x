@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{button, column, text},
     Element,
 };
 
@@ -7,8 +7,13 @@ fn main() -> iced::Result {
     iced::application("My First App", MyApp::update, MyApp::view).run()
 }
 
+enum Page {
+    A, 
+    B
+}
+
 struct MyApp {
-    _state: String,
+    page: Page
 }
 
 impl Default for MyApp {
@@ -19,21 +24,33 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    GoToBButtonPressed(Page),
+    GoToAButtonPressed(Page)
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            page: Page::A,
         }
     }
 
-    fn update(&mut self, _message: Message) {
-        todo!()
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::GoToAButtonPressed => Page::A,
+            Message::GoToBButtonPressed => Page::B,
+        }
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        match self.page {
+            Page::A => {
+                column![
+                    text("Page A"),
+                    button("Go to B").on_press(Message::GoToBButtonPressed),
+                ]
+            },
+            Page::B => {}
+        }
     }
 }
