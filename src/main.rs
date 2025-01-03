@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, radio},
+    widget::{column, text},
     Element,
 };
 
@@ -8,14 +8,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    selection: Option<Choice>,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-enum Choice {
-    A,
-    B,
-    C,
+    _state: String,
 }
 
 impl Default for MyApp {
@@ -26,77 +19,21 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    RadioSelected(Choice),
+    _Message1,
 }
 
 impl MyApp {
     fn new() -> Self {
-        Self { selection: None }
+        Self {
+            _state: String::new(),
+        }
     }
 
-    fn update(&mut self, message: Message) {
-        match message {
-            Message::RadioSelected(c) => {
-                self.selection = Some(c);
-            }
-        }
+    fn update(&mut self, _message: Message) {
+        todo!()
     }
 
     fn view(&self) -> Element<Message> {
-        column![
-            radio(
-                "Choice A",
-                Choice::A,
-                self.selection,
-                Message::RadioSelected
-            )
-            .style(if self.selection == Some(Choice::A) {
-                style::radio_selected
-            } else {
-                style::radio_unselected
-            }),
-            radio(
-                "Choice B",
-                Choice::B,
-                self.selection,
-                Message::RadioSelected
-            )
-            .style(if self.selection == Some(Choice::B) {
-                style::radio_selected
-            } else {
-                style::radio_unselected
-            }),
-            radio(
-                "Choice C",
-                Choice::C,
-                self.selection,
-                Message::RadioSelected
-            ),
-        ]
-        .into()
-    }
-}
-
-mod style {
-    use iced::{widget::radio, Background, Color, Theme};
-
-    pub fn radio_selected(_theme: &Theme, _status: radio::Status) -> radio::Style {
-        radio::Style {
-            text_color: Some(Color::from_rgb(0., 0., 1.)),
-            background: Background::Color(Color::from_rgb(1., 1., 1.)),
-            dot_color: Color::from_rgb(0., 0., 1.),
-            border_width: 1.0,
-            border_color: Color::from_rgb(0., 0., 1.),
-        }
-    }
-
-    pub fn radio_unselected(_theme: &Theme, _status: radio::Status) -> radio::Style {
-        radio::Style {
-            text_color: Some(Color::from_rgb(0.5, 0.5, 0.5)),
-            background: Background::Color(Color::from_rgb(1., 1., 1.)),
-            dot_color: Color::from_rgb(0., 0., 1.),
-            border_width: 1.0,
-            border_color: Color::from_rgb(0., 0., 1.),
-        }
+        column!(text("Hello World!".to_string()),).into()
     }
 }

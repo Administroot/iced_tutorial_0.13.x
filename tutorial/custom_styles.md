@@ -97,37 +97,21 @@ mod style {
         radio::Style {
             text_color: Some(Color::from_rgb(0., 0., 1.)),
             background: Background::Color(Color::from_rgb(1., 1., 1.)),
-
             dot_color: Color::from_rgb(0., 0., 1.),
-
             border_width: 1.0,
-
             border_color: Color::from_rgb(0., 0., 1.),
-
         }
-
     }
-
-  
 
     pub fn radio_unselected(_theme: &Theme, _status: radio::Status) -> radio::Style {
-
         radio::Style {
-
             text_color: Some(Color::from_rgb(0.5, 0.5, 0.5)),
-
             background: Background::Color(Color::from_rgb(1., 1., 1.)),
-
             dot_color: Color::from_rgb(0., 0., 1.),
-
             border_width: 1.0,
-
             border_color: Color::from_rgb(0., 0., 1.),
-
         }
-
     }
-
 }
 ```
 
