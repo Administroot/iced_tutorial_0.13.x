@@ -1,14 +1,21 @@
 use iced::{
-    widget::{button, column, text},
+    widget::{button, column, text_input},
     Element,
 };
 
+const MY_TEXT_ID: &str = "my_text";
+
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view).run()
+    iced::application(
+        "controlling widgets by commands",
+        MyApp::update,
+        MyApp::view,
+    )
+    .run()
 }
 
 struct MyApp {
-    _state: String,
+    some_text: String,
 }
 
 impl Default for MyApp {
@@ -19,21 +26,34 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    EditText,
+    UpdateText(String),
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            some_text: String::new(),
         }
     }
 
-    fn update(&mut self, _message: Message) {
-        todo!()
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::EditText => {
+                return text_input::focus(text_input::Id::new())
+            }
+            Message::UpdateText(s) => self.some_text = s,
+        }
     }
 
     fn view(&self) -> Element<Message> {
-        column!(button("Edit text").on_press()).into()
+        column!(
+            button("Edit text").on_press(Message::EditText),
+            text_input("", &self.some_text)
+                // Sets the Id of the TextInput.
+                .id(text_input::Id::new(MY_TEXT_ID))
+                .on_input(Message::UpdateText),
+        )
+        .into()
     }
 }
