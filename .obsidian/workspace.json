@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/memoryless_pages.md",
+                "file": "tutorial/passing_parameters_across_pages.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "memoryless_pages"
+              "title": "passing_parameters_across_pages"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/memoryless_pages.md"
+                "file": "tutorial/passing_parameters_across_pages.md"
               },
               "icon": "lucide-list",
-              "title": "memoryless_pages 的大纲"
+              "title": "passing_parameters_across_pages 的大纲"
             }
           },
           {
@@ -221,17 +221,18 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-2yp0c0iupolrt2iqo57sxnx0p/work-products.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-2yp0c0iupolrt2iqo57sxnx0p/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-2yp0c0iupolrt2iqo57sxnx0p/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-2yp0c0iupolrt2iqo57sxnx0p",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz-working",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3evv8n5cj-0nd3qtz.lock",
-    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3evv8n0u2-0bsejrd-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ew06k01m-0pemvam-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ew06k01m-0pemvam-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ew06k01m-0pemvam-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ew06k01m-0pemvam-working/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ew06k01m-0pemvam-working",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ew06k01m-0pemvam.lock",
+    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ew06jydq-018gkr3-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ew06jydq-018gkr3-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ew06jydq-018gkr3-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ew06jydq-018gkr3-working/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ew06jydq-018gkr3-working",
+    "tutorial/memoryless_pages.md",
     "tutorial/more_than_one_page.md",
     "tutorial/custom_styles.md",
     "tutorial/changing_styles.md",
@@ -258,7 +259,6 @@
     "tutorial/toggler.md",
     "tutorial/checkbox.md",
     "tutorial/text_input.md",
-    "tutorial/button.md",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",
     "考研/新思想第二套第二问.png",
     "考研/新思想第二套第一问.png",

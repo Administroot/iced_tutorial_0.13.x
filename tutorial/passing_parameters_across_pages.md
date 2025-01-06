@@ -60,43 +60,46 @@ We pass `name` field of `PageA` to `new` function of `PageB` when we press the s
 ```rust
 #[derive(Debug, Clone)]
 enum PageAMessage {
-    TextChanged(String),
-    ButtonPressed,
+    TextChanged(String),
+    ButtonPressed,
 }
+
 type Ma = PageAMessage;
 
 struct PageA {
-    name: String,
+    name: String,
 }
 
 impl PageA {
-    fn new() -> Self {
-        Self {
-            name: String::new(),
-        }
-    }
+    fn new() -> Self {
+        PageA {
+            name: String::new(),
+        }
+    }
 }
 
 impl Page for PageA {
-    fn update(&mut self, message: MyAppMessage) -> Option<Box<dyn Page>> {
-        if let MyAppMessage::PageA(msg) = message {
-            match msg {
-                PageAMessage::TextChanged(s) => self.name = s,
-                PageAMessage::ButtonPressed => {
-                    return Some(Box::new(PageB::new(self.name.clone())))
-                }
-            }
-        }
-        None
-    }
+    fn update(&mut self, message: Message) -> Option<Box<dyn Page>> {
+        if let Message::PageA(msg) = message {
+            match msg {
+                PageAMessage::TextChanged(s) => self.name = s,
+                PageAMessage::ButtonPressed => {
+                    return Some(Box::new(PageB::new(self.name.clone())));
+                }
+            }
+        }
+        None
+    }
 
-    fn view(&self) -> iced::Element<MyAppMessage> {
-        column![
-            text_input("Name", &self.name).on_input(|s| MyAppMessage::PageA(Ma::TextChanged(s))),
-            button("Log in").on_press(MyAppMessage::PageA(Ma::ButtonPressed)),
-        ]
-        .into()
-    }
+    fn view(&self) -> iced::Element<Message> {
+        column![
+            text_input("Password", &self.name)
+                .secure(true)
+                .on_input(|s| Message::PageA(Ma::TextChanged(s))),
+            button("Log in").on_press(Message::PageA(Ma::ButtonPressed)),
+        ]
+        .into()
+    }
 }
 ```
 
