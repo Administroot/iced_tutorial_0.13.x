@@ -1,7 +1,5 @@
 use iced::{
-    widget::{button, column, text_input},
-    Element,
-    Task,
+    executor, widget::{button, column, text_input}, Element, Task
 };
 
 const MY_TEXT_ID: &str = "my_text";
@@ -41,7 +39,7 @@ impl MyApp {
     fn update(&mut self, message: Message) {
         match message {
             Message::EditText => {
-                let tas: Task<_> = text_input::focus(text_input::Id::new(MY_TEXT_ID));
+                text_input::focus(MY_TEXT_ID)
             },
             Message::UpdateText(s) => self.some_text = s,
         }
