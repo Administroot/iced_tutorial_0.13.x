@@ -34,8 +34,6 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            button("Edit text").on_press(on_press)
-        ).into()
+        column!(button("Edit text").on_press()).into()
     }
 }
