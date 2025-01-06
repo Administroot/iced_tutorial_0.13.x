@@ -8,7 +8,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: String,
+    page: Box<dyn Page>
 }
 
 impl Default for MyApp {
@@ -22,10 +22,15 @@ enum Message {
     _Message1,
 }
 
+trait Page {
+    fn update(&mut self, message: Message) -> Option<Box<dyn Page>>;
+    fn view(&self) -> iced::Element<'_, Message>;
+}
+
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            page: Page
         }
     }
 
