@@ -1,5 +1,5 @@
 use iced::{
-    executor, widget::{button, column, text_input}, Element, Task
+    executor, widget::{button, column, text_input}, Element, Task,
 };
 
 const MY_TEXT_ID: &str = "my_text";
@@ -30,19 +30,23 @@ enum Message {
 }
 
 impl MyApp {
-    fn new() -> Self {
-        Self {
-            some_text: String::new(),
-        }
+    fn new() -> (Self, Task<Message>) {
+        (
+            Self {
+                some_text: String::new(),
+            },
+            Task::none(),
+        )
     }
 
-    fn update(&mut self, message: Message) {
+    fn update(&mut self, message: Message) -> Task<Message> {
         match message {
             Message::EditText => {
-                text_input::focus(MY_TEXT_ID)
+                text_input::focus("my_text")
             },
             Message::UpdateText(s) => self.some_text = s,
-        }
+        },
+        task::none()
     }
 
     fn view(&self) -> Element<Message> {
