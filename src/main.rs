@@ -42,11 +42,11 @@ impl MyApp {
     fn update(&mut self, message: Message) -> Task<Message> {
         match message {
             Message::EditText => {
-                text_input::focus("my_text")
+                text_input::focus(text_input::Id::new(MY_TEXT_ID))
             },
             Message::UpdateText(s) => self.some_text = s,
-        },
-        task::none()
+        }
+        Task::none()
     }
 
     fn view(&self) -> Element<Message> {
