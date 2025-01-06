@@ -84,6 +84,7 @@ impl Page for PageA {
             match msg {
                 PageAMessage::TextChanged(s) => self.name = s,
                 PageAMessage::ButtonPressed => {
+                // Here, passing parameter name across pages, from A to B
                     return Some(Box::new(PageB::new(self.name.clone())));
                 }
             }
@@ -93,7 +94,7 @@ impl Page for PageA {
 
     fn view(&self) -> iced::Element<Message> {
         column![
-            text_input("Password", &self.name)
+            text_input("Name", &self.name)
                 .secure(true)
                 .on_input(|s| Message::PageA(Ma::TextChanged(s))),
             button("Log in").on_press(Message::PageA(Ma::ButtonPressed)),
@@ -110,37 +111,38 @@ In `PageB`, we receive the name from `new` function and display the name in `vie
 ```rust
 #[derive(Debug, Clone)]
 enum PageBMessage {
-    ButtonPressed,
+    ButtonPressed,
 }
-type Mb = PageBMessage;
+
+type Mb = PageBMessage; 
 
 struct PageB {
-    name: String,
+    name: String
 }
 
 impl PageB {
-    fn new(name: String) -> Self {
-        Self { name }
-    }
+    fn new(name: String) -> Self {
+        Self { name }
+    }
 }
 
 impl Page for PageB {
-    fn update(&mut self, message: MyAppMessage) -> Option<Box<dyn Page>> {
-        if let MyAppMessage::PageB(msg) = message {
-            match msg {
-                PageBMessage::ButtonPressed => return Some(Box::new(PageA::new())),
-            }
-        }
-        None
-    }
+    fn update(&mut self, message: Message) -> Option<Box<dyn Page>> {
+        if let Message::PageB(msg) = message {
+            match msg {
+                PageBMessage::ButtonPressed => return Some(Box::new(PageA::new())),
+            }
+        }
+        None
+    }
 
-    fn view(&self) -> iced::Element<MyAppMessage> {
-        column![
-            text(format!("Hello {}!", self.name)),
-            button("Log out").on_press(MyAppMessage::PageB(Mb::ButtonPressed)),
-        ]
-        .into()
-    }
+    fn view(&self) -> iced::Element<Message> {
+        column![
+            text(format!("hello, {}!", self.name)),
+            button("Log out").on_press(Message::PageB(Mb::ButtonPressed)),
+        ]
+        .into()
+    }
 }
 ```
 
