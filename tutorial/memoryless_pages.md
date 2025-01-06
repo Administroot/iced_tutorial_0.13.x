@@ -66,35 +66,36 @@ In its `update` method, we only care about messages of `PageBMessage`.
 ```rust
 #[derive(Debug, Clone)]
 enum PageBMessage {
-    ButtonPressed,
+    ButtonPressed,
 }
-type Mb = PageBMessage;
 
+type Mb = PageBMessage;
+  
 struct PageB;
 
 impl PageB {
-    fn new() -> Self {
-        Self
-    }
+    fn new() -> Self{
+        Self
+    }
 }
 
 impl Page for PageB {
-    fn update(&mut self, message: MyAppMessage) -> Option<Box<dyn Page>> {
-        if let MyAppMessage::PageB(msg) = message {
-            match msg {
-                PageBMessage::ButtonPressed => return Some(Box::new(PageA::new())),
-            }
-        }
-        None
-    }
+    fn update(&mut self, message: Message) -> Option<Box<dyn Page>> {
+        if let Message::PageB(msg) = message {
+            match msg {
+                PageBMessage::ButtonPressed => return Some(Box::new(PageA::new())),
+            }
+        }
+        None
+    }
 
-    fn view(&self) -> iced::Element<MyAppMessage> {
-        column![
-            text("Hello!"),
-            button("Log out").on_press(MyAppMessage::PageB(Mb::ButtonPressed)),
-        ]
-        .into()
-    }
+    fn view(&self) -> iced::Element<Message> {
+        column![
+            text("Hello!"),
+            button("Log out").on_press(Message::PageB(Mb::ButtonPressed)),
+        ]
+        .into()
+    }
 }
 ```
 

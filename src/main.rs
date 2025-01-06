@@ -1,4 +1,4 @@
-use iced::Element;
+use iced::{Element, widget::{text, column, button}};
 
 fn main() -> iced::Result {
     iced::application("My App", MyApp::update, MyApp::view).run()
@@ -13,6 +13,14 @@ impl Default for MyApp {
         MyApp::new()
     }
 }
+
+// Page B
+#[derive(Debug, Clone)]
+enum PageBMessage {
+    ButtonPressed,
+}
+
+type Mb = PageBMessage;
 
 struct PageB;
 
@@ -36,6 +44,51 @@ impl Page for PageB {
         column![
             text("Hello!"),
             button("Log out").on_press(Message::PageB(Mb::ButtonPressed)),
+        ]
+        .into()
+    }
+}
+
+// Page A
+#[derive(Debug, Clone)]
+enum PageAMessage {
+    TextChanged(String),
+    ButtonPressed,
+}
+
+type Ma = PageAMessage;
+
+struct PageA {
+    password: String,
+}
+
+impl PageA {
+    fn new() -> Self {
+        PageA { password: String::new() }
+    }
+}
+
+impl Page for PageA {
+    fn update(&mut self, message: Message) -> Option<Box<dyn Page>> {
+        if let Message::PageA(msg) = message {
+            match msg {
+                PageAMessage::TextChanged(s) => self.password = s,
+                PageAMessage::ButtonPressed => {
+                    if self.password == "abc" {
+                        return Some(Box::new(PageB::new()));
+                    }
+                }
+            }
+        }
+        None
+    }
+
+    fn view(&self) -> iced::Element<Message> {
+        column![
+            text_input("Password", &self.password)
+                .secure(true)
+                .on_input(|s| Message::PageA(Ma::TextChanged(s))),
+            button("Log in").on_press(Message::PageA(Ma::ButtonPressed)),
         ]
         .into()
     }
