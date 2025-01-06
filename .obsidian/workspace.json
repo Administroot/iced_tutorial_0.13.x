@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/navigation_history.md",
+                "file": "tutorial/from_sandbox_to_application.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "navigation_history"
+              "title": "from_sandbox_to_application"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/navigation_history.md"
+                "file": "tutorial/from_sandbox_to_application.md"
               },
               "icon": "lucide-list",
-              "title": "navigation_history 的大纲"
+              "title": "from_sandbox_to_application 的大纲"
             }
           },
           {
@@ -221,9 +221,10 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "src/navigation_history.rs",
+    "README.md",
     "tutorial/from_sandbox_to_application.md",
     "tutorial/navigation_history.md",
+    "src/navigation_history.rs",
     "target/debug/deps/iced_tutorial.pdb",
     "target/debug/deps/iced_tutorial.exe",
     "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/work-products.bin",
@@ -233,8 +234,6 @@
     "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/ewe6fbh6dxi60bb1voyjdpufs.o",
     "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/eu9w5kk6q9lvnqwkw65jd0c8n.o",
     "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/etgj7xjle8pi3n28jj5kgj6j3.o",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/er8a8prqnr303qwx2g51hs0hn.o",
-    "README.md",
     "tutorial/passing_parameters_across_pages.md",
     "tutorial/memoryless_pages.md",
     "tutorial/more_than_one_page.md",

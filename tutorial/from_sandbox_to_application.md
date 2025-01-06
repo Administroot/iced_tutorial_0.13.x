@@ -1,5 +1,11 @@
 # From Sandbox To Application
 
+```ad-caution
+title: Deprecated
+collapse: open
+
+`Sandbox`trait has been deprecated in version `0.13.x`
+```
 To have more control over our app, we can use [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) trait, which is a generalization of [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html) trait.
 There are two main differences between [Application](https://docs.rs/iced/0.12.1/iced/application/trait.Application.html) and [Sandbox](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html).
 One thing is the [associated types](https://doc.rust-lang.org/stable/book/ch19-03-advanced-traits.html#specifying-placeholder-types-in-trait-definitions-with-associated-types).

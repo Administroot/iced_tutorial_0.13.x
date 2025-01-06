@@ -8,16 +8,8 @@ We try to keep each part of the tutorial as simple as possible.
 title: Deprecated
 collapse: open
 
-This tutorial is being updated from Iced version `0.10.0` to `0.12.x`.
-For a complete tutorial for version `0.10.0`, please refer to [this branch](https://github.com/fogarecious/iced_tutorial/tree/0.10.x).
+This tutorial is being updated from Iced version `0.12.x` to `0.13.x`.
 ```
-```ad-success
-title: Latest
-collapse: open
-
-This tutorial is being updated from Iced version `0.13.x`
-```
-
 
 Contents:
 
