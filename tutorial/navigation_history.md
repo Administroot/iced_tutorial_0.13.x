@@ -71,35 +71,36 @@ The following is the first type of pages:
 enum PageAMessage {
     ButtonPressed,
 }
+
 type Ma = PageAMessage;
 
-struct PageA;
+struct PageA {}  
 
 impl PageA {
-    fn new() -> Self {
-        Self
-    }
+    fn new() -> Self {
+        Self {}
+    }
 }
 
 impl Page for PageA {
-    fn update(&mut self, message: MyAppMessage) -> Navigation {
-        if let MyAppMessage::PageA(msg) = message {
-            match msg {
-                PageAMessage::ButtonPressed => {
-                    return Navigation::GoTo(Box::new(PageB::new(1)));
-                }
-            }
-        }
-        Navigation::None
-    }
+    fn update(&mut self, message: Message) -> Navigation {
+        if let Message::PageA(msg) = message {
+            match msg {
+                PageAMessage::ButtonPressed => {
+                    return Navigation::GoTo(Box::new(PageB::new(1)));
+                }
+            }
+        }
+        Navigation::None
+    }
 
-    fn view(&self) -> iced::Element<MyAppMessage> {
-        column![
-            text("Start"),
-            button("Next").on_press(MyAppMessage::PageA(Ma::ButtonPressed)),
-        ]
-        .into()
-    }
+    fn view(&self) -> iced::Element<Message> {
+        column![
+            text("Start"),
+            button("Next").on_press(Message::PageA(Ma::ButtonPressed))
+        ]
+        .into()
+    }
 }
 ```
 
@@ -108,7 +109,7 @@ impl Page for PageA {
 And the second type of pages:
 
 ```rust
-#[derive(Debug, Clone)]
+`#[derive(Debug, Clone)]
 enum PageBMessage {
     BackButtonPressed,
     NextButtonPressed,

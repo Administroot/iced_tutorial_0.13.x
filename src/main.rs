@@ -1,5 +1,5 @@
 use iced::{
-    widget::{button, column, text, text_input},
+    widget::{button, column, row, text},
     Element,
 };
 
@@ -16,35 +16,44 @@ impl Default for MyApp {
 // Page B
 #[derive(Debug, Clone)]
 enum PageBMessage {
-    ButtonPressed,
+    BackButtonPressed,
+    NextButtonPressed,
 }
 
 type Mb = PageBMessage;
 
 struct PageB {
-    name: String
+    id: u32
 }
 
 impl PageB {
-    fn new(name: String) -> Self {
-        Self { name }
+    fn new(id: u32) -> Self {
+        Self { id }
     }
 }
 
 impl Page for PageB {
-    fn update(&mut self, message: Message) -> Option<Box<dyn Page>> {
+    fn update(&mut self, message: Message) -> Navigation {
         if let Message::PageB(msg) = message {
             match msg {
-                PageBMessage::ButtonPressed => return Some(Box::new(PageA::new())),
+                PageBMessage::BackButtonPressed => {
+                    return Navigation::Back;
+                },
+                PageBMessage::NextButtonPressed => {
+                    return Navigation::GoTo(Box::new(PageB::new(self.id + 1)));
+                }
             }
         }
-        None
+        Navigation::None
     }
 
     fn view(&self) -> iced::Element<Message> {
         column![
-            text(format!("hello, {}!", self.name)),
-            button("Log out").on_press(Message::PageB(Mb::ButtonPressed)),
+            text(self.id),
+            row![
+                button("Back").on_press(Message::PageB(Mb::BackButtonPressed)),
+                button("Next").on_press(Message::PageB(Mb::NextButtonPressed)),
+            ]
         ]
         .into()
     }
