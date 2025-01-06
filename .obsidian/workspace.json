@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/from_sandbox_to_application.md",
+                "file": "tutorial/controlling_widgets_by_commands.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "from_sandbox_to_application"
+              "title": "controlling_widgets_by_commands"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/from_sandbox_to_application.md"
+                "file": "tutorial/controlling_widgets_by_commands.md"
               },
               "icon": "lucide-list",
-              "title": "from_sandbox_to_application 的大纲"
+              "title": "controlling_widgets_by_commands 的大纲"
             }
           },
           {
@@ -221,19 +221,20 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "README.md",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j5p0q9-1hh4wve-brc2p5t2gfy9q9uqvzo5j7gh0/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j5p0q9-1hh4wve-brc2p5t2gfy9q9uqvzo5j7gh0/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j5p0q9-1hh4wve-brc2p5t2gfy9q9uqvzo5j7gh0/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j5p0q9-1hh4wve-brc2p5t2gfy9q9uqvzo5j7gh0",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j9wjsd-1qo8wg4-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j9wjsd-1qo8wg4-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j9wjsd-1qo8wg4-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j9wjsd-1qo8wg4-working/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j9wjsd-1qo8wg4-working",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3f2j9wjsd-1qo8wg4.lock",
+    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3f2j5p4od-01zq4jx-2ioyifcvby9esf8v93mn6txir/query-cache.bin",
     "tutorial/from_sandbox_to_application.md",
+    "README.md",
     "tutorial/navigation_history.md",
-    "src/navigation_history.rs",
-    "target/debug/deps/iced_tutorial.pdb",
-    "target/debug/deps/iced_tutorial.exe",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/work-products.bin",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/f4uebocnvx8gzqn2vyy766xd0.o",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/exzmqo5a2fc6im5gt0cirslm9.o",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/ewe6fbh6dxi60bb1voyjdpufs.o",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/eu9w5kk6q9lvnqwkw65jd0c8n.o",
-    "target/debug/incremental/iced_tutorial-1dviurb216m2q/s-h3ex4tbc3v-0a0dbqq-3ehcen10kzdgkd2p291legqvs/etgj7xjle8pi3n28jj5kgj6j3.o",
     "tutorial/passing_parameters_across_pages.md",
     "tutorial/memoryless_pages.md",
     "tutorial/more_than_one_page.md",

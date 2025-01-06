@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{button, column, text},
     Element,
 };
 
@@ -34,6 +34,8 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            button("Edit text").on_press(on_press)
+        ).into()
     }
 }
