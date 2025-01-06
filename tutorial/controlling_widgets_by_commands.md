@@ -9,63 +9,66 @@ The function returns a [Command](https://docs.rs/iced/0.12.1/iced/struct.Command
 
 ```rust
 use iced::{
-    executor,
-    widget::{button, column, text_input},
-    Application, Command, Settings,
+    widget::{button, column, text_input}, Element, Task,
 };
-
-fn main() -> iced::Result {
-    MyApp::run(Settings::default())
-}
 
 const MY_TEXT_ID: &str = "my_text";
 
-#[derive(Debug, Clone)]
-enum MyAppMessage {
-    EditText,
-    UpdateText(String),
+fn main() -> iced::Result {
+    iced::application(
+        "controlling widgets by commands",
+        MyApp::update,
+        MyApp::view,
+    )
+    .run()
 }
 
 struct MyApp {
-    some_text: String,
+    some_text: String,
 }
 
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = MyAppMessage;
-    type Theme = iced::Theme;
-    type Flags = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new().0
+    }
+}
 
-    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (
-            Self {
-                some_text: String::new(),
-            },
-            Command::none(),
-        )
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    EditText,
+    UpdateText(String),
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+impl MyApp {
+    fn new() -> (Self, Task<Message>) {
+        (
+            Self {
+                some_text: String::new(),
+            },
+            Task::none(),
+        )
+    }
+  
+    fn update(&mut self, message: Message) -> Task<Message> {
+        match message {
+            Message::EditText => {
+                return text_input::focus(text_input::Id::new(MY_TEXT_ID));
+            },
+            Message::UpdateText(s) => self.some_text = s,
+        }
+        Task::none()
+    }
 
-    fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
-        match message {
-            MyAppMessage::EditText => return text_input::focus(text_input::Id::new(MY_TEXT_ID)),
-            MyAppMessage::UpdateText(s) => self.some_text = s,
-        }
-        Command::none()
-    }
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            button("Edit text").on_press(MyAppMessage::EditText),
-            text_input("", &self.some_text)
-                .id(text_input::Id::new(MY_TEXT_ID))
-                .on_input(MyAppMessage::UpdateText),
-        ]
-        .into()
-    }
+    fn view(&self) -> Element<Message> {
+        column!(
+            button("Edit text").on_press(Message::EditText),
+            text_input("", &self.some_text)
+                // Sets the Id of the TextInput.
+                .id(text_input::Id::new(MY_TEXT_ID))
+                .on_input(Message::UpdateText),
+        )
+        .into()
+    }
 }
 ```
 
