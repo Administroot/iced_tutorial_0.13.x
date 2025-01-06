@@ -7,10 +7,6 @@ fn main() -> iced::Result {
     iced::application("My App", MyApp::update, MyApp::view).run()
 }
 
-struct MyApp {
-    page: Box<dyn Page>,
-}
-
 impl Default for MyApp {
     fn default() -> Self {
         MyApp::new()
@@ -106,26 +102,43 @@ enum Message {
     PageB(PageBMessage),
 }
 
+enum Navigation {
+    GoTo(Box<dyn Page>),
+    Back,
+    None,
+}
+
 trait Page {
-    fn update(&mut self, message: Message) -> Option<Box<dyn Page>>;
+    fn update(&mut self, message: Message) -> Navigation;
     fn view(&self) -> iced::Element<'_, Message>;
+}
+
+// MyApp
+struct MyApp {
+    pages: Vec<Box<dyn Page>>,
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            page: Box::new(PageA::new()),
+            pages: vec![Box::new(PageA::new())],
         }
     }
 
     fn update(&mut self, message: Message) {
-        let page = self.page.update(message);
-        if let Some(p) = page {
-            self.page = p;
+        let navigation = self.pages.last_mut().unwrap().update(message);
+        match navigation {
+            Navigation::GoTo(p) => self.pages.push(p),
+            Navigation::Back => {
+                if self.pages.len() > 1 {
+                    self.pages.pop();
+                }
+            }
+            Navigation::None => {}
         }
     }
 
     fn view(&self) -> Element<Message> {
-        self.page.view()
+        self.pages.last().unwrap().view()
     }
 }
