@@ -9,12 +9,12 @@ The communication between [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbo
 
 ```rust
 use iced::{
-    widget::{button, column, row, text},
-    Sandbox, Settings,
+    widget::{button, column, text, row},
+    Element,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::application("My App", MyApp::update, MyApp::view).run()
 }
 
 #[derive(Debug, Clone)]
@@ -24,49 +24,43 @@ enum MyAppMessage {
 }
 
 enum Navigation {
-    GoTo(Box<dyn Page>),
-    Back,
-    None,
+    GoTo(Box<dyn Page>),
+    Back,
+    None,
 }
 
 trait Page {
-    fn update(&mut self, message: MyAppMessage) -> Navigation;
-    fn view(&self) -> iced::Element<MyAppMessage>;
+    fn update(&mut self, message: Message) -> Navigation;
+    fn view(&self) -> iced::Element<'_, Message>;
 }
 
 struct MyApp {
-    pages: Vec<Box<dyn Page>>,
+    pages: Vec<Box<dyn Page>>,
 }
 
-impl Sandbox for MyApp {
-    type Message = MyAppMessage;
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            pages: vec![Box::new(PageA::new())],
+        }
+    }
+  
+    fn update(&mut self, message: Message) {
+        let navigation = self.pages.last_mut().unwrap().update(message);
+        match navigation {
+            Navigation::GoTo(p) => self.pages.push(p),
+            Navigation::Back => {
+                if self.pages.len() > 1 {
+                    self.pages.pop();
+                }
+            }
+            Navigation::None => {}
+        }
+    }
 
-    fn new() -> Self {
-        Self {
-            pages: vec![Box::new(PageA::new())],
-        }
-    }
-
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, message: Self::Message) {
-        let navigation = self.pages.last_mut().unwrap().update(message);
-        match navigation {
-            Navigation::GoTo(p) => self.pages.push(p),
-            Navigation::Back => {
-                if self.pages.len() > 1 {
-                    self.pages.pop();
-                }
-            }
-            Navigation::None => {}
-        }
-    }
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        self.pages.last().unwrap().view()
-    }
+    fn view(&self) -> Element<Message> {
+        self.pages.last().unwrap().view()
+    }
 }
 ```
 

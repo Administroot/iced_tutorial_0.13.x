@@ -53,44 +53,35 @@ impl Page for PageB {
 // Page A
 #[derive(Debug, Clone)]
 enum PageAMessage {
-    TextChanged(String),
     ButtonPressed,
 }
 
 type Ma = PageAMessage;
 
-struct PageA {
-    name: String,
-}
+struct PageA {}
 
 impl PageA {
     fn new() -> Self {
-        PageA {
-            name: String::new(),
-        }
+        Self {}
     }
 }
 
 impl Page for PageA {
-    fn update(&mut self, message: Message) -> Option<Box<dyn Page>> {
+    fn update(&mut self, message: Message) -> Navigation {
         if let Message::PageA(msg) = message {
             match msg {
-                PageAMessage::TextChanged(s) => self.name = s,
                 PageAMessage::ButtonPressed => {
-                    // Here, passing parameter name across pages, from A to B
-                    return Some(Box::new(PageB::new(self.name.clone())));
+                    return Navigation::GoTo(Box::new(PageB::new(1)));
                 }
             }
         }
-        None
+        Navigation::None
     }
 
     fn view(&self) -> iced::Element<Message> {
         column![
-            text_input("Name", &self.name)
-                .secure(true)
-                .on_input(|s| Message::PageA(Ma::TextChanged(s))),
-            button("Log in").on_press(Message::PageA(Ma::ButtonPressed)),
+            text("Start"),
+            button("Next").on_press(Message::PageA(Ma::ButtonPressed))
         ]
         .into()
     }
