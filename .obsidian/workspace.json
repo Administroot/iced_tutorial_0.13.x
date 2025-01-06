@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/passing_parameters_across_pages.md",
+                "file": "tutorial/navigation_history.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "passing_parameters_across_pages"
+              "title": "navigation_history"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/passing_parameters_across_pages.md"
+                "file": "tutorial/navigation_history.md"
               },
               "icon": "lucide-list",
-              "title": "passing_parameters_across_pages 的大纲"
+              "title": "navigation_history 的大纲"
             }
           },
           {
@@ -221,17 +221,18 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewc6cmue-032joxi-2yp0c0iupolrt2iqo57sxnx0p/work-products.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewc6cmue-032joxi-2yp0c0iupolrt2iqo57sxnx0p/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewc6cmue-032joxi-2yp0c0iupolrt2iqo57sxnx0p/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewc6cmue-032joxi-2yp0c0iupolrt2iqo57sxnx0p",
-    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewc6ch23-0ju4a0u-ece0x0d7m62r3iv0c7n9576dh/work-products.bin",
-    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewc6ch23-0ju4a0u-ece0x0d7m62r3iv0c7n9576dh/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewc6ch23-0ju4a0u-ece0x0d7m62r3iv0c7n9576dh/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewc6ch23-0ju4a0u-ece0x0d7m62r3iv0c7n9576dh",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewc6cmue-032joxi-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewc6cmue-032joxi-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewc6cmue-032joxi-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-42k2ttiu27320infipesgczbp/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-42k2ttiu27320infipesgczbp/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-42k2ttiu27320infipesgczbp/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-42k2ttiu27320infipesgczbp",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-working/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u-working",
+    "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3ewdai9cz-0hg5q5u.lock",
+    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3ewdah5yk-1x3w9rf-working/work-products.bin",
+    "tutorial/passing_parameters_across_pages.md",
     "tutorial/memoryless_pages.md",
     "tutorial/more_than_one_page.md",
     "tutorial/custom_styles.md",
@@ -258,7 +259,6 @@
     "tutorial/radio.md",
     "tutorial/toggler.md",
     "tutorial/checkbox.md",
-    "tutorial/text_input.md",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",
     "考研/新思想第二套第二问.png",
     "考研/新思想第二套第一问.png",
