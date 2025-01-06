@@ -11,53 +11,50 @@ The [update](https://docs.rs/iced/0.12.1/iced/trait.Sandbox.html#tymethod.update
 In addition, we explicitly distinguish messages from different pages in `MyAppMessage`.
 
 ```rust
-use iced::{
-    widget::{button, column, text, text_input},
-    Sandbox, Settings,
-};
+use iced::Element;
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
-}
-
-#[derive(Debug, Clone)]
-enum MyAppMessage {
-    PageA(PageAMessage),
-    PageB(PageBMessage),
-}
-
-trait Page {
-    fn update(&mut self, message: MyAppMessage) -> Option<Box<dyn Page>>;
-    fn view(&self) -> iced::Element<'_, MyAppMessage>;
+    iced::application("My App", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
-    page: Box<dyn Page>,
+    page: Box<dyn Page>
 }
 
-impl Sandbox for MyApp {
-    type Message = MyAppMessage;
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
 
-    fn new() -> Self {
-        Self {
-            page: Box::new(PageA::new()),
-        }
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    PageA(PageAMessage),
+    PageB(PageBMessage),
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+trait Page {
+    fn update(&mut self, message: Message) -> Option<Box<dyn Page>>;
+    fn view(&self) -> iced::Element<'_, Message>;
+}
 
-    fn update(&mut self, message: Self::Message) {
-        let page = self.page.update(message);
-        if let Some(p) = page {
-            self.page = p;
-        }
-    }
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            page: Box::new(PageA::new())
+        }
+    }
+  
+    fn update(&mut self, message: Message) {
+        let page = self.page.update(message);
+        if let Some(p) = page {
+            self.page = p;
+        }
+    }
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        self.page.view()
-    }
+    fn view(&self) -> Element<Message> {
+        self.page.view()
+    }
 }
 ```
 
