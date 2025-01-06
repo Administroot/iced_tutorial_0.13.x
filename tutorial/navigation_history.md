@@ -109,46 +109,49 @@ impl Page for PageA {
 And the second type of pages:
 
 ```rust
-`#[derive(Debug, Clone)]
+#[derive(Debug, Clone)]
 enum PageBMessage {
-    BackButtonPressed,
-    NextButtonPressed,
+    BackButtonPressed,
+    NextButtonPressed,
 }
-type Mb = PageBMessage;
 
+type Mb = PageBMessage;
+  
 struct PageB {
-    id: u32,
+    id: u32
 }
 
 impl PageB {
-    fn new(id: u32) -> Self {
-        Self { id }
-    }
+    fn new(id: u32) -> Self {
+        Self { id }
+    }
 }
 
 impl Page for PageB {
-    fn update(&mut self, message: MyAppMessage) -> Navigation {
-        if let MyAppMessage::PageB(msg) = message {
-            match msg {
-                PageBMessage::BackButtonPressed => return Navigation::Back,
-                PageBMessage::NextButtonPressed => {
-                    return Navigation::GoTo(Box::new(PageB::new(self.id + 1)))
-                }
-            }
-        }
-        Navigation::None
-    }
+    fn update(&mut self, message: Message) -> Navigation {
+        if let Message::PageB(msg) = message {
+            match msg {
+                PageBMessage::BackButtonPressed => {
+                    return Navigation::Back;
+                },
+                PageBMessage::NextButtonPressed => {
+                    return Navigation::GoTo(Box::new(PageB::new(self.id + 1)));
+                }
+            }
+        }
+        Navigation::None
+    }
 
-    fn view(&self) -> iced::Element<MyAppMessage> {
-        column![
-            text(self.id),
-            row![
-                button("Back").on_press(MyAppMessage::PageB(Mb::BackButtonPressed)),
-                button("Next").on_press(MyAppMessage::PageB(Mb::NextButtonPressed)),
-            ],
-        ]
-        .into()
-    }
+    fn view(&self) -> iced::Element<Message> {
+        column![
+            text(self.id),
+            row![
+                button("Back").on_press(Message::PageB(Mb::BackButtonPressed)),
+                button("Next").on_press(Message::PageB(Mb::NextButtonPressed)),
+            ]
+        ]
+        .into()
+    }
 }
 ```
 
