@@ -1,11 +1,14 @@
-use iced::{Element, widget::{text, column, button}};
+use iced::{
+    widget::{button, column, text, text_input},
+    Element,
+};
 
 fn main() -> iced::Result {
     iced::application("My App", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
-    page: Box<dyn Page>
+    page: Box<dyn Page>,
 }
 
 impl Default for MyApp {
@@ -25,7 +28,7 @@ type Mb = PageBMessage;
 struct PageB;
 
 impl PageB {
-    fn new() -> Self{
+    fn new() -> Self {
         Self
     }
 }
@@ -64,7 +67,9 @@ struct PageA {
 
 impl PageA {
     fn new() -> Self {
-        PageA { password: String::new() }
+        PageA {
+            password: String::new(),
+        }
     }
 }
 
@@ -108,7 +113,7 @@ trait Page {
 impl MyApp {
     fn new() -> Self {
         Self {
-            page: Box::new(PageA::new())
+            page: Box::new(PageA::new()),
         }
     }
 
