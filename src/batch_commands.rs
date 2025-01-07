@@ -6,12 +6,7 @@ use iced::{
 const MY_TEXT_ID: &str = "my_text";
 
 fn main() -> iced::Result {
-    iced::application(
-        "batch_commands",
-        MyApp::update,
-        MyApp::view,
-    )
-    .run()
+    iced::application("batch_commands", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {

@@ -1,65 +1,70 @@
-use std::time::Duration;
-
 use iced::{
-    widget::{text, button, column},
-    Element, Task,
+    widget::{button, column, progress_bar, text, ProgressBar},
+    Element, Length,
 };
 
 fn main() -> iced::Result {
-    iced::application(
-        "controlling widgets by commands",
-        MyApp::update,
-        MyApp::view,
-    )
-    .run()
+    iced::run("My First App", MyApp::update, MyApp::view)
 }
 
 struct MyApp {
-    state: String,
+    value: f32,
+    status: String,
 }
 
 impl Default for MyApp {
     fn default() -> Self {
-        MyApp::new().0
+        MyApp::new()
     }
 }
 
 #[derive(Debug, Clone)]
 enum Message {
-    Execute,
-    Done,
+    PressButton,
 }
 
 impl MyApp {
-    fn new() -> (Self, Task<Message>) {
-        (
-            Self {
-                state: String::new(),
-            },
-            Task::none(),
-        )
+    fn new() -> Self {
+        Self {
+            value: 0.,
+            status: String::new(),
+        }
     }
 
-    fn update(&mut self, message: Message) -> Task<Message> {
+    fn update(&mut self, message: Message) {
         match message {
-            Message::Execute => {
-                self.state = "Executing".into();
-                // Executing an asynchronous function.
-                return Task::perform(tokio::time::sleep(Duration::from_secs(1)), |_| {
-                    Message::Done
-                });
-            },
-            Message::Done => {
-                self.state = "Done".into();
+            Message::PressButton => {
+                // FIXME: ICED might not compatiable with time crate
+
+                // self.value = 0.0;
+                // loop {
+                //     self.value += 5.0;
+                //     sleep(Duration::from_secs(5u64));
+                //     self.status = self.value.to_string();
+                //     if self.value > 100.0 {
+                //         self.status = String::from("Done");
+                //         break
+                //     }
+                //     println!("{}", self.value);
+                // }
+                self.value += 5.0;
+                if self.value > 100.0 {
+                    self.status = String::from("Done");
+                }
             }
         }
-        Task::none()
     }
 
     fn view(&self) -> Element<Message> {
         column!(
-            button("Execute").on_press(Message::Execute),
-            text(self.state.as_str()),
+            text("Construct from struct"),
+            ProgressBar::new(0.00..=100.0, 50.),
+            text("Construct from function"),
+            progress_bar(0.00..=100.0, 50.),
+            text("Functional progressbar"),
+            progress_bar(0.00..=100.0, self.value),
+            button("Start!").on_press(Message::PressButton),
+            text(&self.status).width(Length::Fill).center(),
         )
         .into()
     }

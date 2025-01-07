@@ -25,64 +25,68 @@ When the asynchronous function finished, we will receive `MyAppMessage::Done`.
 use std::time::Duration;
 
 use iced::{
-    executor,
-    widget::{button, column, text},
-    Application, Command, Settings,
+    widget::{button, column, text},
+    Element, Task,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
-}
-
-#[derive(Debug, Clone)]
-enum MyAppMessage {
-    Execute,
-    Done,
+    iced::application(
+        "executing custom commands",
+        MyApp::update,
+        MyApp::view,
+    )
+    .run()
 }
 
 struct MyApp {
-    state: String,
+    state: String,
 }
 
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = MyAppMessage;
-    type Theme = iced::Theme;
-    type Flags = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new().0
+    }
+}
 
-    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (
-            Self {
-                state: "Ready".into(),
-            },
-            Command::none(),
-        )
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    Execute,
+    Done,
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+impl MyApp {
+    fn new() -> (Self, Task<Message>) {
+        (
+            Self {
+                state: String::new(),
+            },
+            Task::none(),
+        )
+    }
+  
+    fn update(&mut self, message: Message) -> Task<Message> {
+        match message {
+            Message::Execute => {
+                self.state = "Executing".into();
+                // Executing an asynchronous function.
+                return Task::perform(tokio::time::sleep(Duration::from_secs(1)), |_| {
+                    Message::Done
+                });
+            }
+            Message::Done => {
+                self.state = "Done".into();
+            }
+        }
+        Task::none()
+    }
 
-    fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
-        match message {
-            MyAppMessage::Execute => {
-                self.state = "Executing".into();
-                return Command::perform(tokio::time::sleep(Duration::from_secs(1)), |_| {
-                    MyAppMessage::Done
-                });
-            }
-            MyAppMessage::Done => self.state = "Done".into(),
-        }
-        Command::none()
-    }
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            button("Execute").on_press(MyAppMessage::Execute),
-            text(self.state.as_str()),
-        ]
-        .into()
-    }
+    fn view(&self) -> Element<Message> {
+        column!(
+            button("Execute").on_press(Message::Execute),
+            text(self.state.as_str()),
+        )
+        .into()
+    }
 }
 ```
 
