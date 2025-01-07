@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/executing_custom_commands.md",
+                "file": "tutorial/progressbar.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "executing_custom_commands"
+              "title": "progressbar"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/executing_custom_commands.md"
+                "file": "tutorial/progressbar.md"
               },
               "icon": "lucide-list",
-              "title": "executing_custom_commands 的大纲"
+              "title": "progressbar 的大纲"
             }
           },
           {
@@ -221,19 +221,18 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx642z68-1qt3dl5-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx642z68-1qt3dl5-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx642z68-1qt3dl5-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx642z68-1qt3dl5-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx642z68-1qt3dl5-working",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx642z68-1qt3dl5.lock",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx6420z9-006uvn6-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx6420z9-006uvn6-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx6420z9-006uvn6-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx6420z9-006uvn6-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx6420z9-006uvn6-working",
     "README.md",
     "tutorial/executing_custom_commands.md",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx8hb03s-1bs4e71-99txe8kbks2ff6u4x076dxdys/work-products.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx8hb03s-1bs4e71-99txe8kbks2ff6u4x076dxdys/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx8hb03s-1bs4e71-99txe8kbks2ff6u4x076dxdys/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx8hb03s-1bs4e71-99txe8kbks2ff6u4x076dxdys",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx8h9zke-0aa2qb5-dorkjndfwiwgf87kjvg4dopgm/work-products.bin",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx8h9zke-0aa2qb5-dorkjndfwiwgf87kjvg4dopgm/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx8h9zke-0aa2qb5-dorkjndfwiwgf87kjvg4dopgm/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3fx8h9zke-0aa2qb5-dorkjndfwiwgf87kjvg4dopgm",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx8hb03s-1bs4e71-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3fx8hb03s-1bs4e71-working/query-cache.bin",
     "tutorial/batch_commands.md",
     "tutorial/controlling_widgets_by_commands.md",
     "tutorial/from_sandbox_to_application.md",

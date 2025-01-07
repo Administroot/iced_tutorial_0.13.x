@@ -40,18 +40,6 @@ impl MyApp {
     fn update(&mut self, message: Message) {
         match message {
             Message::PressButton => {
-                // FIXME: ICED might not compatiable with time crate
-                // self.value = 0.0;
-                // loop {
-                //     self.value += 5.0;
-                //     sleep(Duration::from_secs(5u64));
-                //     self.status = self.value.to_string();
-                //     if self.value > 100.0 {
-                //         self.status = String::from("Done");
-                //         break
-                //     }
-                //     println!("{}", self.value);
-                // }
                 self.value += 5.0;
                 if self.value > 100.0 {
                     self.status = String::from("Done");
