@@ -1,10 +1,20 @@
 use iced::{
     widget::{column, text},
-    Element,
+    window, Element, Point, Size,
 };
 
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view).run()
+    let window_setting = window::settings::Settings {
+        size: Size {
+            width: 70.,
+            height: 30.,
+        },
+        position: window::Position::Specific(Point { x: 50., y: 60. }),
+        ..Default::default()
+    };
+    iced::application("initializing a different window", MyApp::update, MyApp::view)
+        .window(window_setting)
+        .run()
 }
 
 struct MyApp {
