@@ -23,7 +23,7 @@ enum PageBMessage {
 type Mb = PageBMessage;
 
 struct PageB {
-    id: u32
+    id: u32,
 }
 
 impl PageB {
@@ -38,7 +38,7 @@ impl Page for PageB {
             match msg {
                 PageBMessage::BackButtonPressed => {
                     return Navigation::Back;
-                },
+                }
                 PageBMessage::NextButtonPressed => {
                     return Navigation::GoTo(Box::new(PageB::new(self.id + 1)));
                 }

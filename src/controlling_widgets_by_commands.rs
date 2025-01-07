@@ -1,5 +1,6 @@
 use iced::{
-    widget::{button, column, text_input}, Element, Task,
+    widget::{button, column, text_input},
+    Element, Task,
 };
 
 const MY_TEXT_ID: &str = "my_text";
@@ -43,7 +44,7 @@ impl MyApp {
         match message {
             Message::EditText => {
                 return text_input::focus(text_input::Id::new(MY_TEXT_ID));
-            },
+            }
             Message::UpdateText(s) => self.some_text = s,
         }
         Task::none()
