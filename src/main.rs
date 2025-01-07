@@ -1,39 +1,74 @@
 use iced::{
-    widget::{column, text},
-    Element,
+    widget::{button, column, text_input}, window, Element, Size, Task
 };
 
+const MY_TEXT_ID: &str = "my_text";
+
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view).run()
+    iced::application(
+        "controlling widgets by commands",
+        MyApp::update,
+        MyApp::view,
+    )
+    .run()
 }
 
 struct MyApp {
-    _state: String,
+    width: String,
+    height: String,
 }
 
 impl Default for MyApp {
     fn default() -> Self {
-        MyApp::new()
+        MyApp::new().0
     }
 }
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    UpdateWidth(String),
+    UpdateHeight(String),
+    ResizeWindow,
 }
 
 impl MyApp {
-    fn new() -> Self {
-        Self {
-            _state: String::new(),
-        }
+    fn new() -> (Self, Task<Message>) {
+        (
+            Self {
+                width: String::new(),
+                height: String::new(),
+            },
+            Task::none(),
+        )
     }
 
-    fn update(&mut self, _message: Message) {
-        todo!()
+    fn update(&mut self, message: Message) -> Task<Message> {
+        match message {
+            Message::UpdateWidth(w) => {
+                self.width = w;
+            },
+            Message::UpdateHeight(h) => {
+                self.height = h;
+            },
+            Message::ResizeWindow => {
+                return window::resize(
+                    // Window ID
+                    window::Id::MAIN, 
+                    Size()
+                );
+            },
+        }
+        Task::none()
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            text_input("Width", &self.width)
+                .on_input(Message::UpdateWidth),
+            text_input("Height", &self.height)
+                .on_input(Message::UpdateHeight),
+            button("Resize window").on_press(Message::ResizeWindow),
+        )
+        .into()
     }
 }
