@@ -76,18 +76,12 @@ impl MyApp {
   
     fn view(&self) -> Element<Message> {
         row!(
-            text_input("Width", &self.width)on_input(Message::UpdateWidth),
-
+            text_input("Width", &self.width).on_input(Message::UpdateWidth),
             text_input("Height", &self.height).on_input(Message::UpdateHeight),
-
             button("Resize window").on_press(Message::ResizeWindow),
-
         )
-
         .into()
-
     }
-
 }
 ```
 
