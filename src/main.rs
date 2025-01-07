@@ -51,10 +51,10 @@ impl MyApp {
                 self.height = h;
             },
             Message::ResizeWindow => {
-                return window::resize(
-                    // Window ID
-                    window::get_oldest(),
-                    Size::new(self.width.parse().unwrap(), self.height.parse().unwrap())
+                return window::get_oldest().and_then(
+                    move |window| {
+                        window::resize(window, Size::new(self.width.parse().unwrap(), self.height.parse().unwrap()))
+                    }
                 );
             },
         }
