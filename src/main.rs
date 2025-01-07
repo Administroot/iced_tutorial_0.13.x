@@ -1,9 +1,9 @@
+use std::time::Duration;
+
 use iced::{
-    widget::{button, column, text_input},
+    widget::{text, button, column},
     Element, Task,
 };
-
-const MY_TEXT_ID: &str = "my_text";
 
 fn main() -> iced::Result {
     iced::application(
@@ -15,7 +15,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    some_text: String,
+    state: String,
 }
 
 impl Default for MyApp {
@@ -26,15 +26,15 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    EditText,
-    UpdateText(String),
+    Execute,
+    Done,
 }
 
 impl MyApp {
     fn new() -> (Self, Task<Message>) {
         (
             Self {
-                some_text: String::new(),
+                state: String::new(),
             },
             Task::none(),
         )
@@ -42,21 +42,24 @@ impl MyApp {
 
     fn update(&mut self, message: Message) -> Task<Message> {
         match message {
-            Message::EditText => {
-                return text_input::focus(text_input::Id::new(MY_TEXT_ID));
+            Message::Execute => {
+                self.state = "Executing".into();
+                // Executing an asynchronous function.
+                return Task::perform(tokio::time::sleep(Duration::from_secs(1)), |_| {
+                    Message::Done
+                });
+            },
+            Message::Done => {
+                self.state = "Done".into();
             }
-            Message::UpdateText(s) => self.some_text = s,
         }
         Task::none()
     }
 
     fn view(&self) -> Element<Message> {
         column!(
-            button("Edit text").on_press(Message::EditText),
-            text_input("", &self.some_text)
-                // Sets the Id of the TextInput.
-                .id(text_input::Id::new(MY_TEXT_ID))
-                .on_input(Message::UpdateText),
+            button("Execute").on_press(Message::Execute),
+            text(self.state.as_str()),
         )
         .into()
     }

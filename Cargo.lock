@@ -1503,6 +1503,7 @@ dependencies = [
  "iced_core",
  "log",
  "rustc-hash 2.1.0",
+ "tokio",
  "wasm-bindgen-futures",
  "wasm-timer",
 ]
