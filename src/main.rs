@@ -50,14 +50,13 @@ impl MyApp {
             Message::UpdateHeight(h) => {
                 self.height = h;
             },
-            let w = self.width.parse().unwrap();
-            let h = self.height.parse().unwrap()
+
             Message::ResizeWindow => {
                 return window::get_oldest().and_then(
                     move |window| {
                         window::resize(
                             window, 
-                                Size::new(self.width.parse().unwrap(), self.height.parse().unwrap()))
+                                Size::new(w, h))
                     }
                 )
             },
