@@ -53,8 +53,8 @@ impl MyApp {
             Message::ResizeWindow => {
                 return window::resize(
                     // Window ID
-                    window::Id::MAIN, 
-                    Size()
+                    window::get_oldest(),
+                    Size::new(self.width.parse().unwrap(), self.height.parse().unwrap())
                 );
             },
         }
