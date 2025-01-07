@@ -4,40 +4,88 @@ We can use [window::Settings](https://docs.rs/iced/0.12.1/iced/window/settings/s
 Developers might be interested in reading the document of [window::Settings](https://docs.rs/iced/0.12.1/iced/window/settings/struct.Settings.html) for other properties.
 
 ```rust
-use iced::{window, Point, Sandbox, Settings, Size};
+use iced::{
+    widget::{column, text},
+    window, Element, Point, Size,
+};
 
 fn main() -> iced::Result {
-    MyApp::run(Settings {
-        window: window::Settings {
-            size: Size {
-                width: 70.,
-                height: 30.,
-            },
-            position: window::Position::Specific(Point { x: 50., y: 60. }),
-            ..window::Settings::default()
-        },
-        ..Settings::default()
-    })
+    let window_setting = window::settings::Settings {
+        size: Size {
+            width: 70.,
+            height: 30.,
+        },
+        position: window::Position::Specific(Point { x: 50., y: 60. }),
+        ..Default::default()
+    };
+    iced::application("initializing_a_different_window", MyApp::update, MyApp::view)
+
+        .window(window_setting)
+
+        .run()
+
 }
 
-struct MyApp;
+  
 
-impl Sandbox for MyApp {
-    type Message = ();
+struct MyApp {
 
-    fn new() -> Self {
-        Self
-    }
+    _state: String,
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+}
 
-    fn update(&mut self, _message: Self::Message) {}
+  
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        "Hello".into()
-    }
+impl Default for MyApp {
+
+    fn default() -> Self {
+
+        MyApp::new()
+
+    }
+
+}
+
+  
+
+#[derive(Debug, Clone)]
+
+enum Message {
+
+    _Message1,
+
+}
+
+  
+
+impl MyApp {
+
+    fn new() -> Self {
+
+        Self {
+
+            _state: String::new(),
+
+        }
+
+    }
+
+  
+
+    fn update(&mut self, _message: Message) {
+
+        todo!()
+
+    }
+
+  
+
+    fn view(&self) -> Element<Message> {
+
+        column!(text("Hello World!".to_string()),).into()
+
+    }
+
 }
 ```
 

@@ -6,12 +6,7 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::application(
-        "executing custom commands",
-        MyApp::update,
-        MyApp::view,
-    )
-    .run()
+    iced::application("executing custom commands", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
