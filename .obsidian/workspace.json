@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/changing_the_window_dynamically.md",
+                "file": "tutorial/batch_commands.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "changing_the_window_dynamically"
+              "title": "batch_commands"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/changing_the_window_dynamically.md"
+                "file": "tutorial/batch_commands.md"
               },
               "icon": "lucide-list",
-              "title": "changing_the_window_dynamically 的大纲"
+              "title": "batch_commands 的大纲"
             }
           },
           {
@@ -221,23 +221,24 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9661ahl-0obktkb-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9661ahl-0obktkb-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9661ahl-0obktkb-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9661ahl-0obktkb-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9661ahl-0obktkb-working",
-    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9661ahl-0obktkb.lock",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g96609l4-1eaobxq-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g96609l4-1eaobxq-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g96609l4-1eaobxq-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g96609l4-1eaobxq-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g96609l4-1eaobxq-working",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g9dbjdf5-0cvo2o3-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g9dbjdf5-0cvo2o3-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g9dbjdf5-0cvo2o3-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g9dbjdf5-0cvo2o3-working/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g9dbjdf5-0cvo2o3-working",
+    "target/debug/incremental/iced_tutorial-3jspfwauzd4dn/s-h3g9dbjdf5-0cvo2o3.lock",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9dbifzs-0a0n2oy-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9dbifzs-0a0n2oy-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9dbifzs-0a0n2oy-working/dep-graph.part.bin",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9dbifzs-0a0n2oy-working/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-1xqhlnf73beql/s-h3g9dbifzs-0a0n2oy-working",
+    "tutorial/controlling_widgets_by_commands.md",
+    "README.md",
+    "tutorial/changing_the_window_dynamically.md",
     "tutorial/initializing_a_different_window.md",
     "tutorial/executing_custom_commands.md",
-    "README.md",
     "tutorial/progressbar.md",
     "tutorial/batch_commands.md",
-    "tutorial/controlling_widgets_by_commands.md",
     "tutorial/from_sandbox_to_application.md",
     "tutorial/navigation_history.md",
     "tutorial/passing_parameters_across_pages.md",
@@ -258,7 +259,6 @@
     "tutorial/image.md",
     "ferris.png",
     "tutorial/rule.md",
-    "tutorial/tooltip.md",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",
     "考研/新思想第二套第二问.png",
     "考研/新思想第二套第一问.png",
