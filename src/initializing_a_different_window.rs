@@ -12,9 +12,13 @@ fn main() -> iced::Result {
         position: window::Position::Specific(Point { x: 50., y: 60. }),
         ..Default::default()
     };
-    iced::application("initializing a different window", MyApp::update, MyApp::view)
-        .window(window_setting)
-        .run()
+    iced::application(
+        "initializing a different window",
+        MyApp::update,
+        MyApp::view,
+    )
+    .window(window_setting)
+    .run()
 }
 
 struct MyApp {

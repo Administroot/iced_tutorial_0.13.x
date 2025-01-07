@@ -10,69 +10,84 @@ Internally, Iced reserves [window::Id::MAIN](https://docs.rs/iced/0.12.1/iced/wi
 
 ```rust
 use iced::{
-    executor,
-    widget::{button, row, text_input},
-    window, Application, Command, Settings, Size,
+    widget::{button, row, text_input},
+    window, Element, Size, Task,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
-}
-
-#[derive(Debug, Clone)]
-enum MyAppMessage {
-    UpdateWidth(String),
-    UpdateHeight(String),
-    ResizeWindow,
+    iced::application(
+        "changing the window dynamically",
+        MyApp::update,
+        MyApp::view,
+    )
+    .run()
 }
 
 struct MyApp {
-    width: String,
-    height: String,
+    width: String,
+    height: String,
 }
 
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = MyAppMessage;
-    type Theme = iced::Theme;
-    type Flags = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new().0
+    }
+}
 
-    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (
-            Self {
-                width: "1024".into(),
-                height: "768".into(),
-            },
-            Command::none(),
-        )
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    UpdateWidth(String),
+    UpdateHeight(String),
+    ResizeWindow,
+}
+  
+impl MyApp {
+    fn new() -> (Self, Task<Message>) {
+        (
+            Self {
+                width: String::new(),
+                height: String::new(),
+            },
+            Task::none(),
+        )
+    }
+  
+    fn update(&mut self, message: Message) -> Task<Message> {
+        match message {
+            Message::UpdateWidth(w) => {
+                self.width = w;
+            }
+            Message::UpdateHeight(h) => {
+                self.height = h;
+            }
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+            Message::ResizeWindow => {
+                // If don't define var "width" and "height", error 'E0521' will occur.
+                let width = self.width.parse().unwrap();
+                let height = self.height.parse().unwrap();
+  
+                // Id in Task<Option<Id>> will be delivered to Task::and_then() method, then to the closure.
+                return window::get_oldest()
+                    .and_then(move |window| window::resize(window, Size::new(width, height)));
+            }
+        }
+        Task::none()
+    }
+  
+    fn view(&self) -> Element<Message> {
+        row!(
+            text_input("Width", &self.width)on_input(Message::UpdateWidth),
 
-    fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
-        match message {
-            MyAppMessage::UpdateWidth(w) => self.width = w,
-            MyAppMessage::UpdateHeight(h) => self.height = h,
-            MyAppMessage::ResizeWindow => {
-                return window::resize(
-                    iced::window::Id::MAIN,
-                    Size::new(self.width.parse().unwrap(), self.height.parse().unwrap()),
-                )
-            }
-        }
-        Command::none()
-    }
+            text_input("Height", &self.height).on_input(Message::UpdateHeight),
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        row![
-            text_input("Width", &self.width).on_input(MyAppMessage::UpdateWidth),
-            text_input("Height", &self.height).on_input(MyAppMessage::UpdateHeight),
-            button("Resize window").on_press(MyAppMessage::ResizeWindow),
-        ]
-        .into()
-    }
+            button("Resize window").on_press(Message::ResizeWindow),
+
+        )
+
+        .into()
+
+    }
+
 }
 ```
 
