@@ -53,10 +53,12 @@ impl MyApp {
 
             Message::ResizeWindow => {
                 return window::get_oldest().and_then(
-                    move |window| {
+                    |window| {
                         window::resize(
                             window, 
-                                Size::new(w, h))
+                                Size::new(
+                                    self.width.parse().unwrap(), self.height.parse().unwrap()
+                            ))
                     }
                 )
             },
