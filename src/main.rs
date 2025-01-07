@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use iced::{
     widget::{button, column, progress_bar, text, ProgressBar},
     Element, Length,
@@ -36,21 +38,21 @@ impl MyApp {
             Message::PressButton => {
                 // FIXME: ICED might not compatiable with time crate
 
-                // self.value = 0.0;
-                // loop {
-                //     self.value += 5.0;
-                //     sleep(Duration::from_secs(5u64));
-                //     self.status = self.value.to_string();
-                //     if self.value > 100.0 {
-                //         self.status = String::from("Done");
-                //         break
-                //     }
-                //     println!("{}", self.value);
-                // }
-                self.value += 5.0;
-                if self.value > 100.0 {
-                    self.status = String::from("Done");
+                self.value = 0.0;
+                loop {
+                    self.value += 5.0;
+                    tokio::time::sleep(Duration::from_secs(1)).await();
+                    self.status = self.value.to_string();
+                    if self.value > 100.0 {
+                        self.status = String::from("Done");
+                        break
+                    }
+                    println!("{}", self.value);
                 }
+                // self.value += 5.0;
+                // if self.value > 100.0 {
+                //     self.status = String::from("Done");
+                // }
             }
         }
     }
