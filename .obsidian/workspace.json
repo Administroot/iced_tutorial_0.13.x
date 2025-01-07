@@ -221,6 +221,8 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "README.md",
+    "tutorial/executing_custom_commands.md",
     "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3fw5zoa0i-1pwtrvp-d79yw5kcuj7cwodcgmj5749hg/work-products.bin",
     "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3fw5zoa0i-1pwtrvp-d79yw5kcuj7cwodcgmj5749hg/query-cache.bin",
     "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3fw5zoa0i-1pwtrvp-d79yw5kcuj7cwodcgmj5749hg/dep-graph.bin",
@@ -231,9 +233,7 @@
     "target/debug/incremental/iced_tutorial-2ciyj3zrv7by8/s-h3fw5zo6fq-1fg2b8h-ei7ynyjn1qex1qef7u989zjsv",
     "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3fw5zoa0i-1pwtrvp-working/work-products.bin",
     "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3fw5zoa0i-1pwtrvp-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-13xxcdnu4bdcj/s-h3fw5zoa0i-1pwtrvp-working/dep-graph.part.bin",
     "tutorial/batch_commands.md",
-    "README.md",
     "tutorial/controlling_widgets_by_commands.md",
     "tutorial/from_sandbox_to_application.md",
     "tutorial/navigation_history.md",
