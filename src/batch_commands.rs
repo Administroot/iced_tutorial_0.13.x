@@ -7,7 +7,7 @@ const MY_TEXT_ID: &str = "my_text";
 
 fn main() -> iced::Result {
     iced::application(
-        "controlling widgets by commands",
+        "batch_commands",
         MyApp::update,
         MyApp::view,
     )
@@ -26,8 +26,8 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    EditText,
     UpdateText(String),
+    SelectAll,
 }
 
 impl MyApp {
@@ -42,22 +42,27 @@ impl MyApp {
 
     fn update(&mut self, message: Message) -> Task<Message> {
         match message {
-            Message::EditText => {
-                return text_input::focus(text_input::Id::new(MY_TEXT_ID));
-            }
             Message::UpdateText(s) => self.some_text = s,
+            Message::SelectAll => {
+                return Task::batch(vec![
+                    // Produces a Task that focuses the TextInput with the given Id.
+                    text_input::focus(text_input::Id::new(MY_TEXT_ID)),
+                    // Produces a Task that selects all the content of the TextInput with the given Id.
+                    text_input::select_all(text_input::Id::new(MY_TEXT_ID)),
+                ]);
+            }
         }
         Task::none()
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            button("Edit text").on_press(Message::EditText),
+        column![
             text_input("", &self.some_text)
                 // Sets the Id of the TextInput.
                 .id(text_input::Id::new(MY_TEXT_ID))
                 .on_input(Message::UpdateText),
-        )
+            button("Select all").on_press(Message::SelectAll),
+        ]
         .into()
     }
 }

@@ -26,7 +26,7 @@ enum PageBMessage {
 type Mb = PageBMessage;
 
 struct PageB {
-    name: String
+    name: String,
 }
 
 impl PageB {
