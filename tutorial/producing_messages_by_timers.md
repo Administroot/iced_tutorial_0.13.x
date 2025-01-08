@@ -6,7 +6,7 @@ The dependencies of `Cargo.toml` should look like this:
 
 ```toml
 [dependencies]
-iced = { version = "0.12.1", features = ["tokio"] }
+iced = { version = "0.13.1", features = ["tokio"] }
 ```
 
 We use [time::every](https://docs.rs/iced/0.12.1/iced/time/fn.every.html) function to obtain [Subscription](https://docs.rs/iced/0.12.1/iced/struct.Subscription.html)\<[Instant](https://docs.rs/iced/0.12.1/iced/time/struct.Instant.html)> struct.
@@ -16,53 +16,108 @@ The corresponding `MyAppMessage` will be received in the [update](https://docs.r
 
 ```rust
 use iced::{
-    executor,
-    time::{self, Duration},
-    widget::text,
-    Application, Command, Settings,
+    time::{self, Duration},
+
+    widget::text,
+
+    Element, Subscription, Task,
+
 };
 
+  
+
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+
+    iced::application(
+
+        "producing messages by timers",
+
+        MyApp::update,
+
+        MyApp::view,
+
+    )
+
+    .subscription(MyApp::subscription)
+
+    .run()
+
 }
 
-#[derive(Debug, Clone)]
-enum MyAppMessage {
-    Update,
-}
+  
 
 struct MyApp {
-    seconds: u32,
+
+    seconds: u32,
+
 }
 
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = MyAppMessage;
-    type Theme = iced::Theme;
-    type Flags = ();
+  
 
-    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (Self { seconds: 0 }, Command::none())
-    }
+impl Default for MyApp {
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+    fn default() -> Self {
 
-    fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
-        match message {
-            MyAppMessage::Update => self.seconds += 1,
-        }
-        Command::none()
-    }
+        MyApp::new()
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        text(self.seconds).into()
-    }
+    }
 
-    fn subscription(&self) -> iced::Subscription<Self::Message> {
-        time::every(Duration::from_secs(1)).map(|_| MyAppMessage::Update)
-    }
+}
+
+  
+
+#[derive(Debug, Clone)]
+
+enum Message {
+
+    Update,
+
+}
+
+  
+
+impl MyApp {
+
+    fn new() -> Self {
+
+        Self { seconds: 0u32 }
+
+    }
+
+  
+
+    fn update(&mut self, message: Message) -> Task<Message> {
+
+        match message {
+
+            Message::Update => {
+
+                self.seconds += 1;
+
+                return Task::none();
+
+            }
+
+        }
+
+    }
+
+  
+
+    fn view(&self) -> Element<Message> {
+
+        text(self.seconds).into()
+
+    }
+
+  
+
+    fn subscription(&self) -> Subscription<Message> {
+
+        time::every(Duration::from_secs(1)).map(|_| Message::Update)
+
+    }
+
 }
 ```
 
