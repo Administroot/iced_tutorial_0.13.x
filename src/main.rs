@@ -1,5 +1,5 @@
 use iced::{
-     event, event::Status, widget::{column, text, tooltip::Position}, Event, Subscription, Task, Point, mouse::Event::CursorMoved,
+     event, event::Status, Event, Subscription, Task, Point, mouse::Event::CursorMoved,
     touch::Event::FingerMoved,
 };
 
@@ -19,7 +19,7 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    PointUpdated(Position)
+    PointUpdated(Point)
 }
 
 impl MyApp {
@@ -33,8 +33,8 @@ impl MyApp {
         match message {
             Message::PointUpdated(p) => {
                 self.mouse_point = p;
+                return Task::none();
             }
-            Task::None()
         }
     }
 
@@ -42,9 +42,9 @@ impl MyApp {
         event::listen_with(|event, status, _window| { match (event, status) {
                 // Using mouse
                 (Event::Mouse(CursorMoved { position }), Status::Ignored)
-                // or using touchboard
+                // Or using touchboard
                 | (Event::Touch(FingerMoved {position, ..}), Status::Ignored) => {
-                    Some(|position: Point| Message::PointUpdated(position))
+                    Some(Message::PointUpdated(position))
                 }
                 _ => None
             }
