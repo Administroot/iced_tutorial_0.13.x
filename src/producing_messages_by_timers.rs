@@ -5,13 +5,9 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::application(
-        "producing messages by timers",
-        MyApp::update,
-        MyApp::view,
-    )
-    .subscription(MyApp::subscription)
-    .run()
+    iced::application("producing messages by timers", MyApp::update, MyApp::view)
+        .subscription(MyApp::subscription)
+        .run()
 }
 
 struct MyApp {

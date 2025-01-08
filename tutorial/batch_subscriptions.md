@@ -8,82 +8,108 @@ In the following app, press the space key to start or stop the timer.
 
 ```rust
 use iced::{
-    event::{self, Status},
-    executor,
-    keyboard::{key::Named, Key},
-    time::{self, Duration},
-    widget::text,
-    Application, Command, Event, Settings, Subscription,
+    event::{self, Status},
+    keyboard::{key::Named, Event::KeyPressed, Key},
+    time::{self, Duration},
+    widget::text,
+    Element, Event, Subscription, Task,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
-}
-
-#[derive(Debug, Clone)]
-enum MyAppMessage {
-    StartOrStop,
-    Update,
+    iced::application("batch subscriptions", MyApp::update, MyApp::view)
+        .subscription(MyApp::subscription)
+        .run()
 }
 
 struct MyApp {
-    seconds: u32,
-    running: bool,
+    running: bool,
+    seconds: u32,
 }
 
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = MyAppMessage;
-    type Theme = iced::Theme;
-    type Flags = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new()
+    }
+}
 
-    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (
-            Self {
-                seconds: 0,
-                running: false,
-            },
-            Command::none(),
-        )
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    StartOrStop,
+    Update,
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+impl MyApp {
+    fn new() -> Self {
+        Self {
+            running: false,
+            seconds: 0u32,
+        }
+    }
 
-    fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
-        match message {
-            MyAppMessage::StartOrStop => self.running = !self.running,
-            MyAppMessage::Update => self.seconds += 1,
-        }
-        Command::none()
-    }
+    fn update(&mut self, message: Message) -> Task<Message> {
+        match message {
+            Message::StartOrStop => {
+                self.running = !self.running;
+            }
+            Message::Update => {
+                self.seconds += 1;
+            }
+        }
+        Task::none()
+    }
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        text(self.seconds).into()
-    }
 
-    fn subscription(&self) -> iced::Subscription<Self::Message> {
-        let subscr_key = event::listen_with(|event, status| match (event, status) {
-            (
-                Event::Keyboard(iced::keyboard::Event::KeyPressed {
-                    key: Key::Named(Named::Space),
-                    ..
-                }),
-                Status::Ignored,
-            ) => Some(MyAppMessage::StartOrStop),
-            _ => None,
-        });
 
-        if self.running {
-            Subscription::batch(vec![
-                subscr_key,
-                time::every(Duration::from_secs(1)).map(|_| MyAppMessage::Update),
-            ])
-        } else {
-            subscr_key
-        }
-    }
+    fn view(&self) -> Element<Message> {
+
+        text(self.seconds).into()
+
+    }
+
+  
+
+    fn subscription(&self) -> Subscription<Message> {
+
+        let subscr_key = event::listen_with(|event, status, _window| match (event, status) {
+
+            (
+
+                Event::Keyboard(KeyPressed {
+
+                    key: Key::Named(Named::Space),
+
+                    ..
+
+                }),
+
+                Status::Ignored,
+
+            ) => Some(Message::StartOrStop),
+
+            _ => None,
+
+        });
+
+  
+
+        if self.running {
+
+            Subscription::batch(vec![
+
+                subscr_key,
+
+                time::every(Duration::from_secs(1)).map(|_| Message::Update),
+
+            ])
+
+        } else {
+
+            subscr_key
+
+        }
+
+    }
+
 }
 ```
 
