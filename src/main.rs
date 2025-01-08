@@ -1,9 +1,8 @@
 use iced::{
     event::{self, Status},
-    mouse::Event::CursorMoved,
-    touch::Event::FingerMoved,
+    keyboard::{key::Named, Event::KeyPressed, Key},
     widget::text,
-    Element, Event, Point, Subscription, Task,
+    Element, Event, Subscription, Task,
 };
 
 fn main() -> iced::Result {
@@ -17,7 +16,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    mouse_point: Point,
+    pressed_key: String,
 }
 
 impl Default for MyApp {
@@ -28,40 +27,39 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    PointUpdated(Point),
+    KeyPressed(String),
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            mouse_point: Point::ORIGIN,
+            pressed_key: String::new(),
         }
     }
 
     fn update(&mut self, message: Message) -> Task<Message> {
         match message {
-            Message::PointUpdated(p) => {
-                self.mouse_point = p;
+            Message::KeyPressed(s) => {
+                self.pressed_key = s;
                 return Task::none();
             }
         }
     }
 
     fn view(&self) -> Element<Message> {
-        text(format!("{:?}", self.mouse_point)).into()
+        text(self.pressed_key.as_str()).into()
     }
 
     fn subscription(&self) -> Subscription<Message> {
-        event::listen_with(|event, status, _window| {
-            match (event, status) {
-                // Using mouse
-                (Event::Mouse(CursorMoved { position }), Status::Ignored)
-                // Or using touchboard
-                | (Event::Touch(FingerMoved {position, ..}), Status::Ignored) => {
-                    Some(Message::PointUpdated(position))
-                }
-                _ => None
-            }
+        event::listen_with(|event, status, _window| match (event, status) {
+            (
+                Event::Keyboard(KeyPressed {
+                    key: Key::Named(Named::Space),
+                    ..
+                }),
+                Status::Ignored,
+            ) => Some(Message::KeyPressed("Space".into())),
+            _ => None,
         })
     }
 }
