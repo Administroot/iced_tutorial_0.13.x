@@ -1,7 +1,5 @@
 use iced::{
-    time::{self, Duration},
-    widget::text,
-    Element, Subscription, Task,
+    event::{self, Status}, keyboard::{key::Named, Event::KeyPressed, Key}, time::{self, Duration}, widget::text, Element, Event, Subscription, Task
 };
 
 fn main() -> iced::Result {
@@ -15,6 +13,8 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
+    running: bool,
+    pressed_key: String,
     seconds: u32,
 }
 
@@ -26,12 +26,13 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
+    KeyPressed(String),
     Update,
 }
 
 impl MyApp {
     fn new() -> Self {
-        Self { seconds: 0u32 }
+        Self { pressed_key: String::new(), seconds: 0u32 }
     }
 
     fn update(&mut self, message: Message) -> Task<Message> {
@@ -48,6 +49,24 @@ impl MyApp {
     }
 
     fn subscription(&self) -> Subscription<Message> {
+        let subscrkey = event::listen_with(|event, status, _window| match (event, status) {
+            (
+                Event::Keyboard(KeyPressed {
+                    key: Key::Named(Named::Space),
+                    ..
+                }),
+                Status::Ignored,
+            ) => Some(Message::KeyPressed("Space".into())),
+            _ => None,
+        });
+
+        if self.running {
+            Subscription::batch(vec![
+                
+            ]
+                
+            )
+        }
         time::every(Duration::from_secs(1)).map(|_| Message::Update)
     }
 }
