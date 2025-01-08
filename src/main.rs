@@ -1,6 +1,5 @@
 use iced::{
-    widget::{column, text},
-    Element,
+    event::{self, Status}, widget::{column, text}, Element, Event, Subscription
 };
 
 fn main() -> iced::Result {
@@ -33,7 +32,11 @@ impl MyApp {
         todo!()
     }
 
-    fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+    fn view(&self) -> Subscription<Message> {
+        event::listen_with(|event, status| { match (event, status) {
+                (Event::Mouse(Event::CursorMoved { position }), Status::Ignored)
+                | (Event::Touch(FingerM))
+            }
+        })
     }
 }
