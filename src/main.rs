@@ -1,5 +1,5 @@
 use iced::{
-    event::{self, Status}, widget::{column, text}, Element, Event, Subscription
+     event, event::Status, widget::{column, text, tooltip::Position}, Element, Event, Subscription, Task, Point
 };
 
 fn main() -> iced::Result {
@@ -7,7 +7,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: String,
+    mouse_point: Point,
 }
 
 impl Default for MyApp {
@@ -18,24 +18,32 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    PointUpdated(Position)
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            mouse_point: Point::ORIGIN
         }
     }
 
-    fn update(&mut self, _message: Message) {
-        todo!()
+    fn update(&mut self, message: Message) -> Task<Message>{
+        match message {
+            Message::PointUpdated(p) => {
+                self.mouse_point = p;
+            }
+            Task::None()
+        }
     }
 
     fn view(&self) -> Subscription<Message> {
-        event::listen_with(|event, status| { match (event, status) {
+        event::listen_with(|event, status, _window| { match (event, status) {
                 (Event::Mouse(Event::CursorMoved { position }), Status::Ignored)
-                | (Event::Touch(FingerM))
+                | (Event::Touch(Event::FingerMoved {position, ..}), Status::Ignored) => {
+                    Some(Message::PointUpdated)
+                }
+                _ => None
             }
         })
     }
