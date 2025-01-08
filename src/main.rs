@@ -1,13 +1,11 @@
 use iced::{
-    widget::{button, column, text_input},
-    Element, Task,
+    widget::{button, row, text_input},
+    window, Element, Size, Task,
 };
-
-const MY_TEXT_ID: &str = "my_text";
 
 fn main() -> iced::Result {
     iced::application(
-        "controlling widgets by commands",
+        "changing the window dynamically",
         MyApp::update,
         MyApp::view,
     )
@@ -15,7 +13,8 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    some_text: String,
+    width: String,
+    height: String,
 }
 
 impl Default for MyApp {
@@ -26,15 +25,15 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    EditText,
-    UpdateText(String),
+    CloseWindow
 }
 
 impl MyApp {
     fn new() -> (Self, Task<Message>) {
         (
             Self {
-                some_text: String::new(),
+                width: String::new(),
+                height: String::new(),
             },
             Task::none(),
         )
@@ -42,21 +41,17 @@ impl MyApp {
 
     fn update(&mut self, message: Message) -> Task<Message> {
         match message {
-            Message::EditText => {
-                return text_input::focus(text_input::Id::new(MY_TEXT_ID));
+            Message::CloseWindow => {
+                return window::get_oldest()
+                    .and_then(window::close)
             }
-            Message::UpdateText(s) => self.some_text = s,
         }
         Task::none()
     }
 
     fn view(&self) -> Element<Message> {
-        column!(
-            button("Edit text").on_press(Message::EditText),
-            text_input("", &self.some_text)
-                // Sets the Id of the TextInput.
-                .id(text_input::Id::new(MY_TEXT_ID))
-                .on_input(Message::UpdateText),
+        row!(
+            button("Close window").on_press(Message::CloseWindow),
         )
         .into()
     }
