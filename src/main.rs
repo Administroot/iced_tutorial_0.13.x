@@ -1,5 +1,6 @@
 use iced::{
-     event, event::Status, widget::{column, text, tooltip::Position}, Element, Event, Subscription, Task, Point
+     event, event::Status, widget::{column, text, tooltip::Position}, Event, Subscription, Task, Point, mouse::Event::CursorMoved,
+    touch::Event::FingerMoved,
 };
 
 fn main() -> iced::Result {
@@ -39,9 +40,11 @@ impl MyApp {
 
     fn view(&self) -> Subscription<Message> {
         event::listen_with(|event, status, _window| { match (event, status) {
-                (Event::Mouse(Event::CursorMoved { position }), Status::Ignored)
-                | (Event::Touch(Event::FingerMoved {position, ..}), Status::Ignored) => {
-                    Some(Message::PointUpdated)
+                // Using mouse
+                (Event::Mouse(CursorMoved { position }), Status::Ignored)
+                // or using touchboard
+                | (Event::Touch(FingerMoved {position, ..}), Status::Ignored) => {
+                    Some(|position: Point| Message::PointUpdated(position))
                 }
                 _ => None
             }
