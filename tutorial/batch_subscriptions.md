@@ -58,58 +58,31 @@ impl MyApp {
         Task::none()
     }
 
-
-
     fn view(&self) -> Element<Message> {
-
         text(self.seconds).into()
-
     }
-
-  
 
     fn subscription(&self) -> Subscription<Message> {
-
         let subscr_key = event::listen_with(|event, status, _window| match (event, status) {
-
             (
-
                 Event::Keyboard(KeyPressed {
-
                     key: Key::Named(Named::Space),
-
                     ..
-
                 }),
-
                 Status::Ignored,
-
             ) => Some(Message::StartOrStop),
-
             _ => None,
-
         });
 
-  
-
         if self.running {
-
             Subscription::batch(vec![
-
                 subscr_key,
-
                 time::every(Duration::from_secs(1)).map(|_| Message::Update),
-
             ])
-
         } else {
-
             subscr_key
-
         }
-
     }
-
 }
 ```
 

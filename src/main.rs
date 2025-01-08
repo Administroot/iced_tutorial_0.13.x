@@ -1,20 +1,14 @@
 use iced::{
-    event::{self, Status},
-    keyboard::{key::Named, Event::KeyPressed, Key},
-    time::{self, Duration},
-    widget::text,
-    Element, Event, Subscription, Task,
+    widget::{column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
-    iced::application("batch subscriptions", MyApp::update, MyApp::view)
-        .subscription(MyApp::subscription)
-        .run()
+    iced::application("My First App", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
-    running: bool,
-    seconds: u32,
+    _state: String,
 }
 
 impl Default for MyApp {
@@ -25,53 +19,21 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    StartOrStop,
-    Update,
+    _Message1,
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            running: false,
-            seconds: 0u32,
+            _state: String::new(),
         }
     }
 
-    fn update(&mut self, message: Message) -> Task<Message> {
-        match message {
-            Message::StartOrStop => {
-                self.running = !self.running;
-            }
-            Message::Update => {
-                self.seconds += 1;
-            }
-        }
-        Task::none()
+    fn update(&mut self, _message: Message) {
+        todo!()
     }
 
     fn view(&self) -> Element<Message> {
-        text(self.seconds).into()
-    }
-
-    fn subscription(&self) -> Subscription<Message> {
-        let subscr_key = event::listen_with(|event, status, _window| match (event, status) {
-            (
-                Event::Keyboard(KeyPressed {
-                    key: Key::Named(Named::Space),
-                    ..
-                }),
-                Status::Ignored,
-            ) => Some(Message::StartOrStop),
-            _ => None,
-        });
-
-        if self.running {
-            Subscription::batch(vec![
-                subscr_key,
-                time::every(Duration::from_secs(1)).map(|_| Message::Update),
-            ])
-        } else {
-            subscr_key
-        }
+        column!(text("Hello World!".to_string()),).into()
     }
 }
