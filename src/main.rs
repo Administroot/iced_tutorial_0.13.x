@@ -1,11 +1,14 @@
-use iced::{widget::mouse_area, Element};
+use iced::{
+    widget::{column, text},
+    Element,
+};
 
 fn main() -> iced::Result {
     iced::application("My First App", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
-    state: String,
+    _state: String,
 }
 
 impl Default for MyApp {
@@ -16,32 +19,21 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    Pressed,
-    Released,
+    _Message1,
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            state: "Start".into(),
+            _state: String::new(),
         }
     }
 
-    fn update(&mut self, message: Message) {
-        match message {
-            Message::Pressed => {
-                self.state = "Pressed".into();
-            }
-            Message::Released => {
-                self.state = "Released".into();
-            }
-        }
+    fn update(&mut self, _message: Message) {
+        todo!()
     }
 
     fn view(&self) -> Element<Message> {
-        mouse_area(self.state.as_str())
-            .on_press(Message::Pressed)
-            .on_release(Message::Released)
-            .into()
+        column!(text("Hello World!".to_string()),).into()
     }
 }
