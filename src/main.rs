@@ -1,10 +1,19 @@
 use iced::{
-     event, event::Status, Event, Subscription, Task, Point, mouse::Event::CursorMoved,
+    event::{self, Status},
+    mouse::Event::CursorMoved,
     touch::Event::FingerMoved,
+    widget::text,
+    Element, Event, Point, Subscription, Task,
 };
 
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view).run()
+    iced::application(
+        "producing_messages_by_mouse_events",
+        MyApp::update,
+        MyApp::view,
+    )
+    .subscription(MyApp::subscription)
+    .run()
 }
 
 struct MyApp {
@@ -19,17 +28,17 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    PointUpdated(Point)
+    PointUpdated(Point),
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            mouse_point: Point::ORIGIN
+            mouse_point: Point::ORIGIN,
         }
     }
 
-    fn update(&mut self, message: Message) -> Task<Message>{
+    fn update(&mut self, message: Message) -> Task<Message> {
         match message {
             Message::PointUpdated(p) => {
                 self.mouse_point = p;
@@ -38,8 +47,13 @@ impl MyApp {
         }
     }
 
-    fn view(&self) -> Subscription<Message> {
-        event::listen_with(|event, status, _window| { match (event, status) {
+    fn view(&self) -> Element<Message> {
+        text(format!("{:?}", self.mouse_point)).into()
+    }
+
+    fn subscription(&self) -> Subscription<Message> {
+        event::listen_with(|event, status, _window| {
+            match (event, status) {
                 // Using mouse
                 (Event::Mouse(CursorMoved { position }), Status::Ignored)
                 // Or using touchboard

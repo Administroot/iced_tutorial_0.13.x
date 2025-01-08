@@ -1,7 +1,12 @@
 use iced::{widget::mouse_area, Element};
 
 fn main() -> iced::Result {
-    iced::application("on pressed released of some widgets", MyApp::update, MyApp::view).run()
+    iced::application(
+        "on pressed released of some widgets",
+        MyApp::update,
+        MyApp::view,
+    )
+    .run()
 }
 
 struct MyApp {
