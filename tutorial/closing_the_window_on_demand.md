@@ -9,45 +9,41 @@ We pass [window::Id::MAIN](https://docs.rs/iced/0.12.1/iced/window/struct.Id.htm
 
 ```rust
 use iced::{
-    executor,
-    widget::{button, row},
-    window, Application, Command, Settings,
+    widget::{button, row},
+    window, Element, Task,
 };
 
 fn main() -> iced::Result {
-    MyApp::run(Settings::default())
+    iced::application("closing the window on demand", MyApp::update, MyApp::view).run()
+}
+
+struct MyApp {} 
+
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new().0
+    }
 }
 
 #[derive(Debug, Clone)]
-enum MyAppMessage {
-    CloseWindow,
+enum Message {
+    CloseWindow,
 }
 
-struct MyApp;
+impl MyApp {
+    fn new() -> (Self, Task<Message>) {
+        (Self {}, Task::none())
+    }
 
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = MyAppMessage;
-    type Theme = iced::Theme;
-    type Flags = ();
+    fn update(&mut self, message: Message) -> Task<Message> {
+        match message {
+            Message::CloseWindow => return window::get_oldest().and_then(window::close),
+        }
+    }
 
-    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (Self, Command::none())
-    }
-
-    fn title(&self) -> String {
-        String::from("My App")
-    }
-
-    fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
-        match message {
-            MyAppMessage::CloseWindow => window::close(window::Id::MAIN),
-        }
-    }
-
-    fn view(&self) -> iced::Element<Self::Message> {
-        row![button("Close window").on_press(MyAppMessage::CloseWindow),].into()
-    }
+    fn view(&self) -> Element<Message> {
+        row!(button("Close window").on_press(Message::CloseWindow),).into()
+    }
 }
 ```
 

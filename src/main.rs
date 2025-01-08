@@ -1,58 +1,39 @@
 use iced::{
-    widget::{button, row, text_input},
-    window, Element, Size, Task,
+    widget::{column, text},
+    Element,
 };
 
 fn main() -> iced::Result {
-    iced::application(
-        "changing the window dynamically",
-        MyApp::update,
-        MyApp::view,
-    )
-    .run()
+    iced::application("My First App", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
-    width: String,
-    height: String,
+    _state: String,
 }
 
 impl Default for MyApp {
     fn default() -> Self {
-        MyApp::new().0
+        MyApp::new()
     }
 }
 
 #[derive(Debug, Clone)]
 enum Message {
-    CloseWindow
+    _Message1,
 }
 
 impl MyApp {
-    fn new() -> (Self, Task<Message>) {
-        (
-            Self {
-                width: String::new(),
-                height: String::new(),
-            },
-            Task::none(),
-        )
+    fn new() -> Self {
+        Self {
+            _state: String::new(),
+        }
     }
 
-    fn update(&mut self, message: Message) -> Task<Message> {
-        match message {
-            Message::CloseWindow => {
-                return window::get_oldest()
-                    .and_then(window::close)
-            }
-        }
-        Task::none()
+    fn update(&mut self, _message: Message) {
+        todo!()
     }
 
     fn view(&self) -> Element<Message> {
-        row!(
-            button("Close window").on_press(Message::CloseWindow),
-        )
-        .into()
+        column!(text("Hello World!".to_string()),).into()
     }
 }
