@@ -1,5 +1,5 @@
 use iced::{
-    widget::{column, text},
+    widget::{column, mouse_area, text},
     Element,
 };
 
@@ -8,7 +8,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: String,
+    state: String,
 }
 
 impl Default for MyApp {
@@ -19,13 +19,14 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    Pressed,
+    Released,
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            state: String::from("Start"),
         }
     }
 
@@ -34,6 +35,9 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        mouse_area(&self.state.as_str())
+            .on_press(Message::Pressed)
+            .on_release(Message::Released)
+            .into()
     }
 }
