@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/drawing_shapes.md",
+                "file": "tutorial/drawing_with_caches.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "drawing_shapes"
+              "title": "drawing_with_caches"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/drawing_shapes.md"
+                "file": "tutorial/drawing_with_caches.md"
               },
               "icon": "lucide-list",
-              "title": "drawing_shapes 的大纲"
+              "title": "drawing_with_caches 的大纲"
             }
           },
           {
@@ -221,17 +221,18 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
-    "src/drawing_shapes.rs",
-    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2lrm1s1-1e3tbqr-3c9ryae547cr2pygzw24lzy83/work-products.bin",
-    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2lrm1s1-1e3tbqr-3c9ryae547cr2pygzw24lzy83/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2lrm1s1-1e3tbqr-3c9ryae547cr2pygzw24lzy83/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2lrm1s1-1e3tbqr-3c9ryae547cr2pygzw24lzy83",
-    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2lrmaev-12zbynf-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2lrmaev-12zbynf-working/query-cache.bin",
-    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2lrmaev-12zbynf-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2lrmaev-12zbynf-working/dep-graph.bin",
-    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2lrmaev-12zbynf-working",
-    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2lrmaev-12zbynf.lock",
+    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2qyx73q-1mp9fr6-4mvwpzwqs1ran9i0c8fx05pgb/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2qyx73q-1mp9fr6-4mvwpzwqs1ran9i0c8fx05pgb/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2qyx73q-1mp9fr6-4mvwpzwqs1ran9i0c8fx05pgb/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2qyx73q-1mp9fr6-4mvwpzwqs1ran9i0c8fx05pgb",
+    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2qywcmj-11zoul6-1veb2zts1pmti6tiqn7430cvq/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2qywcmj-11zoul6-1veb2zts1pmti6tiqn7430cvq/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2qywcmj-11zoul6-1veb2zts1pmti6tiqn7430cvq/dep-graph.bin",
+    "target/debug/incremental/iced_tutorial-2y5doev3tio3e/s-h3i2qywcmj-11zoul6-1veb2zts1pmti6tiqn7430cvq",
+    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2qyx73q-1mp9fr6-working/work-products.bin",
+    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2qyx73q-1mp9fr6-working/query-cache.bin",
+    "target/debug/incremental/iced_tutorial-2fqxlpps8csh8/s-h3i2qyx73q-1mp9fr6-working/dep-graph.part.bin",
+    "tutorial/drawing_shapes.md",
     "tutorial/batch_subscriptions.md",
     "tutorial/producing_messages_by_timers.md",
     "tutorial/producing_messages_by_keyboard_events.md",
@@ -256,7 +257,6 @@
     "tutorial/first_app.md",
     "tutorial/scrollable.md",
     "tutorial/container.md",
-    "tutorial/space.md",
     "pic.svg",
     "ferris.png",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",

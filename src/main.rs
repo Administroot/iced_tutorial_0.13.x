@@ -1,7 +1,7 @@
 use iced::{
     mouse::Cursor,
     widget::{
-        canvas::{Frame, Geometry, Path, Program, Stroke},
+        canvas::{Cache, Frame, Geometry, Path, Program, Stroke},
         column, Canvas,
     },
     Color, Element, Length, Point, Rectangle, Renderer, Theme, Vector,
@@ -12,7 +12,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: String,
+    cache: Cache
 }
 
 impl Default for MyApp {
@@ -29,7 +29,7 @@ enum Message {
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            cache: Cache::new(),
         }
     }
 
