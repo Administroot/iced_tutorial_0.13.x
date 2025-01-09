@@ -5,7 +5,7 @@ To use the widget, we need to enable the [canvas](https://docs.rs/crate/iced/0.1
 
 ```toml
 [dependencies]
-iced = { version = "0.12.1", features = ["canvas"] }
+iced = { version = "0.13.1", features = ["canvas"] }
 ```
 
 We use [Canvas::new](https://docs.rs/iced/0.12.1/iced/widget/canvas/struct.Canvas.html#method.new) to obtain the canvas widget.

@@ -1,6 +1,7 @@
 use iced::{
-    widget::{column, text},
+    widget::{canvas::Program, column, text, Canvas},
     Element,
+    Length,
 };
 
 fn main() -> iced::Result {
@@ -34,6 +35,47 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            "A Canvas",
+            Canvas::new(MyProgram)
+                .width(Length::Fill)
+                .height(Length::Fill)
+        ).into()
+    }
+}
+
+// Struct for canvas
+struct MyProgram;
+
+impl<Message> Program<Message> for MyProgram{
+    // Required method
+    fn draw(
+        &self,
+        state: &Self::State,
+        renderer: &Renderer,
+        theme: &Theme,
+        bounds: Rectangle,
+        cursor: Cursor,
+    ) -> Vec<<Renderer as Renderer>::Geometry>(
+        
+    );
+
+    fn update(
+        &self,
+        _state: &mut Self::State,
+        _event: iced::widget::canvas::Event,
+        _bounds: iced::Rectangle,
+        _cursor: mouse::Cursor,
+    ) -> (iced::widget::canvas::event::Status, Option<Message>) {
+        (iced::widget::canvas::event::Status::Ignored, None)
+    }
+
+    fn mouse_interaction(
+        &self,
+        _state: &Self::State,
+        _bounds: iced::Rectangle,
+        _cursor: mouse::Cursor,
+    ) -> mouse::Interaction {
+        mouse::Interaction::default()
     }
 }
