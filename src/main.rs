@@ -5,7 +5,7 @@ use iced::{
         widget, Layout, Widget,
     },
     alignment, mouse,
-    widget::container,
+    widget::{checkbox, column, container, Checkbox},
     Border, Color, Element, Length, Rectangle, Shadow, Size, Theme,
 };
 
@@ -14,7 +14,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: bool,
+    highlight: bool,
 }
 
 impl Default for MyApp {
@@ -25,37 +25,45 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    Highlight(bool),
 }
 
 impl MyApp {
     fn new() -> Self {
-        Self {
-            _state: String::new(),
+        Self { highlight: false }
+    }
+
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::Highlight(b) => {
+                self.highlight = b;
+            }
         }
     }
 
-    fn update(&mut self, _message: Message) {
-        todo!()
-    }
-
     fn view(&self) -> Element<Message> {
-        container(MyWidget)
-            .width(Length::Fill)
-            .height(Length::Fill)
-            .align_x(alignment::Horizontal::Center)
-            .align_y(alignment::Vertical::Center)
-            .into()
+        container(
+            column![
+                MyWidget::new(self.highlight),
+                checkbox("Highlight", self.highlight).on_toggle(Message::Highlight),
+            ]
+            .spacing(20),
+        )
+        .width(Length::Fill)
+        .height(Length::Fill)
+        .align_x(alignment::Horizontal::Center)
+        .align_y(alignment::Vertical::Center)
+        .into()
     }
 }
 
 struct MyWidget {
     highlight: bool,
-};
+}
 
 impl MyWidget {
-    fn new(highlight: bool){
-
+    fn new(highlight: bool) -> Self {
+        Self { highlight }
     }
 }
 
@@ -99,13 +107,12 @@ where
                 },
                 shadow: Shadow::default(),
             },
-
             // Use the `highlight` variable to change the color of our widget in the draw method.
             if self.highlight {
                 Color::from_rgb(0.6, 0.8, 1.0)
             } else {
                 Color::from_rgb(0.0, 0.2, 0.4)
-            }
+            },
         );
     }
 }
