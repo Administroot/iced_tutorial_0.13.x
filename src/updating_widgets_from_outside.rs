@@ -10,7 +10,7 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::application("updating widgets from outside", MyApp::update, MyApp::view).run()
+    iced::application("drawing widgets", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
