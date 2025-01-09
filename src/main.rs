@@ -83,3 +83,10 @@ impl<Message> Program<Message> for MyApp {
         vec![geometry]
     }
 }
+
+struct MyWidget;
+
+impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidget
+where
+    Renderer: iced::advanced::Renderer,
+{}

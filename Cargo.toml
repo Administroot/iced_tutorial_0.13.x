@@ -5,5 +5,5 @@ edition = "2021"
 
 [dependencies]
 
-iced = {version = "0.13.1", features = ["image", "svg", "tokio", "canvas"] }
-tokio = {version = "1.42.0", features = ["time"]}
+iced = {version = "0.13.1", features = ["image", "svg", "tokio", "canvas", "advanced"] }
+tokio = {version = "1.43.0", features = ["time"]}

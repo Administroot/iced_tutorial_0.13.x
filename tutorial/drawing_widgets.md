@@ -6,7 +6,7 @@ The dependencies of the `Cargo.toml` file should look like this:
 
 ```toml
 [dependencies]
-iced = { version = "0.12.1", features = ["advanced"] }
+iced = { version = "0.13.1", features = ["advanced"] }
 ```
 
 Then, we need a struct that implement [Widget](https://docs.rs/iced/0.12.1/iced/advanced/widget/trait.Widget.html) trait.
