@@ -14,7 +14,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: String,
+    _state: bool,
 }
 
 impl Default for MyApp {
@@ -49,7 +49,15 @@ impl MyApp {
     }
 }
 
-struct MyWidget;
+struct MyWidget {
+    highlight: bool,
+};
+
+impl MyWidget {
+    fn new(highlight: bool){
+
+    }
+}
 
 impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidget
 where
@@ -91,7 +99,13 @@ where
                 },
                 shadow: Shadow::default(),
             },
-            Color::from_rgb(0.0, 0.2, 0.4),
+
+            // Use the `highlight` variable to change the color of our widget in the draw method.
+            if self.highlight {
+                Color::from_rgb(0.6, 0.8, 1.0)
+            } else {
+                Color::from_rgb(0.0, 0.2, 0.4)
+            }
         );
     }
 }
