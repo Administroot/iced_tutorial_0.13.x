@@ -1,7 +1,5 @@
 use iced::{
-    widget::{canvas::Program, column, text, Canvas},
-    Element,
-    Length,
+    mouse::Cursor, widget::{canvas::{Frame, Geometry, Path, Program, Stroke}, column, text, Canvas}, Color, Element, Length, Point, Rectangle, Renderer, Theme, Vector
 };
 
 fn main() -> iced::Result {
@@ -48,6 +46,8 @@ impl MyApp {
 struct MyProgram;
 
 impl<Message> Program<Message> for MyProgram{
+    type State = ();
+
     // Required method
     fn draw(
         &self,
@@ -56,9 +56,28 @@ impl<Message> Program<Message> for MyProgram{
         theme: &Theme,
         bounds: Rectangle,
         cursor: Cursor,
-    ) -> Vec<<Renderer as Renderer>::Geometry>(
-        
-    );
+    ) -> Vec<Geometry>{
+        let mut frame = Frame::new(renderer, bounds.size());
+        frame.fill_rectangle(Point::ORIGIN, bounds.size(), Color::from_rgb(0.0, 0.2, 0.4));
+
+        frame.fill(
+            &Path::circle(frame.center(), frame.width().min(frame.height()) / 4.0),
+            Color::from_rgb(0.6, 0.8, 1.0),
+        );
+
+        // Draws the stroke of the given Path on the Frame with the provided style.
+        frame.stroke(
+            &Path::line(
+                frame.center() + Vector::new(-250.0, 100.0),
+                frame.center() + Vector::new(250.0, -100.0),
+            ),
+            Stroke {
+                style: Color::WHITE.into(),
+                width: 50.0,
+                ..Default::default()
+            },
+        );
+    }
 
     fn update(
         &self,
