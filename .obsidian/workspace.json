@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/drawing_widgets.md",
+                "file": "tutorial/updating_widgets_from_outside.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "drawing_widgets"
+              "title": "updating_widgets_from_outside"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/drawing_widgets.md"
+                "file": "tutorial/updating_widgets_from_outside.md"
               },
               "icon": "lucide-list",
-              "title": "drawing_widgets 的大纲"
+              "title": "updating_widgets_from_outside 的大纲"
             }
           },
           {
@@ -221,6 +221,7 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "tutorial/drawing_widgets.md",
     "src/drawing_widgets.rs",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3i6072bky-1l04mcy-62zneapaz546cs0pic8q6s7m7/work-products.bin",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3i6072bky-1l04mcy-62zneapaz546cs0pic8q6s7m7/query-cache.bin",
@@ -231,9 +232,7 @@
     "target/debug/incremental/iced_tutorial-1ksmtrhcd8saf/s-h3i6071bnd-0jyoljs-117glpm6zcej4fidew1sqwp0r/dep-graph.bin",
     "target/debug/incremental/iced_tutorial-1ksmtrhcd8saf/s-h3i6071bnd-0jyoljs-117glpm6zcej4fidew1sqwp0r",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3i6072bky-1l04mcy-working/dep-graph.part.bin",
-    "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3i6072bky-1l04mcy-working/work-products.bin",
     "tutorial/drawing_with_caches.md",
-    "tutorial/drawing_widgets.md",
     "tutorial/drawing_shapes.md",
     "tutorial/batch_subscriptions.md",
     "tutorial/producing_messages_by_timers.md",
