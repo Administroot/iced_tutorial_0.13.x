@@ -1,9 +1,16 @@
 use iced::{
-    advanced::{layout, renderer::{self, Quad}, widget, Layout, Widget}, mouse, Border, Color, Element, Length, Rectangle, Shadow, Size, Theme
+    advanced::{
+        layout,
+        renderer::{self, Quad},
+        widget, Layout, Widget,
+    },
+    alignment, mouse,
+    widget::container,
+    Border, Color, Element, Length, Rectangle, Shadow, Size, Theme,
 };
 
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view).run()
+    iced::application("drawing widgets", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
@@ -33,7 +40,12 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        container(MyWidget)
+            .width(Length::Fill)
+            .height(Length::Fill)
+            .align_x(alignment::Horizontal::Center)
+            .align_y(alignment::Vertical::Center)
+            .into()
     }
 }
 
@@ -70,7 +82,7 @@ where
         _viewport: &Rectangle,
     ) {
         renderer.fill_quad(
-            Quad{
+            Quad {
                 bounds: layout.bounds(),
                 border: Border {
                     color: Color::from_rgb(0.6, 0.8, 1.0),
@@ -79,7 +91,8 @@ where
                 },
                 shadow: Shadow::default(),
             },
-            Color::from_rgb(0.0, 0.2, 0.4));
+            Color::from_rgb(0.0, 0.2, 0.4),
+        );
     }
 }
 
