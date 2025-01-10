@@ -1,16 +1,12 @@
-use std::clone;
-
 use iced::{
     advanced::{
-        graphics::core::{event, keyboard},
+        graphics::core::event,
         layout,
         renderer::{self, Quad},
         widget, Layout, Widget,
     },
-    alignment,
-    keyboard::key::Named,
-    mouse,
-    widget::{container, column, text},
+    alignment, mouse,
+    widget::{column, container, text},
     Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme,
 };
 
@@ -19,7 +15,7 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    count: u32
+    count: u32,
 }
 
 impl Default for MyApp {
@@ -35,7 +31,7 @@ enum Message {
 
 impl MyApp {
     fn new() -> Self {
-        Self {count: 0}
+        Self { count: 0 }
     }
 
     fn update(&mut self, message: Message) {
@@ -47,10 +43,7 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-            container(
-            column![MyWidget::new(), text(self.count)]
-                .spacing(20)
-            )
+        container(column![MyWidget::new(Message::MyWidgetPressed), text(self.count)].spacing(20))
             .width(Length::Fill)
             .height(Length::Fill)
             .align_x(alignment::Horizontal::Center)
@@ -60,16 +53,16 @@ impl MyApp {
 }
 
 struct MyWidget<Message> {
-    pressed_message: Message
+    pressed_message: Message,
 }
 
 impl<Message> MyWidget<Message> {
     fn new(pressed_message: Message) -> Self {
-        Self {pressed_message}
+        Self { pressed_message }
     }
 }
 
-impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidget<Message>
+impl<Message: Clone, Renderer> Widget<Message, Theme, Renderer> for MyWidget<Message>
 where
     Renderer: iced::advanced::Renderer,
 {
@@ -109,12 +102,7 @@ where
                 },
                 shadow: Shadow::default(),
             },
-            // Use the `highlight` variable to change the color of our widget in the draw method.
-            if self.highlight {
-                Color::from_rgb(0.6, 0.8, 1.0)
-            } else {
-                Color::from_rgb(0.0, 0.2, 0.4)
-            },
+            Color::from_rgb(0.0, 0.2, 0.4),
         );
     }
 
