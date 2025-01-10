@@ -1,12 +1,7 @@
 use iced::{
     advanced::{
-        layout,
-        renderer::{self, Quad},
-        widget, Layout, Widget,
-    },
-    alignment, mouse,
-    widget::{checkbox, column, container},
-    Border, Color, Element, Length, Rectangle, Shadow, Size, Theme,
+        graphics::core::{event, keyboard}, layout, renderer::{self, Quad}, widget, Layout, Widget
+    }, alignment, keyboard::key::Named, mouse, widget::{checkbox, column, container}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
 };
 
 fn main() -> iced::Result {
@@ -114,6 +109,28 @@ where
                 Color::from_rgb(0.0, 0.2, 0.4)
             },
         );
+    }
+
+    fn on_event(
+            &mut self,
+            _state: &mut widget::Tree,
+            event: iced::Event,
+            _layout: Layout<'_>,
+            _cursor: iced::advanced::mouse::Cursor,
+            _renderer: &Renderer,
+            _clipboard: &mut dyn iced::advanced::Clipboard,
+            _shell: &mut iced::advanced::Shell<'_, Message>,
+            _viewport: &Rectangle,
+        ) -> iced::advanced::graphics::core::event::Status {
+        match event {
+            Event::Keyboard(keyboard::Event::KeyPressed { key: keyboard::Key::Named(Named::Space)}) => {
+                self.highlight = !self.highlight;
+                event::Status::Captured()
+            },
+            iced::Event::Mouse(event) => todo!(),
+            iced::Event::Window(event) => todo!(),
+            iced::Event::Touch(event) => todo!(),
+        }
     }
 }
 
