@@ -9,7 +9,8 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    highlight: bool,
+    /* Since our widget maintains its own state, we do not need to pass the state from our app. */
+    // highlight: bool,
 }
 
 impl Default for MyApp {
@@ -25,21 +26,16 @@ enum Message {
 
 impl MyApp {
     fn new() -> Self {
-        Self { highlight: false }
+        Self {}
     }
 
-    fn update(&mut self, message: Message) {
-        match message {
-            Message::Highlight(b) => {
-                self.highlight = b;
-            }
-        }
+    fn update(&mut self, _message: Message) {
     }
 
     fn view(&self) -> Element<Message> {
         container(
             column![
-                MyWidget::new(self.highlight),
+                container(MyWidget::new()),
                 checkbox("Highlight", self.highlight).on_toggle(Message::Highlight),
             ]
             .spacing(20),
@@ -123,7 +119,7 @@ where
             _viewport: &Rectangle,
         ) -> iced::advanced::graphics::core::event::Status {
         match event {
-            Event::Keyboard(keyboard::Event::KeyPressed { key: keyboard::Key::Named(Named::Space), modified_key: Key, physical_key: Physical, location: Location, modifiers: Modifiers, text: Option<SmolStr> }) => {
+            Event::Keyboard(keyboard::Event::KeyPressed { key: keyboard::Key::Named(Named::Space), ..}) => {
                 self.highlight = !self.highlight;
                 event::Status::Captured
             },
