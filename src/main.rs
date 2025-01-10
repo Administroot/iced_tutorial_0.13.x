@@ -1,11 +1,19 @@
 use iced::{
     advanced::{
-        graphics::core::{event, keyboard, SmolStr}, layout, renderer::{self, Quad}, widget, Layout, Widget
-    }, alignment, keyboard::{key::{Named, Physical}, Key, Location, Modifiers}, mouse, widget::{checkbox, column, container}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
+        graphics::core::{event, keyboard},
+        layout,
+        renderer::{self, Quad},
+        widget, Layout, Widget,
+    },
+    alignment,
+    keyboard::key::Named,
+    mouse,
+    widget::container,
+    Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme,
 };
 
 fn main() -> iced::Result {
-    iced::application("updating widgets from outside", MyApp::update, MyApp::view).run()
+    iced::application("updating widgets from events", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
@@ -21,7 +29,8 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    Highlight(bool),
+    /*Since our widget maintains its own state, we do not need to pass the state from our app.*/
+    _Highlight(bool),
 }
 
 impl MyApp {
@@ -29,22 +38,15 @@ impl MyApp {
         Self {}
     }
 
-    fn update(&mut self, _message: Message) {
-    }
+    fn update(&mut self, _message: Message) {}
 
     fn view(&self) -> Element<Message> {
-        container(
-            column![
-                container(MyWidget::new()),
-                checkbox("Highlight", self.highlight).on_toggle(Message::Highlight),
-            ]
-            .spacing(20),
-        )
-        .width(Length::Fill)
-        .height(Length::Fill)
-        .align_x(alignment::Horizontal::Center)
-        .align_y(alignment::Vertical::Center)
-        .into()
+        container(MyWidget::new())
+            .width(Length::Fill)
+            .height(Length::Fill)
+            .align_x(alignment::Horizontal::Center)
+            .align_y(alignment::Vertical::Center)
+            .into()
     }
 }
 
@@ -53,8 +55,8 @@ struct MyWidget {
 }
 
 impl MyWidget {
-    fn new(highlight: bool) -> Self {
-        Self { highlight }
+    fn new() -> Self {
+        Self { highlight: false }
     }
 }
 
@@ -108,22 +110,26 @@ where
     }
 
     fn on_event(
-            &mut self,
-            _state: &mut widget::Tree,
-            event: iced::Event,
-            _layout: Layout<'_>,
-            _cursor: iced::advanced::mouse::Cursor,
-            _renderer: &Renderer,
-            _clipboard: &mut dyn iced::advanced::Clipboard,
-            _shell: &mut iced::advanced::Shell<'_, Message>,
-            _viewport: &Rectangle,
-        ) -> iced::advanced::graphics::core::event::Status {
+        &mut self,
+        _state: &mut widget::Tree,
+        event: iced::Event,
+        _layout: Layout<'_>,
+        _cursor: iced::advanced::mouse::Cursor,
+        _renderer: &Renderer,
+        _clipboard: &mut dyn iced::advanced::Clipboard,
+        _shell: &mut iced::advanced::Shell<'_, Message>,
+        _viewport: &Rectangle,
+    ) -> iced::advanced::graphics::core::event::Status {
         match event {
-            Event::Keyboard(keyboard::Event::KeyPressed { key: keyboard::Key::Named(Named::Space), ..}) => {
+            // When pressed "ENTER", trigger event::Status
+            Event::Keyboard(keyboard::Event::KeyPressed {
+                key: keyboard::Key::Named(Named::Space),
+                ..
+            }) => {
                 self.highlight = !self.highlight;
                 event::Status::Captured
-            },
-            _ => event::Status::Ignored
+            }
+            _ => event::Status::Ignored,
         }
     }
 }
