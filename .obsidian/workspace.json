@@ -221,6 +221,7 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "src/producing_widget_messages.rs",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3jcp5nn2l-1jivkoy-7w74u5uqrs175unrxs1ep5unw/work-products.bin",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3jcp5nn2l-1jivkoy-7w74u5uqrs175unrxs1ep5unw/query-cache.bin",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3jcp5nn2l-1jivkoy-7w74u5uqrs175unrxs1ep5unw/dep-graph.bin",
@@ -231,7 +232,6 @@
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3jcp5nn2l-1jivkoy-working/dep-graph.part.bin",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3jcp5nn2l-1jivkoy-working",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3jcp5nn2l-1jivkoy.lock",
-    "target/debug/incremental/iced_tutorial-1ksmtrhcd8saf/s-h3jcp5nin8-0tg0rib-working/work-products.bin",
     "tutorial/updating_widgets_from_events.md",
     "tutorial/updating_widgets_from_outside.md",
     "tutorial/drawing_widgets.md",
