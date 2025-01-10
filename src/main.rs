@@ -6,7 +6,7 @@ use iced::{
         widget, Layout, Widget,
     },
     alignment, mouse,
-    widget::{column, container, text},
+    widget::{column, container, text, Text},
     Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme,
 };
 
@@ -157,4 +157,69 @@ where
     fn from(widget: MyWidget<Message>) -> Self {
         Self::new(widget)
     }
+}
+
+struct MyWidgetWithText;
+
+impl MyWidgetWithText {
+    const CONTENT: &'static str = "  My Widget  ";
+
+    fn new() -> Self{
+        Self
+    }
+}
+
+impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidgetWithText
+where
+    Renderer: iced::advanced::Renderer + iced::advanced::text::Renderer,
+{
+    fn size(&self) -> Size<Length> {
+        Size {
+            width: Length::Shrink,
+            height: Length::Shrink,
+        }
+    }
+
+    fn layout(
+        &self,
+        _tree: &mut Tree,
+        _renderer: &Renderer,
+        _limits: &layout::Limits,
+    ) -> layout::Node {
+        layout::Node::new([200, 100].into())
+    }
+    
+    fn draw(
+        &self,
+        tree: &widget::Tree,
+        renderer: &mut Renderer,
+        theme: &Theme,
+        style: &renderer::Style,
+        layout: Layout<'_>,
+        cursor: iced::advanced::mouse::Cursor,
+        viewport: &Rectangle,
+    ) {
+        renderer.fill_quad(
+            Quad {
+                bounds: layout.bounds(),
+                border: Border {
+                    color: Color::from_rgb(0.6, 0.8, 1.0),
+                    width: 1.0,
+                    radius: 10.0.into(),
+                },
+                shadow: Shadow::default(),
+            },
+            Color::from_rgb(0.0, 0.2, 0.4),
+        );
+        
+        let bounds = layout.bounds();
+        renderer.fill_text(
+            text: Text{ fragment: todo!(), size: todo!(), line_height: todo!(), width: todo!(), height: todo!(), horizontal_alignment: todo!(), vertical_alignment: todo!(), font: todo!(), shaping: todo!(), wrapping: todo!(), class: todo!(),CONTENT: }, 
+            position, 
+            color, 
+            clip_bounds
+        );
+    }
+
+    
 }
