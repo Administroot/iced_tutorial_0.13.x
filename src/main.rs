@@ -1,13 +1,7 @@
 use iced::{
     advanced::{
-        graphics::core::event,
-        layout,
-        renderer::{self, Quad},
-        widget, Layout, Widget,
-    },
-    alignment, mouse,
-    widget::{column, container, text, Text},
-    Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme,
+        graphics::core::event, layout, renderer::{self, Quad}, widget, Layout, Text, Widget
+    }, alignment, color, mouse, widget::{column, container, text}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
 };
 
 fn main() -> iced::Result {
@@ -214,10 +208,10 @@ where
         
         let bounds = layout.bounds();
         renderer.fill_text(
-            text: Text{ fragment: todo!(), size: todo!(), line_height: todo!(), width: todo!(), height: todo!(), horizontal_alignment: todo!(), vertical_alignment: todo!(), font: todo!(), shaping: todo!(), wrapping: todo!(), class: todo!(),CONTENT: }, 
-            position, 
-            color, 
-            clip_bounds
+            Text{ content: Self::CONTENT, bounds: bounds.size(), size: renderer.default_size(), line_height: LineHeight::Default, font: renderer.default_font(), horizontal_alignment: alignment::Horizontal::Center, vertical_alignment: alignment::Vertical::Center, shaping: Shaping::Default, wrapping: Wrapping::Default}, 
+            bounds.center(),
+            Color::from_rgb(0.6, 0.8, 1.0),
+            *viewport
         );
     }
 
