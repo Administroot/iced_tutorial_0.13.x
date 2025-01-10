@@ -1,4 +1,4 @@
-use std::default;
+use std::clone;
 
 use iced::{
     advanced::{
@@ -10,17 +10,16 @@ use iced::{
     alignment,
     keyboard::key::Named,
     mouse,
-    widget::container,
+    widget::{container, column, text},
     Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme,
 };
 
 fn main() -> iced::Result {
-    iced::application("updating widgets from events", MyApp::update, MyApp::view).run()
+    iced::application("producing_widget_messages", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
-    /* Since our widget maintains its own state, we do not need to pass the state from our app. */
-    // highlight: bool,
+    count: u32
 }
 
 impl Default for MyApp {
@@ -31,19 +30,27 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    /*Since our widget maintains its own state, we do not need to pass the state from our app.*/
-    _Highlight(bool),
+    MyWidgetPressed,
 }
 
 impl MyApp {
     fn new() -> Self {
-        Self {}
+        Self {count: 0}
     }
 
-    fn update(&mut self, _message: Message) {}
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::MyWidgetPressed => {
+                self.count += 1;
+            }
+        }
+    }
 
     fn view(&self) -> Element<Message> {
-        container(MyWidget::new())
+            container(
+            column![MyWidget::new(), text(self.count)]
+                .spacing(20)
+            )
             .width(Length::Fill)
             .height(Length::Fill)
             .align_x(alignment::Horizontal::Center)
@@ -62,7 +69,7 @@ impl<Message> MyWidget<Message> {
     }
 }
 
-impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidget
+impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidget<Message>
 where
     Renderer: iced::advanced::Renderer,
 {
@@ -139,11 +146,12 @@ where
     }
 }
 
-impl<'a, Message, Renderer> From<MyWidget> for Element<'a, Message, Theme, Renderer>
+impl<'a, Message, Renderer> From<MyWidget<Message>> for Element<'a, Message, Theme, Renderer>
 where
+    Message: 'a + Clone,
     Renderer: iced::advanced::Renderer,
 {
-    fn from(widget: MyWidget) -> Self {
+    fn from(widget: MyWidget<Message>) -> Self {
         Self::new(widget)
     }
 }
