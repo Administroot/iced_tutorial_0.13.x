@@ -1,7 +1,7 @@
 use iced::{
     advanced::{
-        graphics::core::{event, keyboard}, layout, renderer::{self, Quad}, widget, Layout, Widget
-    }, alignment, keyboard::key::Named, mouse, widget::{checkbox, column, container}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
+        graphics::core::{event, keyboard, SmolStr}, layout, renderer::{self, Quad}, widget, Layout, Widget
+    }, alignment, keyboard::{key::{Named, Physical}, Key, Location, Modifiers}, mouse, widget::{checkbox, column, container}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
 };
 
 fn main() -> iced::Result {
@@ -123,13 +123,11 @@ where
             _viewport: &Rectangle,
         ) -> iced::advanced::graphics::core::event::Status {
         match event {
-            Event::Keyboard(keyboard::Event::KeyPressed { key: keyboard::Key::Named(Named::Space)}) => {
+            Event::Keyboard(keyboard::Event::KeyPressed { key: keyboard::Key::Named(Named::Space), modified_key: Key, physical_key: Physical, location: Location, modifiers: Modifiers, text: Option<SmolStr> }) => {
                 self.highlight = !self.highlight;
-                event::Status::Captured()
+                event::Status::Captured
             },
-            iced::Event::Mouse(event) => todo!(),
-            iced::Event::Window(event) => todo!(),
-            iced::Event::Touch(event) => todo!(),
+            _ => event::Status::Ignored
         }
     }
 }
