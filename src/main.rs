@@ -1,3 +1,5 @@
+use std::default;
+
 use iced::{
     advanced::{
         graphics::core::{event, keyboard},
@@ -50,13 +52,13 @@ impl MyApp {
     }
 }
 
-struct MyWidget {
-    highlight: bool,
+struct MyWidget<Message> {
+    pressed_message: Message
 }
 
-impl MyWidget {
-    fn new() -> Self {
-        Self { highlight: false }
+impl<Message> MyWidget<Message> {
+    fn new(pressed_message: Message) -> Self {
+        Self {pressed_message}
     }
 }
 
@@ -113,23 +115,26 @@ where
         &mut self,
         _state: &mut widget::Tree,
         event: iced::Event,
-        _layout: Layout<'_>,
-        _cursor: iced::advanced::mouse::Cursor,
+        layout: Layout<'_>,
+        cursor: iced::advanced::mouse::Cursor,
         _renderer: &Renderer,
         _clipboard: &mut dyn iced::advanced::Clipboard,
-        _shell: &mut iced::advanced::Shell<'_, Message>,
+        shell: &mut iced::advanced::Shell<'_, Message>,
         _viewport: &Rectangle,
     ) -> iced::advanced::graphics::core::event::Status {
-        match event {
-            // When pressed "ENTER", trigger event::Status
-            Event::Keyboard(keyboard::Event::KeyPressed {
-                key: keyboard::Key::Named(Named::Space),
-                ..
-            }) => {
-                self.highlight = !self.highlight;
-                event::Status::Captured
+        // Check the mouse position
+        if cursor.is_over(layout.bounds()) {
+            match event {
+                // Check the mouse button state
+                Event::Mouse(mouse::Event::ButtonPressed(_)) => {
+                    // After pressing the button, shell will produce a message.
+                    shell.publish(self.pressed_message.clone());
+                    event::Status::Captured
+                }
+                _ => event::Status::Ignored,
             }
-            _ => event::Status::Ignored,
+        } else {
+            event::Status::Ignored
         }
     }
 }
