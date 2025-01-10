@@ -11,7 +11,7 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::application("mouse pointer over widgets", MyApp::update, MyApp::view).run()
+    iced::application("producing_widget_messages", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
