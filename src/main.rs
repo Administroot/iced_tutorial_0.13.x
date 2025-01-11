@@ -62,7 +62,7 @@ impl MyWidgetWithImage {
 
 impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidgetWithImage
 where
-    Renderer: iced::advanced::Renderer + iced::advanced::text::Renderer,
+    Renderer: iced::advanced::Renderer + iced::advanced::image::Renderer<Handle = Handle>,
 {
     fn size(&self) -> Size<Length> {
         Size {
@@ -77,7 +77,7 @@ where
         renderer: &Renderer,
         limits: &layout::Limits,
     ) -> layout::Node {
-        iced::widget::image::layout(renderer, limits, &self.handle, Length::Fixed(200.), Length::Fixed(200.), iced::ContentFit::Contain, rotation)
+        iced::widget::image::layout(renderer, limits, &self.handle, Length::Fixed(200.), Length::Fixed(200.), iced::ContentFit::Contain, iced::Rotation::default())
     }
 
     fn draw(
@@ -94,38 +94,22 @@ where
             Quad {
                 bounds: layout.bounds(),
                 border: Border {
-                    color: Color::from_rgb(0.6, 0.8, 1.0),
+                    color: Color::from_rgb(1.0, 0.66, 0.6),
                     width: 1.0,
                     radius: 10.0.into(),
                 },
                 shadow: Shadow::default(),
             },
-            Color::from_rgb(0.0, 0.2, 0.4),
+            Color::BLACK,
         );
 
-        let bounds = layout.bounds();
-        renderer.fill_text(
-            Text {
-                content: Self::CONTENT.to_owned(),
-                bounds: bounds.size(),
-                size: renderer.default_size(),
-                line_height: LineHeight::default(),
-                font: renderer.default_font(),
-                horizontal_alignment: alignment::Horizontal::Center,
-                vertical_alignment: alignment::Vertical::Center,
-                shaping: Shaping::default(),
-                wrapping: Wrapping::default(),
-            },
-            bounds.center(),
-            Color::from_rgb(0.6, 0.8, 1.0),
-            *viewport,
-        );
+        iced::widget::image::draw(renderer, layout, &self.handle, iced::ContentFit::Contain, iced::, rotation, opacity);
     }
 }
 
-impl<'a, Message, Renderer> From<MyWidgetWithImage> for Element<'a, Message, Theme, Renderer>
+impl<Message, Renderer> From<MyWidgetWithImage> for Element<Message, Theme, Renderer>
 where
-    Renderer: iced::advanced::Renderer + iced::advanced::text::Renderer,
+    Renderer: iced::advanced::Renderer + iced::advanced::image::Renderer,
 {
     fn from(widget: MyWidgetWithImage) -> Self {
         Self::new(widget)
