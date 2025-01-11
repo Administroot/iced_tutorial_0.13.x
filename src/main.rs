@@ -3,12 +3,10 @@ use iced::{
         layout,
         renderer::{self, Quad},
         widget::{self, Tree},
-        Layout, Text, Widget,
+        Layout, Widget,
     },
     alignment,
-    widget::{
-        container, svg::Handle, text::{LineHeight, Shaping, Wrapping}
-    },
+    widget::{container, image::Handle},
     Border, Color, Element, Length, Rectangle, Shadow, Size, Theme,
 };
 
@@ -48,14 +46,12 @@ impl MyApp {
 
 struct MyWidgetWithImage {
     handle: Handle,
-};
+}
 
 impl MyWidgetWithImage {
-    const CONTENT: &'static str = "  My Widget  ";
-
     fn new() -> Self {
         Self {
-            handle: Handle::from_path("ferris.png")
+            handle: Handle::from_path("ferris.png"),
         }
     }
 }
@@ -77,7 +73,15 @@ where
         renderer: &Renderer,
         limits: &layout::Limits,
     ) -> layout::Node {
-        iced::widget::image::layout(renderer, limits, &self.handle, Length::Fixed(200.), Length::Fixed(200.), iced::ContentFit::Contain, iced::Rotation::default())
+        iced::widget::image::layout(
+            renderer,
+            limits,
+            &self.handle,
+            Length::Fixed(200.),
+            Length::Fixed(200.),
+            iced::ContentFit::Contain,
+            iced::Rotation::default(),
+        )
     }
 
     fn draw(
@@ -88,7 +92,7 @@ where
         _style: &renderer::Style,
         layout: Layout<'_>,
         _cursor: iced::advanced::mouse::Cursor,
-        viewport: &Rectangle,
+        _viewport: &Rectangle,
     ) {
         renderer.fill_quad(
             Quad {
@@ -103,13 +107,21 @@ where
             Color::BLACK,
         );
 
-        iced::widget::image::draw(renderer, layout, &self.handle, iced::ContentFit::Contain, iced::, rotation, opacity);
+        iced::widget::image::draw(
+            renderer,
+            layout,
+            &self.handle,
+            iced::ContentFit::Contain,
+            iced::widget::image::FilterMethod::Linear,
+            iced::Rotation::default(),
+            1.0,
+        );
     }
 }
 
-impl<Message, Renderer> From<MyWidgetWithImage> for Element<Message, Theme, Renderer>
+impl<'a, Message, Renderer> From<MyWidgetWithImage> for Element<'a, Message, Theme, Renderer>
 where
-    Renderer: iced::advanced::Renderer + iced::advanced::image::Renderer,
+    Renderer: iced::advanced::Renderer + iced::advanced::image::Renderer<Handle = Handle>,
 {
     fn from(widget: MyWidgetWithImage) -> Self {
         Self::new(widget)
