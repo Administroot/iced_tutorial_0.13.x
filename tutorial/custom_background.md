@@ -6,7 +6,7 @@ Similar to the [Image](https://docs.rs/iced/0.12.1/iced/widget/image/struct.Imag
 
 ```toml
 [dependencies]
-iced = { version = "0.12.1", features = ["image", "advanced"] }
+iced = { version = "0.13.1", features = ["image", "advanced"] }
 ```
 
 Assume we have an image, named `ferris.png`,  in the Cargo root directory.
