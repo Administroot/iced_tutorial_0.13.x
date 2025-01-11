@@ -7,8 +7,7 @@ use iced::{
     },
     alignment,
     widget::{
-        container,
-        text::{LineHeight, Shaping, Wrapping},
+        container, svg::Handle, text::{LineHeight, Shaping, Wrapping}
     },
     Border, Color, Element, Length, Rectangle, Shadow, Size, Theme,
 };
@@ -38,7 +37,7 @@ impl MyApp {
     fn update(&mut self, _message: Message) {}
 
     fn view(&self) -> Element<Message> {
-        container(MyWidgetWithText::new())
+        container(MyWidgetWithImage::new())
             .width(Length::Fill)
             .height(Length::Fill)
             .align_x(alignment::Horizontal::Center)
@@ -47,17 +46,21 @@ impl MyApp {
     }
 }
 
-struct MyWidgetWithText;
+struct MyWidgetWithImage {
+    handle: Handle,
+};
 
-impl MyWidgetWithText {
+impl MyWidgetWithImage {
     const CONTENT: &'static str = "  My Widget  ";
 
     fn new() -> Self {
-        Self
+        Self {
+            handle: Handle::from_path("ferris.png")
+        }
     }
 }
 
-impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidgetWithText
+impl<Message, Renderer> Widget<Message, Theme, Renderer> for MyWidgetWithImage
 where
     Renderer: iced::advanced::Renderer + iced::advanced::text::Renderer,
 {
@@ -71,13 +74,10 @@ where
     fn layout(
         &self,
         _tree: &mut Tree,
-        _renderer: &Renderer,
-        _limits: &layout::Limits,
+        renderer: &Renderer,
+        limits: &layout::Limits,
     ) -> layout::Node {
-        layout::Node::new(Size {
-            width: 200.0,
-            height: 100.0,
-        })
+        iced::widget::image::layout(renderer, limits, &self.handle, Length::Fixed(200.), Length::Fixed(200.), iced::ContentFit::Contain, rotation)
     }
 
     fn draw(
@@ -123,11 +123,11 @@ where
     }
 }
 
-impl<'a, Message, Renderer> From<MyWidgetWithText> for Element<'a, Message, Theme, Renderer>
+impl<'a, Message, Renderer> From<MyWidgetWithImage> for Element<'a, Message, Theme, Renderer>
 where
     Renderer: iced::advanced::Renderer + iced::advanced::text::Renderer,
 {
-    fn from(widget: MyWidgetWithText) -> Self {
+    fn from(widget: MyWidgetWithImage) -> Self {
         Self::new(widget)
     }
 }
