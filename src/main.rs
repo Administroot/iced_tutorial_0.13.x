@@ -1,7 +1,7 @@
 use iced::{
     advanced::{
         graphics::core::event, layout, renderer::{self, Quad}, widget::{self, Tree}, Layout, Text, Widget
-    }, alignment, mouse, widget::{column, container, text::{self, LineHeight, Shaping, Wrapping}}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
+    }, alignment, mouse, widget::{column, container, text, text::{LineHeight, Shaping, Wrapping}}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
 };
 
 fn main() -> iced::Result {
@@ -180,7 +180,10 @@ where
         _renderer: &Renderer,
         _limits: &layout::Limits,
     ) -> layout::Node {
-        layout::Node::new([200, 100])
+        layout::Node::new(Size{
+            width: 200.0,
+            height: 100.0,
+        })
     }
     
     fn draw(
