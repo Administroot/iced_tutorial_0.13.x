@@ -4,7 +4,7 @@ use iced::{
         renderer::{self, Quad},
         widget::{self, Tree},
         Layout, Widget,
-    }, alignment, mouse, widget::{container, image::Handle}, Border, Color, Element, Length, Rectangle, Shadow, Size, Theme
+    }, Alignment, alignment, mouse, widget::{container, image::Handle}, Border, Color, Element, Length, Rectangle, Shadow, Size, Theme
 };
 
 fn main() -> iced::Result {
@@ -123,7 +123,11 @@ where
         renderer: &Renderer,
         limits: &layout::Limits,
     ) -> layout::Node {
-        let inner_layout = 
+        let inner_widget = &self.inner_widget as &dyn Widget<Message, Theme, Renderer>;
+        let mut child_node = inner_widget.layout(tree, renderer, limits);
+        let size_of_this_node = Size::new(200., 200.);
+        child_node = child_node.align(Alignment::Center, Alignment::Center, size_of_this_node);
+        layout::Node::with_children(size_of_this_node, vec![child_node])
     }
 
     fn draw(
@@ -136,6 +140,20 @@ where
         cursor: iced::advanced::mouse::Cursor,
         viewport: &Rectangle,
     ) {
-        todo!()
+        renderer.fill_quad(
+            Quad {
+                bounds: layout.bounds(),
+                border: Border {
+                    color: Color::from_rgb(0.6, 0.93, 1.0),
+                    width: 1.0,
+                    radius: 10.0.into(),
+                },
+                shadow: Shadow::default(),
+            },
+            Color::from_rgb(0.0, 0.33, 0.4),
+        );
+
+        let inner_widget = &self.inner_widget as &dyn Widget<Message, Theme, Renderer>;
+        inner_widget.draw(state, renderer, theme, style, layout.children().next().unwrap(), cursor, viewport);
     }
 }
