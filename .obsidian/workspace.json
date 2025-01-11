@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/custom_background.md",
+                "file": "tutorial/widgets_with_children.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "custom_background"
+              "title": "widgets_with_children"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/custom_background.md"
+                "file": "tutorial/widgets_with_children.md"
               },
               "icon": "lucide-list",
-              "title": "custom_background 的大纲"
+              "title": "widgets_with_children 的大纲"
             }
           },
           {
@@ -221,6 +221,7 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "tutorial/custom_background.md",
     "src/custom_background.rs",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3kp2uothz-1nsvw4m-6yvenqm4pwg5koveq6gxvhe2t/work-products.bin",
     "target/debug/incremental/iced_tutorial-12qzvauwmfa4w/s-h3kp2uothz-1nsvw4m-6yvenqm4pwg5koveq6gxvhe2t/query-cache.bin",
@@ -231,7 +232,6 @@
     "target/debug/incremental/iced_tutorial-1ksmtrhcd8saf/s-h3kp2uoxmu-1vhah0n-2oa8m3xvon7wy9k2ccomqgwv8/dep-graph.bin",
     "target/debug/incremental/iced_tutorial-1ksmtrhcd8saf/s-h3kp2uoxmu-1vhah0n-2oa8m3xvon7wy9k2ccomqgwv8",
     "target/debug/incremental/iced_tutorial-1ksmtrhcd8saf/s-h3kp2uoxmu-1vhah0n-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-1ksmtrhcd8saf/s-h3kp2uoxmu-1vhah0n-working/query-cache.bin",
     "tutorial/texts_in_widgets.md",
     "tutorial/mouse_pointer_over_widgets.md",
     "tutorial/producing_widget_messages.md",
