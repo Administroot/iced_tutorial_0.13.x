@@ -1,7 +1,7 @@
 use iced::{
     advanced::{
-        graphics::core::event, layout, renderer::{self, Quad}, widget, Layout, Text, Widget
-    }, alignment, color, mouse, widget::{column, container, text}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
+        graphics::core::event, layout, renderer::{self, Quad}, widget::{self, Tree}, Layout, Text, Widget
+    }, alignment, mouse, widget::{column, container, text::{self, LineHeight, Shaping, Wrapping}}, Border, Color, Element, Event, Length, Rectangle, Shadow, Size, Theme
 };
 
 fn main() -> iced::Result {
@@ -180,7 +180,7 @@ where
         _renderer: &Renderer,
         _limits: &layout::Limits,
     ) -> layout::Node {
-        layout::Node::new([200, 100].into())
+        layout::Node::new([200, 100])
     }
     
     fn draw(
@@ -208,12 +208,10 @@ where
         
         let bounds = layout.bounds();
         renderer.fill_text(
-            Text{ content: Self::CONTENT, bounds: bounds.size(), size: renderer.default_size(), line_height: LineHeight::Default, font: renderer.default_font(), horizontal_alignment: alignment::Horizontal::Center, vertical_alignment: alignment::Vertical::Center, shaping: Shaping::Default, wrapping: Wrapping::Default}, 
+            Text{ content: Self::CONTENT.to_owned(), bounds: bounds.size(), size: renderer.default_size(), line_height: LineHeight::Default, font: renderer.default_font(), horizontal_alignment: alignment::Horizontal::Center, vertical_alignment: alignment::Vertical::Center, shaping: Shaping::Default, wrapping: Wrapping::Default}, 
             bounds.center(),
             Color::from_rgb(0.6, 0.8, 1.0),
             *viewport
         );
     }
-
-    
 }
