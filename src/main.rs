@@ -2,9 +2,12 @@ use iced::{
     advanced::{
         layout,
         renderer::{self, Quad},
-        widget::{self, Tree},
+        widget::Tree,
         Layout, Widget,
-    }, Alignment, alignment, mouse, widget::{container, image::Handle}, Border, Color, Element, Length, Rectangle, Shadow, Size, Theme
+    },
+    alignment, mouse,
+    widget::container,
+    Alignment, Border, Color, Element, Length, Rectangle, Shadow, Size, Theme,
 };
 
 fn main() -> iced::Result {
@@ -60,7 +63,10 @@ where
         _renderer: &Renderer,
         _limits: &layout::Limits,
     ) -> layout::Node {
-        layout::Node::new(Size { width: 100.0, height: 100.0 })
+        layout::Node::new(Size {
+            width: 100.0,
+            height: 100.0,
+        })
     }
 
     fn draw(
@@ -98,13 +104,13 @@ where
 }
 
 struct MyWidgetOuter {
-    inner_widget: MyWidgetInner
+    inner_widget: MyWidgetInner,
 }
 
 impl MyWidgetOuter {
-    fn new() -> Self{
+    fn new() -> Self {
         Self {
-            inner_widget: MyWidgetInner
+            inner_widget: MyWidgetInner,
         }
     }
 }
@@ -114,7 +120,10 @@ where
     Renderer: iced::advanced::Renderer,
 {
     fn size(&self) -> Size<Length> {
-        Size { width: Length::Shrink, height: Length::Shrink }
+        Size {
+            width: Length::Shrink,
+            height: Length::Shrink,
+        }
     }
 
     fn layout(
@@ -132,7 +141,7 @@ where
 
     fn draw(
         &self,
-        tree: &Tree,
+        state: &Tree,
         renderer: &mut Renderer,
         theme: &Theme,
         style: &renderer::Style,
@@ -154,6 +163,23 @@ where
         );
 
         let inner_widget = &self.inner_widget as &dyn Widget<Message, Theme, Renderer>;
-        inner_widget.draw(state, renderer, theme, style, layout.children().next().unwrap(), cursor, viewport);
+        inner_widget.draw(
+            state,
+            renderer,
+            theme,
+            style,
+            layout.children().next().unwrap(),
+            cursor,
+            viewport,
+        );
+    }
+}
+
+impl<'a, Message, Renderer> From<MyWidgetOuter> for Element<'a, Message, Theme, Renderer>
+where
+    Renderer: iced::advanced::Renderer,
+{
+    fn from(widget: MyWidgetOuter) -> Self {
+        Self::new(widget)
     }
 }

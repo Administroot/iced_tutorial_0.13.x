@@ -1,6 +1,6 @@
 {
     "marscode.codeCompletionPro": {
-        "enableCodeCompletionPro": true
+        "enableCodeCompletionPro": false
     },
     "marscode.enableInlineCommand": true
 }
