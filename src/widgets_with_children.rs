@@ -175,18 +175,20 @@ where
     }
 
     fn on_event(
-            &mut self,
-            state: &mut Tree,
-            event: iced::Event,
-            layout: Layout<'_>,
-            cursor: iced::advanced::mouse::Cursor,
-            renderer: &Renderer,
-            clipboard: &mut dyn iced::advanced::Clipboard,
-            shell: &mut iced::advanced::Shell<'_, Message>,
-            viewport: &Rectangle,
-        ) -> iced::advanced::graphics::core::event::Status {
+        &mut self,
+        state: &mut Tree,
+        event: iced::Event,
+        layout: Layout<'_>,
+        cursor: iced::advanced::mouse::Cursor,
+        renderer: &Renderer,
+        clipboard: &mut dyn iced::advanced::Clipboard,
+        shell: &mut iced::advanced::Shell<'_, Message>,
+        viewport: &Rectangle,
+    ) -> iced::advanced::graphics::core::event::Status {
         let inner_widget = &mut self.inner_widget as &mut dyn Widget<Message, Theme, Renderer>;
-        inner_widget.on_event(state, event, layout, cursor, renderer, clipboard, shell, viewport)
+        inner_widget.on_event(
+            state, event, layout, cursor, renderer, clipboard, shell, viewport,
+        )
     }
 }
 
