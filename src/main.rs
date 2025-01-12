@@ -75,7 +75,12 @@ where
         renderer: &Renderer,
         limits: &layout::Limits,
     ) -> layout::Node {
-        let mut child_node = self.inner_widget.
+        /* Yet, the inner_widget is of type Element.
+        So, we have to cast it as Widget by the as_widget method.*/
+        let mut child_node = self.inner_widget.as_widget().layout(&mut tree.children[0], renderer, limits);
+        let size_of_this_node = child_node.size().expand(Size::new(50., 50.));
+        child_node = child_node.align(Alignment::Center, Alignment::Center, size_of_this_node);
+        layout::Node::with_children(size_of_this_node, vec![child_node])
     }
 
     fn draw(
