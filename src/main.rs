@@ -1,6 +1,5 @@
 use iced::{
-    widget::{column, text},
-    Element,
+    image::Handle, widget::{button, column, text}, Element
 };
 
 fn main() -> iced::Result {
@@ -8,7 +7,8 @@ fn main() -> iced::Result {
 }
 
 struct MyApp {
-    _state: String,
+    image_handle: Option<Handle>,
+    show_container: bool,
 }
 
 impl Default for MyApp {
@@ -19,13 +19,14 @@ impl Default for MyApp {
 
 #[derive(Debug, Clone)]
 enum Message {
-    _Message1,
+    Load,
 }
 
 impl MyApp {
     fn new() -> Self {
         Self {
-            _state: String::new(),
+            image_handle: None,
+            show_container: false,
         }
     }
 
@@ -34,6 +35,6 @@ impl MyApp {
     }
 
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column![button("Load").on_press(Message::Load),]
     }
 }

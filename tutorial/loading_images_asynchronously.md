@@ -10,8 +10,8 @@ The dependencies of the `Cargo.toml` file should look like this:
 
 ```toml
 [dependencies]
-iced = { version = "0.12.1", features = ["image", "tokio"] }
-tokio = { version = "1.36.0", features = ["full"] }
+iced = {version = "0.13.1", features = ["tokio"] }
+tokio = {version = "1.43.0", features = ["full"]}
 ```
 
 Our app will have three states: *start*, *loading* and *loaded*.
