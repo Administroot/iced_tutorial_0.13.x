@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorial/loading_images_asynchronously.md",
+                "file": "Clippings/软件著作权.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "loading_images_asynchronously"
+              "title": "软件著作权"
             }
           }
         ]
@@ -172,10 +172,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorial/loading_images_asynchronously.md"
+                "file": "Clippings/软件著作权.md"
               },
               "icon": "lucide-list",
-              "title": "loading_images_asynchronously 的大纲"
+              "title": "软件著作权 的大纲"
             }
           },
           {
@@ -221,6 +221,9 @@
   },
   "active": "6343a65a21221239",
   "lastOpenFiles": [
+    "tutorial/loading_images_asynchronously.md",
+    "Clippings/软件著作权.md",
+    "Clippings",
     "src/loading_images_asynchronously.rs",
     "target/debug/incremental/iced_tutorial-0be0jrqd9qjs7/s-h3lg45mx05-14b69ws-aimbw4p5wkyrvpe3dpy0ndyb8/work-products.bin",
     "target/debug/incremental/iced_tutorial-0be0jrqd9qjs7/s-h3lg45mx05-14b69ws-aimbw4p5wkyrvpe3dpy0ndyb8/query-cache.bin",
@@ -230,10 +233,7 @@
     "target/debug/incremental/iced_tutorial-2ryw77dcpxij4/s-h3lg45mmqv-05o7jex-ab2ext50t2xvgvu8ajh0lcy0k/query-cache.bin",
     "target/debug/incremental/iced_tutorial-2ryw77dcpxij4/s-h3lg45mmqv-05o7jex-ab2ext50t2xvgvu8ajh0lcy0k/dep-graph.bin",
     "target/debug/incremental/iced_tutorial-2ryw77dcpxij4/s-h3lg45mmqv-05o7jex-ab2ext50t2xvgvu8ajh0lcy0k",
-    "target/debug/incremental/iced_tutorial-0be0jrqd9qjs7/s-h3lg45mx05-14b69ws-working/work-products.bin",
-    "target/debug/incremental/iced_tutorial-0be0jrqd9qjs7/s-h3lg45mx05-14b69ws-working/query-cache.bin",
     "README.md",
-    "tutorial/loading_images_asynchronously.md",
     "tutorial/taking_any_children.md",
     "tutorial/widgets_with_children.md",
     "tutorial/custom_background.md",
