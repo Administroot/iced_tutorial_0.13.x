@@ -95,81 +95,79 @@ The full code is as follows:
 
 ```rust
 use iced::{
-    executor,
-    widget::{button, column, container, image, image::Handle},
-    Application, Command,
+    widget::{button, column, container, image, image::Handle},
+    Element, Task,
 };
 use tokio::{fs::File, io::AsyncReadExt};
-
+  
 fn main() -> iced::Result {
-    MyApp::run(iced::Settings::default())
-}
-
-#[derive(Debug, Clone)]
-enum MyMessage {
-    Load,
-    Loaded(Vec<u8>),
+    iced::application("loading images asynchronously", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
-    image_handle: Option<Handle>,
-    show_container: bool,
+    image_handle: Option<Handle>,
+    show_container: bool,
 }
 
-impl Application for MyApp {
-    type Executor = executor::Default;
-    type Message = MyMessage;
-    type Theme = iced::Theme;
-    type Flags = ();
+impl Default for MyApp {
+    fn default() -> Self {
+        MyApp::new().0
+    }
+}
 
-    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (
-            Self {
-                image_handle: None,
-                show_container: false,
-            },
-            Command::none(),
-        )
-    }
+#[derive(Debug, Clone)]
+enum Message {
+    Load,
+    Loaded(Vec<u8>),
+}
 
-    fn title(&self) -> String {
-        String::from("My App")
-    }
+impl MyApp {
+    fn new() -> (Self, Task<Message>) {
+        (
+            Self {
+                image_handle: None,
+                show_container: false,
+            },
+            Task::none(),
+        )
+    }
 
-    fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
-        match message {
-            MyMessage::Load => {
-                self.show_container = true;
-                return Command::perform(
-                    async {
-                        let mut file = File::open("ferris.png").await.unwrap();
-                        let mut buffer = Vec::new();
-                        file.read_to_end(&mut buffer).await.unwrap();
-                        buffer
-                    },
-                    MyMessage::Loaded,
-                );
-            }
-            MyMessage::Loaded(data) => self.image_handle = Some(Handle::from_memory(data)),
-        }
-        Command::none()
-    }
+    fn update(&mut self, message: Message) -> Task<Message> {
+        match message {
+            Message::Load => {
+                self.show_container = true;
+                return Task::perform(
+                    async {
+                        let mut file = File::open("ferris.png").await.unwrap();
+                        let mut buffer = Vec::new();
+                        file.read_to_end(&mut buffer).await.unwrap();
+                        buffer
+                    },
+                    Message::Loaded,
+                );
+            }
+            Message::Loaded(data) => {
+                self.image_handle = Some(Handle::from_bytes(data));
+            }
+        }
+        Task::none()
+    }
 
-    fn view(&self) -> iced::Element<Self::Message> {
-        column![
-            button("Load").on_press(MyMessage::Load),
-            if self.show_container {
-                match &self.image_handle {
-                    Some(h) => container(image(h.clone())),
-                    None => container("Loading..."),
-                }
-            } else {
-                container("")
-            },
-        ]
-        .padding(20)
-        .into()
-    }
+    fn view(&self) -> Element<Message> {
+        column![
+            button("Load").on_press(Message::Load),
+            if self.show_container {
+                match &self.image_handle {
+                    Some(h) => container(image(h.clone())),
+                    None => container("Loading"),
+                }
+            } else {
+                container("")
+            }
+        ]
+        .padding(20)
+        .into()
+    }
 }
 ```
 

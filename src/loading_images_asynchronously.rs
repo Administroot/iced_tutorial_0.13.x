@@ -1,10 +1,11 @@
 use iced::{
-    advanced::graphics::image::image_rs::buffer, widget::{button, column, container, image, image::Handle}, Element, Task
+    widget::{button, column, container, image, image::Handle},
+    Element, Task,
 };
 use tokio::{fs::File, io::AsyncReadExt};
 
 fn main() -> iced::Result {
-    iced::application("My First App", MyApp::update, MyApp::view).run()
+    iced::application("loading images asynchronously", MyApp::update, MyApp::view).run()
 }
 
 struct MyApp {
@@ -26,12 +27,13 @@ enum Message {
 
 impl MyApp {
     fn new() -> (Self, Task<Message>) {
-        (Self {
-            image_handle: None,
-            show_container: false,
-        },
-        Task::none()
-    )
+        (
+            Self {
+                image_handle: None,
+                show_container: false,
+            },
+            Task::none(),
+        )
     }
 
     fn update(&mut self, message: Message) -> Task<Message> {
@@ -47,24 +49,25 @@ impl MyApp {
                     },
                     Message::Loaded,
                 );
-            },
+            }
             Message::Loaded(data) => {
-                self.image_handle = Some(Handle::from_memory(data));
-            },
+                self.image_handle = Some(Handle::from_bytes(data));
+            }
         }
         Task::none()
     }
 
     fn view(&self) -> Element<Message> {
-        column![button("Load").on_press(Message::Load),
-        if self.show_container {
-            match &self.image_handle{
-                Some(h) => container(image(h.clone())),
-                None => container("Loading"),
+        column![
+            button("Load").on_press(Message::Load),
+            if self.show_container {
+                match &self.image_handle {
+                    Some(h) => container(image(h.clone())),
+                    None => container("Loading"),
+                }
+            } else {
+                container("")
             }
-        } else {
-            container("")
-        }
         ]
         .padding(20)
         .into()
