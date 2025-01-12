@@ -20,6 +20,7 @@ impl Default for MyApp {
 #[derive(Debug, Clone)]
 enum Message {
     Load,
+    Loaded<Vec<u8>>,
 }
 
 impl MyApp {
@@ -30,11 +31,31 @@ impl MyApp {
         }
     }
 
-    fn update(&mut self, _message: Message) {
-        todo!()
+    fn update(&mut self, message: Message) {
+        match message {
+            Message::Load => {
+                self.show_container = true;
+                return Task::perform(
+                    async {
+                        let mut file = File::open("ferris.png")
+                    }
+                )
+            }
+        }
     }
 
     fn view(&self) -> Element<Message> {
-        column![button("Load").on_press(Message::Load),]
+        column![button("Load").on_press(Message::Load),
+        if self.show_container {
+            match &self.image_handle{
+                Some(h) => container(image(h.clone())),
+                None => container("Loading"),
+            }
+        } else {
+            container("")
+        }
+        ]
+        .padding(20)
+        .into()
     }
 }
