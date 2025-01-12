@@ -106,16 +106,7 @@ where
             Color::from_rgb(0.0, 0.33, 0.4),
         );
 
-        let inner_widget = &self.inner_widget as &dyn Widget<Message, Theme, Renderer>;
-        inner_widget.draw(
-            state,
-            renderer,
-            theme,
-            style,
-            layout.children().next().unwrap(),
-            cursor,
-            viewport,
-        );
+        self.inner_widget.as_widget().draw(&state.children[0], renderer, theme, style, layout.children().next().unwrap(), cursor, viewport);
     }
 
     fn on_event(
@@ -132,6 +123,12 @@ where
         let inner_widget = &mut self.inner_widget as &mut dyn Widget<Message, Theme, Renderer>;
         inner_widget.on_event(state, event, layout, cursor, renderer, clipboard, shell, viewport)
     }
+
+    fn children(&self) -> Vec<Tree> {
+        vec![Tree::new(self.inner_widget.as_widget())]
+    }
+
+    fn 
 }
 
 impl<'a, Message, Renderer> From<MyWidgetOuter> for Element<'a, Message, Theme, Renderer>
