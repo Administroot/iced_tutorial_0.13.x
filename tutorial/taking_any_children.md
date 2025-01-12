@@ -139,7 +139,7 @@ impl MyApp {
     fn update(&mut self, _message: Message) {}
 
     fn view(&self) -> Element<Message> {
-        container(MyWidgetOuter::new(button("Other widget").into()))
+        container(MyWidgetOuter::new(button("taking any children").into()))
             .width(Length::Fill)
             .height(Length::Fill)
             .align_x(alignment::Horizontal::Center)
@@ -185,118 +185,62 @@ where
                 .as_widget()
                 .layout(&mut tree.children[0], renderer, limits);
         let size_of_this_node = child_node.size().expand(Size::new(50., 50.));
-        child_node = child_node.align(Alignment::Center, Alignment::Center, size_of_this_node)
-
+        child_node = child_node.align(Alignment::Center, Alignment::Center, size_of_this_node);
         layout::Node::with_children(size_of_this_node, vec![child_node])
-
     }
-
   
-
     fn draw(
-
         &self,
-
         state: &Tree,
-
         renderer: &mut Renderer,
-
         theme: &Theme,
-
         style: &renderer::Style,
-
         layout: Layout<'_>,
-
         cursor: iced::advanced::mouse::Cursor,
-
         viewport: &Rectangle,
-
     ) {
-
         renderer.fill_quad(
-
             Quad {
-
                 bounds: layout.bounds(),
-
                 border: Border {
-
                     color: Color::from_rgb(0.6, 0.93, 1.0),
-
                     width: 1.0,
-
                     radius: 10.0.into(),
-
                 },
-
                 shadow: Shadow::default(),
-
             },
-
             Color::from_rgb(0.0, 0.33, 0.4),
-
         );
-
   
-
         self.inner_widget.as_widget().draw(
-
             &state.children[0],
-
             renderer,
-
             theme,
-
             style,
-
             layout.children().next().unwrap(),
-
             cursor,
-
             viewport,
-
         );
-
     }
-
-  
 
     fn children(&self) -> Vec<Tree> {
-
         vec![Tree::new(self.inner_widget.as_widget())]
-
     }
-
   
-
     fn diff(&self, tree: &mut Tree) {
-
         tree.diff_children(std::slice::from_ref(&self.inner_widget));
-
     }
-
 }
 
-  
-
 impl<'a, Message, Renderer> From<MyWidgetOuter<'a, Message, Renderer>>
-
     for Element<'a, Message, Theme, Renderer>
-
 where
-
     Message: 'a,
-
     Renderer: iced::advanced::Renderer + 'a,
-
 {
-
     fn from(widget: MyWidgetOuter<'a, Message, Renderer>) -> Self {
-
         Self::new(widget)
-
     }
-
 }
 ```
 
