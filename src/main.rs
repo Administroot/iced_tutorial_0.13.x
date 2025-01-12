@@ -1,6 +1,7 @@
 use iced::{
-    image::Handle, widget::{button, column, text}, Element
+    advanced::graphics::image::image_rs::buffer, widget::{button, column, container, image, image::Handle}, Element, Task
 };
+use tokio::{fs::File, io::AsyncReadExt};
 
 fn main() -> iced::Result {
     iced::application("My First App", MyApp::update, MyApp::view).run()
@@ -13,35 +14,45 @@ struct MyApp {
 
 impl Default for MyApp {
     fn default() -> Self {
-        MyApp::new()
+        MyApp::new().0
     }
 }
 
 #[derive(Debug, Clone)]
 enum Message {
     Load,
-    Loaded<Vec<u8>>,
+    Loaded(Vec<u8>),
 }
 
 impl MyApp {
-    fn new() -> Self {
-        Self {
+    fn new() -> (Self, Task<Message>) {
+        (Self {
             image_handle: None,
             show_container: false,
-        }
+        },
+        Task::none()
+    )
     }
 
-    fn update(&mut self, message: Message) {
+    fn update(&mut self, message: Message) -> Task<Message> {
         match message {
             Message::Load => {
                 self.show_container = true;
                 return Task::perform(
                     async {
-                        let mut file = File::open("ferris.png")
-                    }
-                )
-            }
+                        let mut file = File::open("ferris.png").await.unwrap();
+                        let mut buffer = Vec::new();
+                        file.read_to_end(&mut buffer).await.unwrap();
+                        buffer
+                    },
+                    Message::Loaded,
+                );
+            },
+            Message::Loaded(data) => {
+                self.image_handle = Some(Handle::from_memory(data));
+            },
         }
+        Task::none()
     }
 
     fn view(&self) -> Element<Message> {
