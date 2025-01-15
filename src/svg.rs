@@ -4,7 +4,7 @@ use iced::{
 };
 
 fn main() -> iced::Result {
-    iced::run("My First App", MyApp::update, MyApp::view)
+    iced::run("svg", MyApp::update, MyApp::view)
 }
 
 struct MyApp {

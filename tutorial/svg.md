@@ -26,17 +26,17 @@ Our example is as follows:
 
 ```rust
 use iced::{
-    widget::{column, text},
-    Element,
+    widget::{column, svg, svg::Handle, text, Svg},
+    ContentFit, Element,
 };
 
 fn main() -> iced::Result {
-    iced::run("My First App", MyApp::update, MyApp::view)
+    iced::run("svg", MyApp::update, MyApp::view)
 }
 
 struct MyApp {
     _state: String,
-}
+} 
 
 impl Default for MyApp {
     fn default() -> Self {
@@ -55,13 +55,21 @@ impl MyApp {
             _state: String::new(),
         }
     }
-  
+
     fn update(&mut self, _message: Message) {
         todo!()
     }
-  
+
     fn view(&self) -> Element<Message> {
-        column!(text("Hello World!".to_string()),).into()
+        column!(
+            text("Construct from struct"),
+            Svg::from_path("pic.svg"),
+            text("Construct from function"),
+            svg(Handle::from_path("pic.svg")),
+            text("Different content fit"),
+           svg(Handle::from_path("pic.svg")).content_fit(ContentFit::None),
+        )
+        .into()
     }
 }
 ```

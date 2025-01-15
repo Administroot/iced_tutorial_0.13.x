@@ -4,24 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "703a73caa900bc8e",
+        "id": "25802a3e8b3e1caf",
         "type": "tabs",
         "children": [
           {
-            "id": "6343a65a21221239",
+            "id": "e48f11242d731984",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Clippings/软件著作权.md",
+                "file": "tutorial/width_and_height.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "软件著作权"
+              "title": "width_and_height"
+            }
+          },
+          {
+            "id": "4d60d83b493525bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "d3a11cc78544817c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "tutorial/svg.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "svg"
+            }
+          },
+          {
+            "id": "278540edb9ea032a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "tutorial/navigation_history.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "navigation_history"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -33,7 +76,6 @@
       {
         "id": "962163949a05ce85",
         "type": "tabs",
-        "dimension": 61.527777777777786,
         "children": [
           {
             "id": "08162bcb59e5fac8",
@@ -72,24 +114,6 @@
               "state": {},
               "icon": "lucide-bookmark",
               "title": "书签"
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "213d7b6e12d04429",
-        "type": "tabs",
-        "dimension": 38.47222222222222,
-        "children": [
-          {
-            "id": "a1ff15893da02f4a",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
             }
           }
         ]
@@ -172,10 +196,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Clippings/软件著作权.md"
+                "file": "tutorial/navigation_history.md"
               },
               "icon": "lucide-list",
-              "title": "软件著作权 的大纲"
+              "title": "navigation_history 的大纲"
             }
           },
           {
@@ -209,7 +233,6 @@
     "hiddenItems": {
       "switcher:打开快速切换": false,
       "canvas:新建白板": false,
-      "obsidian-git:Open Git source control": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
@@ -219,8 +242,23 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "6343a65a21221239",
+  "active": "278540edb9ea032a",
   "lastOpenFiles": [
+    "tutorial/passing_parameters_across_pages.md",
+    "tutorial/memoryless_pages.md",
+    "tutorial/more_than_one_page.md",
+    "README.md",
+    "tutorial/producing_messages_by_mouse_events.md",
+    "tutorial/svg.md",
+    "tutorial/rule.md",
+    "tutorial/text.md",
+    "tutorial/image.md",
+    "tutorial/changing_styles.md",
+    "tutorial/picklist.md",
+    "tutorial/widgets_with_children.md",
+    "tutorial/width_and_height.md",
+    "tutorial/container.md",
+    "pic.svg",
     "tutorial/loading_images_asynchronously.md",
     "Clippings/软件著作权.md",
     "Clippings",
@@ -233,9 +271,7 @@
     "target/debug/incremental/iced_tutorial-2ryw77dcpxij4/s-h3lg45mmqv-05o7jex-ab2ext50t2xvgvu8ajh0lcy0k/query-cache.bin",
     "target/debug/incremental/iced_tutorial-2ryw77dcpxij4/s-h3lg45mmqv-05o7jex-ab2ext50t2xvgvu8ajh0lcy0k/dep-graph.bin",
     "target/debug/incremental/iced_tutorial-2ryw77dcpxij4/s-h3lg45mmqv-05o7jex-ab2ext50t2xvgvu8ajh0lcy0k",
-    "README.md",
     "tutorial/taking_any_children.md",
-    "tutorial/widgets_with_children.md",
     "tutorial/custom_background.md",
     "tutorial/texts_in_widgets.md",
     "tutorial/mouse_pointer_over_widgets.md",
@@ -245,19 +281,6 @@
     "tutorial/drawing_widgets.md",
     "tutorial/drawing_with_caches.md",
     "tutorial/drawing_shapes.md",
-    "tutorial/batch_subscriptions.md",
-    "tutorial/producing_messages_by_timers.md",
-    "tutorial/producing_messages_by_keyboard_events.md",
-    "tutorial/producing_messages_by_mouse_events.md",
-    "tutorial/on_pressed_released_of_some_widgets.md",
-    "tutorial/closing_the_window_on_demand.md",
-    "tutorial/changing_the_window_dynamically.md",
-    "tutorial/batch_commands.md",
-    "tutorial/controlling_widgets_by_commands.md",
-    "tutorial/initializing_a_different_window.md",
-    "tutorial/executing_custom_commands.md",
-    "tutorial/progressbar.md",
-    "pic.svg",
     "ferris.png",
     "Programming/Rust/assets/explanation_of_sandbox_trait.png",
     "考研/新思想第二套第二问.png",
